@@ -1,0 +1,19 @@
+@import '@/styles/colors.module';
+
+.small-screen-navbar-outer-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.small-screen-navbar-outer-buttons__cart-icon {
+  fill: $black;
+  transition: fill 0.3s;
+  margin-right: 20px;
+  margin-top: -2.3px;
+
+  &--opened {
+    fill: white;
+  }
+}
+

@@ -1,0 +1,41 @@
+.accordion {
+  cursor: pointer;
+  padding-bottom: 12px;
+  padding-top: 10px;
+}
+
+.accordionOpened .accordionArrowIcon {
+  transform: rotate(-180deg);
+}
+
+
+.accordionPanel {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 300;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.accordionPanel a {
+  display: block;
+  padding-bottom: 12px;
+  padding-left: 25px;
+}
+
+.accordionPanel li:last-child a {
+  padding-bottom: 22px;
+}
+
+.accordionInnerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.accordionArrowIcon {
+  margin-left: 6px;
+  transition: transform 0.3s ease-in-out;
+}
