@@ -4,12 +4,18 @@ import SimpleItem from "@/components/elements/SmallScreenNavbarPagesSimpleItem";
 import AccordionItem from "@/components/elements/SmallScreenNavbarPagesAccordionItem";
 import PAGES from "@/constants/navigation-links";
 import { isPageLinkData } from "@/types/navigation";
+import classNames from "classnames";
 
 interface PagesProps {
   menuIsOpened: boolean;
 }
 
 function SmallScreenNavbarPages({ menuIsOpened }: PagesProps) {
+  const accordionItemClasses = classNames(
+    styles.pagesItem,
+    styles.accordionWrapper
+  );
+
   return (
     <ul className={styles.pageList}>
       {PAGES.map((page) => {
@@ -27,7 +33,7 @@ function SmallScreenNavbarPages({ menuIsOpened }: PagesProps) {
               key={page.globalName}
               globalMenuIsOpened={menuIsOpened}
               submenuData={page}
-              className={`${styles.pagesItem} ${styles.accordionWrapper}`}
+              className={accordionItemClasses}
             />
           );
         }

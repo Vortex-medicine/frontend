@@ -15,10 +15,8 @@ function SmallScreenNavbarPagesItem({
 }: SimpleItemProps) {
   return (
     <li className={className}>
-      <Link href={href} legacyBehavior>
-        <a>
-          <Container>{name}</Container>
-        </a>
+      <Link href={href}>
+        <Container>{name}</Container>
       </Link>
     </li>
   );

@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Container from "@/components/elements/Container";
-import SmallScreenNavbarOuterButtons from "@/components/modules/SmallScreenNavbarOuterButtons";
-import SmallScreenNavbarOverlay from "@/components/modules/SmallScreenNavbarOverlay";
+import NavbarOverlay from "@/components/modules/SmallScreenNavbarOverlay";
+import NavbarVisibleArea from "@/components/modules/SmallScreenNavbarVisibleArea";
+import { HamburgerElementProvider } from "@/context/navbar-outer-icons/Context";
+import classNames from "classnames";
 
 const Header = () => {
   const [menuIsOpened, setMenuIsOpened] = useState(false);
@@ -30,41 +30,23 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const headerClasses = classNames(styles.header, {
+    [styles.headerIsScrolled]: headerIsScrolled,
+  });
+
   return (
-    <header
-      ref={headerElement}
-      className={`${styles.header} ${
-        headerIsScrolled ? styles.headerIsScrolled : ""
-      }`}
-    >
+    <header ref={headerElement} className={headerClasses}>
       <nav className={styles.navbar}>
-        <Container className={styles.navbarVisibleArea}>
-          <div className={styles.navbarLogoWrapper}>
-            <Image
-              src="/logo-white.png"
-              alt="Vortex-medicine"
-              width="100"
-              height="26"
-              className={styles.navbarLogo}
-            />
-            <Image
-              src="/logo.png"
-              alt="Vortex-medicine"
-              width="100"
-              height="26"
-              className={`${styles.navbarLogo} ${
-                menuIsOpened ? styles.navbarLogoIsTransparent : ""
-              }`}
-            />
-          </div>
-
-          <SmallScreenNavbarOuterButtons
-            isOpened={menuIsOpened}
-            setIsOpened={setMenuIsOpened}
+        <HamburgerElementProvider>
+          <NavbarVisibleArea
+            menuIsOpened={menuIsOpened}
+            setMenuIsOpened={setMenuIsOpened}
           />
-        </Container>
-
-        <SmallScreenNavbarOverlay menuIsOpened={menuIsOpened} />
+          <NavbarOverlay
+            menuIsOpened={menuIsOpened}
+            setMenuIsOpened={setMenuIsOpened}
+          />
+        </HamburgerElementProvider>
       </nav>
     </header>
   );

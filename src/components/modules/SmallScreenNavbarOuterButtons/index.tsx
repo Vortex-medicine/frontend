@@ -1,6 +1,8 @@
+import { useNavbarOuterIcons } from "@/context/navbar-outer-icons/Context";
 import styles from "./styles.module.scss";
 import HamburgerMenu from "@/components/elements/HamburgerMenu";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import classNames from "classnames";
 
 import { Dispatch, SetStateAction } from "react";
 
@@ -13,19 +15,26 @@ function SmallScreenNavbarOuterButtons({
   isOpened,
   setIsOpened,
 }: SmallScreenNavbarOuterButtonsProps): JSX.Element {
+  const cartIconClasses = classNames(styles.cartIcon, {
+    [styles.cartIconOpened]: isOpened,
+  });
+
+  const navbarOuterIcons = useNavbarOuterIcons();
+
+  if (navbarOuterIcons === null) {
+    throw new Error("navbarOuterIcons is null");
+  }
+
+  const { hamburgerElement, cartElement } = navbarOuterIcons;
+
   return (
-    <div className={styles["small-screen-navbar-outer-buttons"]}>
-      <ShoppingCartOutlinedIcon
-        className={`${styles["small-screen-navbar-outer-buttons__cart-icon"]} ${
-          isOpened
-            ? styles["small-screen-navbar-outer-buttons__cart-icon--opened"]
-            : ""
-        }`}
-      />
+    <div className={styles.outerButtons}>
+      <ShoppingCartOutlinedIcon ref={cartElement} className={cartIconClasses} />
       <HamburgerMenu
+        ref={hamburgerElement}
         isOpened={isOpened}
         setIsOpened={setIsOpened}
-        className={styles["small-screen-navbar-outer-buttons__hamburger-icon"]}
+        className={styles.hamburgerIcon}
       />
     </div>
   );

@@ -5,6 +5,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import Link from "next/link";
 import { ClassName } from "@/types/common";
 import { SubmenuData } from "@/types/navigation";
+import classNames from "classnames";
 
 interface AccordionItemProps {
   submenuData: SubmenuData;
@@ -30,14 +31,13 @@ function SmallScreenNavbarPagesAccordionItem({
     }
   }, [globalMenuIsOpened]);
 
+  const accordionClasses = classNames(styles.accordion, {
+    [styles.accordionOpened]: accordionIsOpened,
+  });
+
   return (
     <li className={className}>
-      <div
-        className={`${styles.accordion} ${
-          accordionIsOpened ? styles.accordionOpened : ""
-        }`}
-        onClick={handleAccordionClick}
-      >
+      <div className={accordionClasses} onClick={handleAccordionClick}>
         <Container className={styles.accordionInnerContainer}>
           {globalName}
           <KeyboardArrowDownRoundedIcon className={styles.accordionArrowIcon} />

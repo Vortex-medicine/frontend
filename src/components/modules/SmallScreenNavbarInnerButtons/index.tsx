@@ -3,11 +3,17 @@ import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import LanguageDropdown from "@/components/modules/SmallScreenNavbarLanguageDropdown";
 
-function SmallScreenNavbarInnerButtons() {
+interface NavbarInnerButtonsProps {
+  menuIsOpened: boolean;
+}
+
+function SmallScreenNavbarInnerButtons({
+  menuIsOpened,
+}: NavbarInnerButtonsProps) {
   return (
     <div className={styles.innerButtons}>
       <Container>
-        <LanguageDropdown />
+        <LanguageDropdown menuIsOpened={menuIsOpened} />
       </Container>
     </div>
   );

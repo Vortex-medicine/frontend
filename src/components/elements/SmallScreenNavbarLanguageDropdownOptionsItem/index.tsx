@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
+import classNames from "classnames";
 
 type LanguageId = number;
 type LanguageName = string;
@@ -21,12 +22,14 @@ function SmallScreenNavbarLanguageDropdownOptionsItem({
   selectedLanguageId,
   setSelectedLanguageId,
 }: LanguageDropdownItemProps) {
+  const optionsItemClasses = classNames(styles.optionsItem, {
+    [styles.optionsItemActive]: selectedLanguageId === item.id,
+  });
+
   return (
     <li
       key={item.id}
-      className={`${styles.optionsItem} ${
-        selectedLanguageId === item.id ? styles.optionsItemActive : ""
-      }`}
+      className={optionsItemClasses}
       onClick={() => setSelectedLanguageId(item.id)}
     >
       <p>{item.name}</p>

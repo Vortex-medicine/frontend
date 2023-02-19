@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ForwardedRef, SetStateAction, forwardRef } from "react";
 import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 interface MenuToggleProps {
   isOpened: boolean;
@@ -7,16 +8,18 @@ interface MenuToggleProps {
   className?: string;
 }
 
-function MenuToggle({
-  isOpened,
-  setIsOpened,
-  className = "",
-}: MenuToggleProps): JSX.Element {
+const MenuToggle = function MenuToggle(
+  { isOpened, setIsOpened, className = "" }: MenuToggleProps,
+  hamburgerElement: ForwardedRef<HTMLDivElement>
+): JSX.Element {
+  const hamburgerElementClasses = classNames(styles.menuToggle, className, {
+    [styles.menuToggleOpened]: isOpened,
+  });
+
   return (
     <div
-      className={`${styles["menu-toggle"]} ${
-        isOpened ? styles["menu-toggle--opened"] : ""
-      } ${className}`}
+      ref={hamburgerElement}
+      className={hamburgerElementClasses}
       onClick={() => setIsOpened(!isOpened)}
     >
       <span></span>
@@ -25,6 +28,6 @@ function MenuToggle({
       <span></span>
     </div>
   );
-}
+};
 
-export default MenuToggle;
+export default forwardRef(MenuToggle);

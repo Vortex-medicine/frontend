@@ -1,6 +1,6 @@
 @import '@/styles/colors.module';
 
-.menu-toggle {
+.menuToggle {
   width: 27px;
   height: 25px;
   position: relative;
@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.menu-toggle span {
+.menuToggle span {
   display: block;
   position: absolute;
   height: 2px;
@@ -34,44 +34,44 @@
   transition: .3s ease-in-out;
 }
 
-.menu-toggle span:nth-child(1) {
+.menuToggle span:nth-child(1) {
   top: 0px;
 }
 
-.menu-toggle span:nth-child(2),.menu-toggle span:nth-child(3) {
+.menuToggle span:nth-child(2),.menuToggle span:nth-child(3) {
   top: 8px
 }
 
-.menu-toggle span:nth-child(4) {
+.menuToggle span:nth-child(4) {
   top: 16px
 }
 
-.menu-toggle--opened span:nth-child(1) {
+.menuToggleOpened span:nth-child(1) {
   top: 8px;
   width: 0%;
   left: 50%;
 }
 
-.menu-toggle--opened span:nth-child(2) {
+.menuToggleOpened span:nth-child(2) {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.menu-toggle--opened span:nth-child(3) {
+.menuToggleOpened span:nth-child(3) {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
 
-.menu-toggle--opened span:nth-child(4) {
+.menuToggleOpened span:nth-child(4) {
   top: 8px;
   width: 0%;
   left: 50%;
 }
 
-.menu-toggle--opened span {
+.menuToggleOpened span {
   background: white;
 }

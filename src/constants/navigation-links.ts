@@ -11,7 +11,7 @@ const PAGES: Array<PageLinkData | SubmenuData> = [
   },
   {
     name: "Комплекты приборов",
-    href: "/reviews",
+    href: "/kits",
   },
   {
     globalName: "Схемы приборов",
