@@ -1,0 +1,69 @@
+@import '@/styles/colors.module';
+
+.dropdownItem {
+  // font-size: 18px;
+  position: relative;
+  margin-right: 23.5px;
+  color: $black; 
+}
+
+.dropdownItemSubmenu {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  background-color: #fff;
+  border-radius: 12px;
+  list-style: none;
+  left: -30px;
+  top: 40px;
+  padding: 0;
+  margin: 0;
+  padding: 12px 45px 20px 30px;
+  font-size: 20px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+  border: 1px solid $green;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.dropdownItemOpened .dropdownItemSubmenu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.submenuGlobalNameWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.submenuGlobalNameWrapper:hover .submenuGlobalName {
+  color: $green;
+}
+
+.submenuGlobalNameWrapper:hover svg {
+  fill: $green;
+}
+
+.submenuGlobalNameWrapper svg {
+  margin-top: -1px;
+  margin-left: 5px;
+  transition: fill 0.2s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.submenuGlobalName {
+  margin: 0;
+  transition: color 0.2s ease-in-out;
+  // font-size: 18px;
+  // line-height: 28px;
+}
+
+.dropdownItemOpened .submenuGlobalName {
+  color: $green;
+}
+
+.dropdownItemOpened .submenuGlobalNameWrapper svg {
+  fill: $green;
+  transform: rotate(-180deg);
+}

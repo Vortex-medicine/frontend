@@ -1,0 +1,53 @@
+@import '@/styles/colors.module';
+@import '@/styles/viewports';
+
+.optionsItem {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: $black;
+
+
+  @include for-size(desktop) {
+    &:hover {
+      color: $green;
+    }
+  }
+
+  &Active:hover {
+    cursor: default;
+  }
+}
+
+.optionsItemActive p {
+  color: $blue;
+}
+
+.optionsItem:hover p {
+  @include for-size(desktop) {
+    color: $green;
+  }
+}
+
+.optionsItemActive:hover p {
+  color: $blue;
+}
+
+.optionsItem p {
+  margin: 0;
+  padding: 0;
+  margin-right: 5px;
+  // font-size: 18px;
+  // line-height: 28px;
+}
+
+.optionsItem svg {
+  visibility: hidden;
+  fill: $blue;
+  margin-bottom: 6px;
+}
+
+.optionsItemActive svg {
+  visibility: visible;
+}

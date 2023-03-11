@@ -1,11 +1,20 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/viewports.scss";
+@import "@/styles/colors.module.scss";
+
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  // font-family: var(--segoui-font);
   font-family: var(--noto-font);
   margin: 0;
+  min-width: $content-min-width;
 }
 
 input,
@@ -22,4 +31,41 @@ a:focus,a:visited,a:active{
 
 * {
     -webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 40px;
+  margin: 0;
+  color: $black;
+
+  @include for-size(tablet) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 45px;
+    line-height: 55px;
+  }
+}
+
+p {
+  font-size: 20px;
+  line-height: 30px;
+  margin: 0;
+  margin-bottom: 15px;
+  color: $black;
+}
+
+a {
+  color: $blue;
+  border-bottom: 1px solid rgba(101, 170, 220, 0.2);
+  cursor: pointer;
+  padding-bottom: 2px;
+  transition: border-bottom-color 0.2s ease-in-out;
+
+  &:hover {
+    border-bottom-color: $blue;
+  }
 }

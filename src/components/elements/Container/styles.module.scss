@@ -1,3 +1,12 @@
+@import "@/styles/viewports";
+
 .container {
+  max-width: 1250px;
+  margin: 0 auto;
+
   padding: 0 15px;
+
+  @include for-size(tablet) {
+    padding: 0 30px;
+  }
 }

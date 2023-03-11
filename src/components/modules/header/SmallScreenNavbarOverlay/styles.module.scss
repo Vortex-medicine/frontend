@@ -1,0 +1,34 @@
+@import '@/styles/colors.module';
+@import '@/styles/viewports';
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  right: -100%;
+  top: 0;
+  background-color: $green;
+  transition: all 0.3s;
+  z-index: 5;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &Opened {
+    right: 0;
+  }
+
+  @include for-size(tablet) {
+    width: 300px;
+
+    &:not(&Opened) {
+      right: -300px;
+    }
+  }
+
+  @include for-size(desktop) {
+    display: none;
+  }
+}
+

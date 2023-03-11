@@ -1,0 +1,82 @@
+@import "@/styles/viewports";
+@import "@/styles/colors.module";
+
+.intro {
+  margin-top: 110px;
+  margin-bottom: 65px;
+
+  @include for-size(tablet) {
+    margin-top: 100px;
+  }
+}
+
+.heading {
+  margin-top: 30px;
+}
+
+.subheading {
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 15px;
+  margin-bottom: 30px;
+
+  @include for-size(tablet) {
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @include for-size(desktop) {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 400;
+  }
+}
+
+
+.factoid {
+  margin-top: 20px;
+
+  @include for-size(tablet) {
+    margin-top: 7px;
+  }
+}
+
+.mainContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.promoButtonWrapper {
+  @media screen and (min-width: 516px) {
+    text-align: center;
+  }
+}
+
+.textBlock {
+  @include for-size(tablet) {
+    width: 470px;
+  }
+
+  @media screen and (min-width: 827px) {
+    width: 570px;
+  }
+}
+
+.kitsButton {
+  margin-top: 45px;
+  
+  @media screen and (min-width: 516px) {
+    display: inline-block !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

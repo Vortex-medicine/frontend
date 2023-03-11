@@ -1,0 +1,17 @@
+@import "@/styles/variables.module";
+
+@mixin for-size($size) {
+  @if $size == content-min-width {
+    @media screen and (min-width: $content-min-width) {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media screen and (min-width: 700px) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+}

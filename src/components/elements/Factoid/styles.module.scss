@@ -1,0 +1,31 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.factoid {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background-color: $green;
+  border-radius: 50%;
+
+  @include for-size(desktop) {
+    width: 145px;
+    height: 145px;
+  }
+}
+
+.factoid p {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 500;
+
+  @include for-size(desktop) {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}

@@ -1,5 +1,7 @@
 import "normalize.css/normalize.css";
+
 import "@/styles/globals.scss";
+
 import { AppProps } from "next/app";
 import { Noto_Sans } from "@next/font/google";
 

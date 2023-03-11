@@ -1,0 +1,19 @@
+@import "@/styles/colors.module";
+
+.button {
+  text-align: center;
+  display: block;
+  border: none;
+  background-color: $orange;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 25px 16px;
+  transition: background-color .2s ease-in-out;
+
+  &:hover {
+    background-color: #D8481A;
+  }
+}

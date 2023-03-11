@@ -1,0 +1,53 @@
+@import '@/styles/colors.module';
+@import '@/styles/viewports';
+
+.outerButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  & > * {
+    margin-right: 15px;
+  }
+}
+
+.cartIcon {
+  cursor: pointer;
+  fill: $black;
+  transition: fill 0.3s;
+  margin-right: 20px;
+  margin-top: -2.3px;
+  pointer-events: auto;
+
+  &Opened {
+    fill: white;
+  }
+
+  @include for-size(desktop) {
+    fill: $black;
+    margin-right: 0;
+
+    &:hover, &:active {
+      fill: $green;
+    }
+  }
+}
+
+.hamburgerIcon {
+  pointer-events: auto;
+  margin-right: 0;
+
+  @include for-size(desktop) {
+    display: none;
+  }
+}
+
+.languageIcon {
+  display: none;
+  margin-top: -2px;
+
+  @include for-size(desktop) {
+    display: unset;
+  }
+}
+

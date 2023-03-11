@@ -1,0 +1,23 @@
+@import '@/styles/colors.module';
+
+.submenuItem:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+.submenuItem a {
+  text-decoration: none;
+  color: $black;
+  transition: color 0.2s ease-in-out;
+  border: none;
+
+  &:hover, &:active {
+    color: $green;
+  }
+}
+
+.submenuItem p {
+  margin: 0;
+  padding: 0;
+  // font-size: 18px;
+  // line-height: 28px;
+}

@@ -1,0 +1,108 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+@import "@/styles/variables.module";
+
+
+.imageWrapperMobile {
+  position: relative;
+  padding-bottom: 76.49%;
+  
+  @include for-size(tablet) {
+    display: none;
+  }
+}
+
+.imageWrapperTablet {
+  position: relative;
+  display: none;
+  padding-bottom: 57.89%;
+  width: 100%;
+
+  @include for-size(tablet) {
+    display: block;
+  }
+}
+
+.introIllustration img{
+  object-fit: contain;
+}
+
+.imageCaptionContainer {
+  margin-bottom: -53px;
+
+  @include for-size(content-min-width) {
+    margin-bottom: -17vw;
+  }
+
+  
+  @media screen and (min-width: 390px) {
+    margin-bottom: -17vw;
+  }
+
+  @include for-size(tablet) {
+    margin-bottom: -13vw;
+  }
+
+  @media screen and (min-width: 721px) {
+    margin-bottom: -13.1vw;
+  }
+
+  @media screen and (min-width: 806px) {
+    margin-bottom: -13.2vw;
+  }
+
+  @media screen and (min-width: 855px) {
+    margin-bottom: -13.3vw;
+  }
+
+  @media screen and (min-width: 945px) {
+    margin-bottom: -86px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: -112px;
+  }
+}
+
+.imageCaption {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: bold;
+  color: $blue;
+
+  @include for-size(content-min-width) {
+    font-size: 4.4vw;
+    line-height: 6vw;
+  }
+
+  @media screen and (min-width: 322px) {
+    font-size: 4.5vw;
+  }
+  
+  @media screen and (min-width: 390px) {
+    font-size: 4.6vw;
+  }
+
+  @media screen and (min-width: 444px) {
+    font-size: 4.7vw;
+  }
+  
+  @media screen and (min-width: 562px) {
+    font-size: 4.8vw;
+  }
+
+  @media screen and (min-width: 945px) {
+    font-size: 40px;
+    line-height: 47px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 50px;
+    line-height: 62px;
+  }
+}
+
+.imageCaption span {
+  color: $green;
+}

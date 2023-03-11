@@ -1,0 +1,20 @@
+@import '@/styles/viewports';
+
+.navbarPagesList {
+  display: none;
+
+  @include for-size(desktop) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: -8px;
+    margin-left: 30px;
+  }
+}
+
+.navbarPagesList > li:not(:last-child):not(.dropdownItem) {
+  margin-right: 30px;
+}

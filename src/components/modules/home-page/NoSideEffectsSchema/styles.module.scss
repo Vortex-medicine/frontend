@@ -1,0 +1,21 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports.scss";
+
+.schemaWrapper {
+  position: relative;
+  height: 767px;
+  border: 1px solid $grey;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.schemaImage {
+  object-fit: cover;
+  object-position: left;
+  width: 210%;
+  height: auto;
+
+  @media screen and (min-width: 575px) {
+    width: 1140px;
+  }
+}
