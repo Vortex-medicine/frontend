@@ -6,7 +6,7 @@ import { AppProps } from "next/app";
 import { Noto_Sans } from "@next/font/google";
 
 const noto = Noto_Sans({
-  weight: ["200", "300", "400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["cyrillic", "latin"],
 });
 

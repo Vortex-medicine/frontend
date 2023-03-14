@@ -1,3 +1,51 @@
+@import "@/styles/viewports";
+
 .noSideEffectsSection {
   margin-bottom: 60px;
+}
+
+.contentWrapper {
+  @media screen and (min-width: 1130px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 140px;
+  }
+}
+
+.textBlock {
+  max-width: 570px;
+}
+
+.textBlock p {
+  margin-bottom: 15px;
+}
+
+.heading {
+  margin-bottom: 20px;
+  margin-top: 35px;
+}
+
+.glassExample {
+  max-width: 570px;
+}
+
+.glassImageWrapper {
+  margin-top: 45px;
+  position: relative;
+  padding-bottom: 56.25%;
+  border-radius: 30px;
+  overflow: hidden;
+
+  @media screen and (min-width: 1130px) {
+    margin-top: 3px;
+  }
+}
+
+.glassImageWrapper img {
+  object-fit: contain;
+}
+
+.glassImageCaption {
+  margin-top: 20px;
 }

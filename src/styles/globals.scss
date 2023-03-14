@@ -34,6 +34,7 @@ a:focus,a:visited,a:active{
 }
 
 h1 {
+  font-weight: 800;
   font-size: 30px;
   line-height: 40px;
   margin: 0;
@@ -50,11 +51,28 @@ h1 {
   }
 }
 
+h2 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 35px;
+  margin: 0;
+  color: $black;
+
+  @include for-size(tablet) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  @include for-size(desktop) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
+
 p {
   font-size: 20px;
   line-height: 30px;
   margin: 0;
-  margin-bottom: 15px;
   color: $black;
 }
 
