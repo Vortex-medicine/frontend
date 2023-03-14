@@ -3,10 +3,14 @@
 
 .intro {
   margin-top: 110px;
-  margin-bottom: 65px;
+  margin-bottom: 75px;
 
   @include for-size(tablet) {
     margin-top: 100px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 85px;
   }
 }
 
@@ -72,11 +76,15 @@
 }
 
 .kitsButton {
-  margin-top: 45px;
+  margin-top: 55px;
   
   @media screen and (min-width: 516px) {
     display: inline-block !important;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  @include for-size(tablet) {
+    margin-top: 45px;
   }
 }

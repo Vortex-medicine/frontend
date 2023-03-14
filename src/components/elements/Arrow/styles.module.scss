@@ -1,0 +1,81 @@
+.arrow {
+  position: relative;
+  width: 58px;
+  min-width: 58px;
+  height: 3px;
+  min-height: 3px;
+  border-radius: 2px;
+  background-color: #BFBFBF;
+
+  &Vertical {
+    width: 3px;
+    min-width: 3px;
+    height: 58px;
+    min-height: 58px;
+
+    &::before {
+      bottom: 0;
+      transform-origin: center bottom;
+      right: 1px;
+      height: 15px;
+      min-height: 15px;
+      width: 3px;
+      min-width: 3px;
+    }
+
+    &::after {
+      bottom: 0;
+      transform-origin: center bottom;
+      left: 1px;
+      height: 15px;
+      min-height: 15px;
+      width: 3px;
+      min-width: 3px;
+    }
+  }
+
+  &Horizontal {
+    width: 58px;
+    min-width: 58px;
+    height: 3px;
+    min-height: 3px;
+
+    &::before {
+      right: 0;
+      top: 1px;
+      width: 15px;
+      min-width: 15px;
+      height: 3px;
+      min-height: 3px;
+      transform-origin: center right;
+    }
+
+    &::after {
+      right: 0;
+      bottom: 1px;
+      width: 15px;
+      min-width: 15px;
+      height: 3px;
+      min-height: 3px;
+      transform-origin: center right;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    background-color: #BFBFBF;
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    background-color: #BFBFBF;
+    transform: rotate(-45deg);
+  }
+}

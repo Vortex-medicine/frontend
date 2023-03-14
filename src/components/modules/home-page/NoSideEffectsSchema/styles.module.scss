@@ -2,11 +2,19 @@
 @import "@/styles/viewports.scss";
 
 .schemaWrapper {
+  padding: 35px 0 50px;
   position: relative;
-  height: 767px;
   border: 1px solid $grey;
   border-radius: 30px;
   overflow: hidden;
+
+  @include for-size(tablet) {
+    padding: 25px 0 40px;
+  }
+
+  @include for-size(desktop) {
+    padding: 35px 0 50px;
+  }
 }
 
 .schemaImage {
@@ -17,5 +25,134 @@
 
   @media screen and (min-width: 575px) {
     width: 1140px;
+  }
+}
+
+.coilWorkingPrincipleWrapper {
+  margin: 0 20px 50px;
+
+  @include for-size(tablet) {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 147px;
+    max-width: 850px;
+    padding: 0 45px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.firstTextBlock {
+  max-width: 360px;
+  margin: 0;
+  margin-bottom: 20px;
+
+  @include for-size(tablet) {
+    margin-bottom: 0;
+  }
+}
+
+.secondTextBlock {
+  max-width: 360px;
+  margin: 0;
+  margin-top: 20px;
+
+  @include for-size(tablet) {
+    margin-top: 0;
+  }
+}
+
+.sinusGeneratorDescr {
+  bottom: 50px;
+  margin: 7px 20px 0 20%;
+  max-width: 210px;
+
+  @media screen and (min-width: 575px) {
+    margin-left: 108px;
+  }
+}
+
+.speakerWrapper {
+  display: none;
+
+  @media screen and (min-width: 800px) {
+    display: block;
+    position: absolute;
+    right: 3%;
+    bottom: 50px;
+    max-width: 250px;
+  }
+
+  @media screen and (min-width: 844px) {
+    max-width: 290px;
+    bottom: 80px;
+  }
+
+  @media screen and (min-width: 890px) {
+    bottom: 90px;
+    right: 6%;
+  }
+
+  @media screen and (min-width: 1000px) {
+    bottom: 110px;
+    right: 15%;
+  }
+}
+
+.mozartRecommendation a {
+  text-decoration: none;
+}
+
+.arrowVertical {
+  margin-left: 30px;
+
+  @include for-size(tablet) {
+    display: none;
+  }
+}
+
+.arrowHorizontal {
+  display: none;
+
+  @include for-size(tablet) {
+    display: block;
+    position: absolute !important;
+    width: 80px !important;
+    min-width: 80px !important;
+    left: 0;
+  }
+}
+
+.coilCaptionWrapper {
+  position: relative;
+}
+
+.coilCaption {
+  text-align: right;
+  margin-right: 20px;
+
+  @media screen and (min-width: 575px) {
+    display: inline-block;
+    text-align: right;
+    margin-left: 340px;
+  }
+}
+
+.captionLine {
+  position: absolute;
+  width: 1px;
+  height: calc(18vw);
+  transform: rotate(15deg);
+  transform-origin: center top;
+  background-color: #BFBFBF;
+  top: 33px;
+  right: 19%;
+
+  @media screen and (min-width: 575px) {
+    right: auto;
+    left: 435px;
+    height: 103.5px;
   }
 }
