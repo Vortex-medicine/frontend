@@ -5,6 +5,7 @@ import Container from "@/components/elements/Container";
 import Factoid from "@/components/elements/Factoid";
 import DefaultButton from "@/components/elements/DefaultButton";
 import Link from "next/link";
+import colors from "@/styles/colors.module.scss";
 
 function Intro() {
   return (
@@ -33,7 +34,14 @@ function Intro() {
               Мы расскажем о&nbsp;том, как работает катушка Мишина,
               не&nbsp;залезая глубоко в&nbsp;физику процессов. Если хорошо
               разбираетесь в&nbsp;физике, посмотрите{" "}
-              <a>7-часовой вебинар по&nbsp;вихревой медицине.</a>
+              <a
+                href="https://youtu.be/WYBLpHd0y0Y"
+                target="_blank"
+                rel="noreferrer"
+              >
+                7-часовой вебинар по&nbsp;вихревой медицине
+              </a>
+              <span style={{ color: colors.blue }}>.</span>
             </p>
           </div>
           <Factoid text="150 лет технологии" className={styles.factoid} />

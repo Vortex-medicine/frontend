@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import Arrow from "@/components/elements/Arrow";
+import colors from "@/styles/colors.module.scss";
 
 function NoSideEffectsSchema() {
   const principleDescrWrapperElement = useRef<HTMLDivElement>(null);
@@ -130,8 +131,8 @@ function NoSideEffectsSchema() {
         width={4780}
         height={2852}
         sizes="
-               (min-width: 575px) 1140px,
-               200vw
+               200vw,
+               (min-width: 575px) 1140px
               "
         alt="Mishin's coil schema of work"
         quality={100}
@@ -150,7 +151,8 @@ function NoSideEffectsSchema() {
         />
         <p className={styles.mozartRecommendation}>
           Во время сеанса хорошо слушать{" "}
-          <a href="https://youtu.be/DWVXa_Ism6g">анданте Моцарта</a> :)
+          <a href="https://youtu.be/DWVXa_Ism6g">анданте Моцарта</a>{" "}
+          <span style={{ color: colors.blue }}>:)</span>
         </p>
       </div>
     </div>

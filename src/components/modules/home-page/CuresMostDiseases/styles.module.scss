@@ -1,0 +1,105 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.curesMostDiseasesSection {
+  margin-bottom: 75px;
+}
+
+.curesMostDiseasesSectionContainer {
+  position: relative;
+}
+
+.mainContentWrapper {
+  max-width: 570px;
+}
+
+.mainContentWrapper p {
+  margin-bottom: 15px;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.diseasesList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: 800px;
+
+  @include for-size(tablet) {
+    columns: 2;
+    column-gap: 30px;
+  }
+
+  @include for-size(desktop) {
+    column-count: 3;
+    max-width: none;
+  }
+
+}
+
+.diseasesListItem {
+  margin-bottom: 15px;
+}
+
+.diseasesListItem p {
+  margin: 0;
+  font-style: italic;
+  line-height: 25px;
+}
+
+.coilTeaExampleWrapper {
+  margin-top: 40px;
+
+  @include for-size(desktop) {
+    position: absolute;
+    width: 480px;
+    left: 52%;
+    top: -5px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    width: 550px;
+    left: auto;
+    right: 60px;
+    top: -50px;
+  }
+}
+
+.coilTeaExampleWrapper p {
+  text-align: left;
+  max-width: 385px;
+  margin-top: 15px;
+
+  @include for-size(desktop) {
+    position: absolute;
+    max-width: 240px;
+    right: -65px;
+    bottom: -5px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    right: -35px;
+    bottom: 15px;
+  }
+}
+
+.coilTeaMobileImg {
+  max-width: 100%;
+  height: auto;
+
+  @include for-size(desktop) {
+    display: none;
+  }
+}
+
+.coilTeaDesktopImg {
+  display: none;
+
+  @include for-size(desktop) {
+    display: inline;
+    max-width: 100%;
+    height: auto;
+  }
+}
