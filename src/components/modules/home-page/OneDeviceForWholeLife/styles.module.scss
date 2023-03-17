@@ -1,0 +1,92 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.heading {
+  margin-bottom: 31px;
+}
+
+.contentWrapper {
+  @include for-size(desktop) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+  }
+}
+
+.pillsBlock {
+  // max-width: 570px;
+  margin-bottom: 45px;
+
+  @include for-size(desktop) {
+    max-width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+.pillsImgCaption {
+  margin-top: 18px;
+  max-width: 570px;
+}
+
+.pillsImgWrapper {
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid $grey;
+  padding: 45px 45px 25px; 
+  text-align: center;
+  vertical-align: middle;
+
+  @include for-size(desktop) {
+    height: 413px;
+  }
+}
+
+.pillsImgWrapper img{
+  width: 100%;
+  max-width: 570px;
+  height: auto;
+
+  @include for-size(desktop) {
+    max-width: 100%;
+  }
+}
+
+.deviceBlock {
+  // max-width: 570px;
+
+  @include for-size(desktop) {
+    max-width: 50%;
+  }
+}
+
+.deviceImgCaption {
+  margin-top: 18px;
+  max-width: 570px;
+}
+
+.deviceImgWrapper {
+  border-radius: 30px;
+  border: 1px solid $grey;
+  padding: 35px 45px 40px; 
+  text-align: center;
+  vertical-align: middle;
+
+  @include for-size(desktop) {
+    height: 413px;
+  }
+}
+
+.deviceImgWrapper img{
+  width: 100%;
+  max-width: 570px;
+  height: auto;
+
+  @include for-size(desktop) {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: 1310px) {
+    transform: scale(1.30) translateY(-35px) translateX(2px);
+  }
+}

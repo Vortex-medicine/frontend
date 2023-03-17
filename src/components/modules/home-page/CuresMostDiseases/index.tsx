@@ -6,14 +6,14 @@ import colors from "@/styles/colors.module.scss";
 import Image from "next/image";
 
 function CuresMostDiseases() {
+  const coilTeaExampleWrapperElement = useRef<HTMLDivElement>(null);
   const coilTeaExampleParagraphElement = useRef<HTMLParagraphElement>(null);
   const coilTeaExampleSpanElement = useRef<HTMLSpanElement>(null);
-  const coilTeaExampleMobileImgElement = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     function placeTextBlock() {
-      if (!coilTeaExampleMobileImgElement.current) {
-        throw new Error("coilTeaExampleMobileImgElement is not defined");
+      if (!coilTeaExampleWrapperElement.current) {
+        throw new Error("coilTeaExampleWrapperElement is not defined");
       }
 
       if (!coilTeaExampleParagraphElement.current) {
@@ -29,13 +29,14 @@ function CuresMostDiseases() {
         return;
       }
 
-      const coilTeaExampleImgWidth =
-        coilTeaExampleMobileImgElement.current.offsetWidth;
+      const coilTeaExampleWrapperWidth =
+        coilTeaExampleWrapperElement.current.offsetWidth;
+
       const coilTeaExampleSpanWidth =
         coilTeaExampleSpanElement.current.offsetWidth;
 
       const marginLeftValue =
-        (coilTeaExampleImgWidth - coilTeaExampleSpanWidth) / 2;
+        (coilTeaExampleWrapperWidth - coilTeaExampleSpanWidth) / 2;
 
       coilTeaExampleParagraphElement.current.style.marginLeft = `${marginLeftValue}px`;
     }
@@ -175,9 +176,11 @@ function CuresMostDiseases() {
             <p>болезни крови.</p>
           </li>
         </ul>
-        <div className={styles.coilTeaExampleWrapper}>
+        <div
+          ref={coilTeaExampleWrapperElement}
+          className={styles.coilTeaExampleWrapper}
+        >
           <Image
-            ref={coilTeaExampleMobileImgElement}
             className={styles.coilTeaMobileImg}
             src="/cup-of-tea-mobile.png"
             alt="a coil and a cup of tea example"

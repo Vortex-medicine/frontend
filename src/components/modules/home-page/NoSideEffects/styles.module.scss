@@ -1,7 +1,11 @@
 @import "@/styles/viewports";
 
 .noSideEffectsSection {
-  margin-bottom: 45px;
+  margin-bottom: 52px;
+
+  @include for-size(desktop) {
+    margin-bottom: 60px;
+  }
 }
 
 .contentWrapper {
@@ -17,7 +21,7 @@
   max-width: 570px;
 }
 
-.textBlock p {
+.textBlock p:not(:last-child) {
   margin-bottom: 15px;
 }
 
@@ -47,5 +51,5 @@
 }
 
 .glassImageCaption {
-  margin-top: 20px;
+  margin-top: 18px;
 }

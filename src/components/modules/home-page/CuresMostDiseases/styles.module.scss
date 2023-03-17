@@ -2,7 +2,11 @@
 @import "@/styles/viewports";
 
 .curesMostDiseasesSection {
-  margin-bottom: 75px;
+  margin-bottom: 52px;
+
+  @include for-size(desktop) {
+    margin-bottom: 60px;
+  }
 }
 
 .curesMostDiseasesSectionContainer {
@@ -51,6 +55,7 @@
 
 .coilTeaExampleWrapper {
   margin-top: 40px;
+  text-align: center;
 
   @include for-size(desktop) {
     position: absolute;
