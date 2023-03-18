@@ -59,12 +59,6 @@
   }
 }
 
-.promoButtonWrapper {
-  @media screen and (min-width: 516px) {
-    text-align: center;
-  }
-}
-
 .textBlock {
   align-self: flex-start;
   max-width: 470px;
@@ -74,20 +68,6 @@
   }
 }
 
-.textBlock p {
+.textBlock p:not(:last-child) {
   margin-bottom: 15px;
-}
-
-.kitsButton {
-  margin-top: 55px;
-  
-  @media screen and (min-width: 516px) {
-    display: inline-block !important;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @include for-size(tablet) {
-    margin-top: 40px;
-  }
 }

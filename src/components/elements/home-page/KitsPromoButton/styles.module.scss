@@ -1,0 +1,17 @@
+@import "@/styles/viewports";
+
+.promoButtonWrapper {
+  @media screen and (min-width: 516px) {
+    text-align: center;
+  }
+}
+
+.kitsButton {
+  margin-top: 55px;
+  
+  @media screen and (min-width: 516px) {
+    display: inline-block !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

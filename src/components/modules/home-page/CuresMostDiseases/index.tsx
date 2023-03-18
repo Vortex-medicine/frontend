@@ -4,6 +4,7 @@ import Container from "@/components/elements/Container";
 import Link from "next/link";
 import colors from "@/styles/colors.module.scss";
 import Image from "next/image";
+import KitsPromoButton from "@/components/elements/home-page/KitsPromoButton";
 
 function CuresMostDiseases() {
   const coilTeaExampleWrapperElement = useRef<HTMLDivElement>(null);
@@ -207,6 +208,7 @@ function CuresMostDiseases() {
             </span>
           </p>
         </div>
+        <KitsPromoButton />
       </Container>
     </section>
   );

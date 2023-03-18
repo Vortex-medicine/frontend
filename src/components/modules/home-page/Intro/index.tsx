@@ -3,9 +3,8 @@ import IntroImage from "@/components/modules/home-page/IntroImage";
 import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import Factoid from "@/components/elements/Factoid";
-import DefaultButton from "@/components/elements/DefaultButton";
-import Link from "next/link";
 import colors from "@/styles/colors.module.scss";
+import KitsPromoButton from "@/components/elements/home-page/KitsPromoButton";
 
 function Intro() {
   return (
@@ -46,14 +45,7 @@ function Intro() {
           </div>
           <Factoid text="150 лет технологии" className={styles.factoid} />
         </div>
-        <div className={styles.promoButtonWrapper}>
-          <Link href="/kits" legacyBehavior passHref>
-            <DefaultButton
-              className={styles.kitsButton}
-              text="Перейти к&nbsp;описанию и&nbsp;стоимости приборов"
-            />
-          </Link>
-        </div>
+        <KitsPromoButton />
       </Container>
     </section>
   );

@@ -1,3 +1,4 @@
+import CanBeTakenOnTrip from "@/components/modules/home-page/CanBeTakenOnTrip";
 import CuresAtHome from "@/components/modules/home-page/CuresAtHome";
 import CuresMostDiseases from "@/components/modules/home-page/CuresMostDiseases";
 import Intro from "@/components/modules/home-page/Intro";
@@ -12,6 +13,7 @@ function HomePage(): JSX.Element {
       <CuresMostDiseases />
       <OneDeviceForWholeLife />
       <CuresAtHome />
+      <CanBeTakenOnTrip />
     </>
   );
 }

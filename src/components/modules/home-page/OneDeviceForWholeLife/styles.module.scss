@@ -1,6 +1,10 @@
 @import "@/styles/colors.module";
 @import "@/styles/viewports";
 
+.oneDeviceForWholeLifeSection {
+  margin-bottom: 40px;
+}
+
 .heading {
   margin-bottom: 31px;
 }
@@ -15,7 +19,6 @@
 }
 
 .pillsBlock {
-  // max-width: 570px;
   margin-bottom: 45px;
 
   @include for-size(desktop) {
