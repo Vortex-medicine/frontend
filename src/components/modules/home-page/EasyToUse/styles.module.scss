@@ -1,0 +1,95 @@
+@import "@/styles/viewports";
+
+.easyToUseSection {
+  margin-bottom: 75px;
+}
+
+.instructionStepsWrapper {
+  display: grid; 
+  gap: 40px;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+
+  grid-template-areas:
+    "o"
+    "t"
+    "h";
+
+  @include for-size(tablet) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, auto);
+
+    grid-template-areas:
+      "o t"
+      "h h";
+  }
+
+  @include for-size(desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    grid-template-areas:
+      "o t h";
+  }
+}
+
+.heading {
+  margin-bottom: 31px;
+}
+
+.imgCaption {
+  margin-top: 15px;
+}
+
+.instructionStepsWrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+
+.stepOne {
+  grid-area: o;
+}
+
+.stepTwo {
+  grid-area: t;
+}
+
+.stepThree {
+  grid-area: h;
+}
+
+.putOnProblemAreaSmallImg {
+  @include for-size(tablet) {
+    display: none;
+  }
+
+  @include for-size(desktop) {
+    display: initial;
+  }
+}
+
+.putOnProblemAreaBigImg {
+  display: none;
+
+  @include for-size(tablet) {
+    display: initial;
+  }
+
+  @include for-size(desktop) {
+    display: none;
+  }
+}
+
+.coilTreatmentDetailsBlock {
+  margin-top: 45px;
+  margin-bottom: 10px;
+  padding: 15px 40px 22px;
+  border-radius: 30px;
+  background-color: rgba(151, 187, 89, 0.2);
+}
+
+.coilTreatmentDetailsLinkParagraph {
+  margin-bottom: 5px;
+}

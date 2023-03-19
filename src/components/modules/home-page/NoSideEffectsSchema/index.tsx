@@ -50,6 +50,7 @@ function NoSideEffectsSchema() {
       )
         .getPropertyValue("gap")
         .match(/\d+/);
+
       if (!principleDescrWrapperGapRe) {
         throw new Error("principleDescrWrapperGapRe is not defined");
       }
