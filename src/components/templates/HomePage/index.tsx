@@ -5,6 +5,7 @@ import EasyToUse from "@/components/modules/home-page/EasyToUse";
 import Intro from "@/components/modules/home-page/Intro";
 import NoSideEffects from "@/components/modules/home-page/NoSideEffects";
 import OneDeviceForWholeLife from "@/components/modules/home-page/OneDeviceForWholeLife";
+import ReviewsFromSkype from "@/components/modules/home-page/ReviewsFromSkype";
 
 function HomePage(): JSX.Element {
   return (
@@ -16,6 +17,7 @@ function HomePage(): JSX.Element {
       <CuresAtHome />
       <CanBeTakenOnTrip />
       <EasyToUse />
+      <ReviewsFromSkype />
     </>
   );
 }
