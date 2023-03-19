@@ -20,6 +20,7 @@ function ReviewsFromSkype() {
                 height={449}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>Вылечил простуду за&nbsp;4 дня</p>
@@ -34,6 +35,7 @@ function ReviewsFromSkype() {
                 height={298}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>
@@ -50,6 +52,7 @@ function ReviewsFromSkype() {
                 height={287}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>Избавился от&nbsp;мигрени</p>
@@ -64,6 +67,7 @@ function ReviewsFromSkype() {
                 height={309}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>Вылечил травмированную ногу</p>
@@ -78,6 +82,7 @@ function ReviewsFromSkype() {
                 height={388}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>
@@ -94,6 +99,7 @@ function ReviewsFromSkype() {
                 height={479}
                 sizes="100vw
                    (min-width: 1200px) 725px"
+                quality={100}
               />
             </div>
             <p className={styles.imgCaption}>Улучшилось зрение</p>

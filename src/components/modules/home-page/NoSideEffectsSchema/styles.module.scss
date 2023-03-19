@@ -21,6 +21,7 @@
   object-fit: cover;
   object-position: left;
   width: 210%;
+  max-width: none;
   height: auto;
 
   @media screen and (min-width: 575px) {
@@ -99,10 +100,6 @@
     bottom: 110px;
     right: 15%;
   }
-}
-
-.mozartRecommendation {
-  margin-top: 7px;
 }
 
 .mozartRecommendation a {

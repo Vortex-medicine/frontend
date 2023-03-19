@@ -6,6 +6,7 @@ import Intro from "@/components/modules/home-page/Intro";
 import NoSideEffects from "@/components/modules/home-page/NoSideEffects";
 import OneDeviceForWholeLife from "@/components/modules/home-page/OneDeviceForWholeLife";
 import ReviewsFromSkype from "@/components/modules/home-page/ReviewsFromSkype";
+import WellnessMagazine from "@/components/modules/home-page/WellnessMagazine";
 
 function HomePage(): JSX.Element {
   return (
@@ -18,6 +19,7 @@ function HomePage(): JSX.Element {
       <CanBeTakenOnTrip />
       <EasyToUse />
       <ReviewsFromSkype />
+      <WellnessMagazine />
     </>
   );
 }
