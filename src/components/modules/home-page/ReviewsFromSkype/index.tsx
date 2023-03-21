@@ -18,7 +18,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={676}
                 height={449}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />
@@ -33,7 +33,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={690}
                 height={298}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />
@@ -50,7 +50,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={733}
                 height={287}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />
@@ -65,7 +65,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={729}
                 height={309}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />
@@ -80,7 +80,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={734}
                 height={388}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />
@@ -97,7 +97,7 @@ function ReviewsFromSkype() {
                 alt="a review from Skype"
                 width={763}
                 height={479}
-                sizes="100vw
+                sizes="100vw,
                    (min-width: 1200px) 725px"
                 quality={100}
               />

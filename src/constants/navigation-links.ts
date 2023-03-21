@@ -27,8 +27,8 @@ const PAGES: Array<PageLinkData | SubmenuData> = [
     ],
   },
   {
-    name: "Новости",
-    href: "/news",
+    name: "Cтатьи",
+    href: "/articles",
   },
   {
     name: "Контакты",

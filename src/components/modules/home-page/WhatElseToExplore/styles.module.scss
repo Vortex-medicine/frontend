@@ -1,0 +1,23 @@
+@import "@/styles/viewports";
+
+.whatElseToExploreSection {
+  margin-bottom: 52px;
+
+  @include for-size(desktop) {
+    margin-bottom: 60px;
+  }
+}
+
+.linkList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.linkItem:not(:last-child) {
+  margin-bottom: 15px;
+}

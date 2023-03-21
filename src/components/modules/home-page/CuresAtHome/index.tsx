@@ -12,7 +12,7 @@ function CuresAtHome() {
           className={styles.mainImg}
           src="/man-with-laptop.png"
           alt="a man with a laptop and the Mishin's coil"
-          sizes="100vw
+          sizes="100vw,
                 (min-width: 945px) 885px"
           width={6743}
           height={4500}

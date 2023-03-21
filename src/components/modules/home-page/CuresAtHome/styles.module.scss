@@ -77,9 +77,5 @@
 
 
 .text {
-  max-width: 550px;
-
-  @media screen and (min-width: 1000px) {
-    max-width: 570px;
-  }
+  max-width: 570px;
 }

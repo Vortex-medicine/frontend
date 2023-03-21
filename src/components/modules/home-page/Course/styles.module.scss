@@ -1,0 +1,154 @@
+@import "@/styles/viewports";
+@import "@/styles/colors.module";
+
+.courseSection {
+  margin-bottom: 75px;
+}
+
+.courseOuterWrapper {
+  background-color: $orange;
+
+  @media screen and (min-width: 900px) {
+    background-color: transparent;
+  }
+}
+
+.mainContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 65px;
+  padding-top: 20px;
+
+  @media screen and (min-width: 900px) {
+    max-width: 570px;
+    padding-bottom: 45px;
+  }
+
+
+  @media screen and (min-width: 940px) {
+    padding-bottom: 0;
+  }
+
+  @media screen and (min-width: 1000px) {
+    padding-top: 30px;
+  }
+}
+
+.allContentWrapper {
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 900px) {
+    overflow: hidden;
+    border: 1px solid $grey;
+    border-radius: 30px;
+    padding: 35px 40px 0 0;
+    
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 980px) {
+    gap: 5vw;
+    padding-right: 60px;
+  }
+
+  @media screen and (min-width: 1100px) {
+    gap: 60px;
+  }
+
+  @media screen and (min-width: 1160px) {
+    gap: 100px;
+  }
+
+  @media screen and (min-width: 1220px) {
+    // gap: 130px;
+  }
+
+}
+
+.freemasonsOrangeImg {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+
+  @media screen and (min-width: 400px) {
+    width: 370px;
+  }
+
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
+  
+}
+
+.freemasonsBlackAndWhiteImg {
+  max-width: 450px;
+  width: 100%;
+  height: auto;
+  display: none;
+
+  @media screen and (min-width: 940px) {
+    display: initial;
+  }
+}
+
+.teslaImgWrapper {
+  // @media screen and (min-width: 900px) {
+  //   padding-bottom: 45px;
+  // }
+}
+
+.teslaWithCoilImg {
+  display: none;
+
+  @media screen and (min-width: 900px) {
+    display: initial;
+    width: 45vw;
+    max-width: 490px;
+    height: auto;
+    left: 0;
+    top: 30px;
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.headingCourseDescr {
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  font-style: italic;
+  font-weight: 700;
+
+  @media screen and (min-width: 900px) {
+    color: $black;
+    font-weight: 400;
+  }
+
+  @include for-size(desktop) {
+    font-size: 25px;
+    line-height: 35px;
+  }
+}
+
+.courseDescr {
+  color: #fff;
+  margin-bottom: 45px;
+  max-width: 570px;
+
+  @media screen and (min-width: 900px) {
+    color: $black;
+  }
+}
+
+.telegramButton {
+  @media screen and (min-width: 425px) {
+    display: inline-block !important;
+  }
+}

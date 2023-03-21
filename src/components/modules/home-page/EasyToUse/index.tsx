@@ -17,8 +17,8 @@ function EasyToUse() {
               alt="plug in the sinus generator"
               width={681}
               height={681}
-              sizes="100vw
-                     (min-width: 700px) 50vw
+              sizes="100vw,
+                     (min-width: 700px) 50vw,
                      (min-width: 1200px) 417px"
               quality={100}
             />
@@ -32,8 +32,8 @@ function EasyToUse() {
               alt="connect the coil to the sinus generator"
               width={672}
               height={672}
-              sizes="100vw
-                     (min-width: 700px) 50vw
+              sizes="100vw,
+                     (min-width: 700px) 50vw,
                      (min-width: 1200px) 417px"
               quality={100}
             />
@@ -48,7 +48,7 @@ function EasyToUse() {
               alt="put the coil on the problem area"
               width={720}
               height={720}
-              sizes="100vw
+              sizes="100vw,
                      (min-width: 1200px) 417px"
               quality={100}
             />
