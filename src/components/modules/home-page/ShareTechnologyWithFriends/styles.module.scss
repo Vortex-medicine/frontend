@@ -1,0 +1,28 @@
+.shareTechnologyWithFriendsSection {
+  margin-bottom: 75px;
+}
+
+.heading {
+  margin-bottom: 15px;
+}
+
+.socialBtnsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.telegramItem path {
+  transform: translateX(1px);
+}
+
+.socialItem svg {
+  transition: transform .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
