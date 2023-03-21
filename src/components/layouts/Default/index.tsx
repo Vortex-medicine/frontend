@@ -1,3 +1,4 @@
+import Footer from "@/components/modules/Footer";
 import Header from "@/components/modules/header/Header";
 
 interface Props {
@@ -9,6 +10,7 @@ function Default({ children }: Props): JSX.Element {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 }
