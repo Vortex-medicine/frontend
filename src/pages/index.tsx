@@ -1,10 +1,10 @@
-import Default from "@/components/layouts/Default";
+import DefaultLayout from "@/components/layouts/Default";
 import HomePage from "@/components/templates/HomePage";
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
-    <Default>
+    <DefaultLayout>
       <HomePage />
-    </Default>
+    </DefaultLayout>
   );
 }

@@ -1,0 +1,25 @@
+@import "@/styles/colors.module";
+
+.button {
+  text-align: center;
+  display: block;
+  border: none;
+  background: $orange;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 30px 16px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background: darken($orange, 8%)
+  }
+}
+
+.doneIcon {
+  margin-bottom: -2px;
+  margin-left: 5px;
+}

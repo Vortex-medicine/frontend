@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function Default({ children }: Props): JSX.Element {
+function DefaultLayout({ children }: Props): JSX.Element {
   return (
     <>
       <Header />
@@ -15,4 +15,4 @@ function Default({ children }: Props): JSX.Element {
   );
 }
 
-export default Default;
+export default DefaultLayout;

@@ -1,0 +1,83 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.productCard {
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid $grey;
+}
+
+.productAllInfoWrapper {
+  padding: 20px 20px 40px;
+  display: grid;
+
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
+
+  grid-template-areas:
+    "n"
+    "d"
+    "p"
+    "b";
+
+  @include for-size(tablet) {
+    padding: 10px 0 35px 40px;
+
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(3, auto);
+
+    grid-template-areas: 
+      "n n n n n n n n n p p p"
+      "d d d d d d d d d p p p"
+      "b b b b b b b b b p p p";
+  }
+  
+    
+}
+
+.productName {
+  grid-area: n;
+  margin-bottom: 5px;
+}
+
+.productDescr {
+  grid-area: d;
+}
+
+.addToCartBtnWrapper {
+  grid-area: b;
+  justify-self: center;
+
+  @include for-size(tablet) {
+    justify-self: start;
+    margin-top: 30px;
+  }
+}
+
+.productPrice {
+  margin: 30px 0 35px;
+  border-top: 1px solid $grey;
+  padding-top: 30px;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 35px;
+  grid-area: p;
+  text-align: center;
+
+  @include for-size(tablet) {
+    font-size: 30px;
+    line-height: 40px;
+    border-top: none;
+    border-left: 1px solid $grey; 
+    margin: 0;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @include for-size(desktop) {
+    font-size: 35px;
+    line-height: 45px;
+  }
+}
