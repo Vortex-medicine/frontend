@@ -1,0 +1,48 @@
+@import "@/styles/viewports";
+@import "@/styles/colors.module";
+
+.sidebar {
+  position: sticky;
+  top: 90px;
+  display: none;
+  width: 310px;
+
+  @include for-size(desktop) {
+    display: block;
+  }
+}
+
+.guarantee {
+  position: relative;
+}
+
+.guarantee p {
+  position: absolute;
+  top: 103px;
+  width: 145px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 23px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.delivery {
+  padding: 10px 20px 17px;
+  border: 1px solid $grey;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.deliveryImg {
+  margin-right: 13px;
+}
+
+.novaposhta {
+  color: $red;
+  font-weight: 700;
+}

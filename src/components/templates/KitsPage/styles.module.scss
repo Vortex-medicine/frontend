@@ -1,6 +1,6 @@
 .heading {
-  margin-top: 90px;
-  margin-bottom: 45px;
+  margin-top: 80px;
+  margin-bottom: 35px;
 }
 
 .productList {
@@ -8,5 +8,18 @@
   margin: 0;
   list-style: none;
   max-width: 750px;
-  margin-bottom: 75px;
+}
+
+.productItem {
+  &:not(:last-child) {
+    margin-bottom: 60px;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 95px;
 }

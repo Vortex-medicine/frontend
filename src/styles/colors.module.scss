@@ -2,10 +2,8 @@ $black: #2D2E30;
 $green: #82BF1A;
 $grey: #ECEFF0;
 $blue: #27A2FB;
-// $orange: #F3781F;
-// $orange: #F16B1F;
-// $orange: #EC671D;
 $orange: #F1521F;
+$red: #DA291C;
 
 :export {
   black: $black;
@@ -13,4 +11,5 @@ $orange: #F1521F;
   grey: $grey;
   blue: $blue;
   orange: $orange;
+  red: $red;
 }

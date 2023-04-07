@@ -2,29 +2,57 @@ import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import AddToCartButton from "../../AddToCardButton";
+import classnames from "classnames";
 
-function ProductCard() {
+interface ProductImg {
+  path: string;
+  width: number;
+  height: number;
+}
+
+interface ProductCardProps {
+  productName: string;
+  productDescr: string;
+  productImg: ProductImg;
+  productPrice: number;
+  discountInfo?: string;
+}
+
+function ProductCard({
+  productName,
+  productDescr,
+  productImg: { path, width, height },
+  productPrice,
+  discountInfo,
+}: ProductCardProps): JSX.Element {
+  const productNameWrapperClasses = classnames(styles.productNameWrapper, {
+    [styles.productNameWrapperWithDiscount]: discountInfo,
+  });
+
   return (
     <div className={styles.productCard}>
       <Image
-        src="/kgs-kit.jpg"
+        src={path}
         alt="KGS kit"
         sizes="100vw,
                (min-width: 1200px) 750px"
         quality={100}
-        width={3436}
-        height={1730}
+        width={width}
+        height={height}
         className={styles.productImage}
       />
       <div className={styles.productAllInfoWrapper}>
-        <h2 className={styles.productName}>KGS</h2>
-        <p className={styles.productDescr}>
-          Cредний по&nbsp;стоимости вариант.
-        </p>
+        <div className={productNameWrapperClasses}>
+          <h2 className={styles.productName}>{productName}</h2>
+          {discountInfo && (
+            <p className={styles.discountInfo}>{discountInfo}</p>
+          )}
+        </div>
+        <p className={styles.productDescr}>{productDescr}</p>
         <div className={styles.addToCartBtnWrapper}>
           <AddToCartButton presentInCart={false} />
         </div>
-        <p className={styles.productPrice}>4900 ₴</p>
+        <p className={styles.productPrice}>{productPrice} ₴</p>
       </div>
     </div>
   );
