@@ -28,5 +28,11 @@ export function HamburgerElementProvider({
 }
 
 export function useNavbarOuterIcons() {
-  return useContext(NavbarOuterIconsContext);
+  const context = useContext(NavbarOuterIconsContext);
+
+  if (!context) {
+    throw new Error("navbarOuterIcons context is null");
+  }
+
+  return context;
 }

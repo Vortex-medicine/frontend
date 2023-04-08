@@ -11,15 +11,18 @@
   }
 }
 
+.cartIconWrapper {
+  margin-right: 20px;
+  margin-top: -2.3px;
+}
+
 .cartIcon {
   cursor: pointer;
   fill: $black;
   transition: fill 0.3s;
-  margin-right: 20px;
-  margin-top: -2.3px;
   pointer-events: auto;
 
-  &Opened {
+  &MenuOpened {
     fill: white;
   }
 
@@ -31,7 +34,16 @@
       fill: $green;
     }
   }
+
+  &CartOpened {
+    fill: $green;
+  }
 }
+
+.cartIconMenuOpened.cartIconCartOpened {
+  fill: $black;
+}
+
 
 .hamburgerIcon {
   pointer-events: auto;

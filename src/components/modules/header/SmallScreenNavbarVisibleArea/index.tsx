@@ -23,8 +23,8 @@ function SmallScreenNavbarVisibleArea({
       </div>
 
       <NavbarOuterButtons
-        isOpened={menuIsOpened}
-        setIsOpened={setMenuIsOpened}
+        menuIsOpened={menuIsOpened}
+        setMenuIsOpened={setMenuIsOpened}
       />
     </Container>
   );

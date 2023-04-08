@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { Dispatch, SetStateAction, useRef } from "react";
 import useOutsideClick from "@/hooks/use-outside-click";
 import { useNavbarOuterIcons } from "@/context/navbar-outer-icons/Context";
+import { useCart } from "@/context/cart/Context";
 
 interface SmallScreenNavbarOverlayProps {
   menuIsOpened: boolean;
@@ -18,14 +19,12 @@ function SmallScreenNavbarOverlay({
   const overlayElement = useRef<HTMLDivElement>(null);
   const navbarOuterIcons = useNavbarOuterIcons();
 
-  if (navbarOuterIcons === null) {
-    throw new Error("navbarOuterIcons is null");
-  }
-
   const { hamburgerElement, cartElement } = navbarOuterIcons;
+  const { cartModalElement } = useCart();
 
-  useOutsideClick([overlayElement, hamburgerElement, cartElement], () =>
-    setMenuIsOpened(false)
+  useOutsideClick(
+    [cartModalElement, overlayElement, hamburgerElement, cartElement],
+    () => setMenuIsOpened(false)
   );
 
   const overlayClasses = classNames("overlay", styles.overlay, {

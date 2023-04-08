@@ -15,6 +15,7 @@ body {
   font-family: var(--noto-font);
   margin: 0;
   min-width: $content-min-width;
+  overflow-y: overlay;
 }
 
 input,

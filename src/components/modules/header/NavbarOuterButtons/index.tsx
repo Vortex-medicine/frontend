@@ -6,36 +6,44 @@ import classNames from "classnames";
 import LanguageDropdown from "@/components/modules/header/NavbarLanguageDropdown";
 
 import { Dispatch, SetStateAction } from "react";
+import { useCart } from "@/context/cart/Context";
 
 interface SmallScreenNavbarOuterButtonsProps {
-  isOpened: boolean;
-  setIsOpened: Dispatch<SetStateAction<boolean>>;
+  menuIsOpened: boolean;
+  setMenuIsOpened: Dispatch<SetStateAction<boolean>>;
 }
 
 function NavbarOuterButtons({
-  isOpened,
-  setIsOpened,
+  menuIsOpened,
+  setMenuIsOpened,
 }: SmallScreenNavbarOuterButtonsProps): JSX.Element {
+  const { cartIsOpened, handleCartIsOpened } = useCart();
+
   const cartIconClasses = classNames(styles.cartIcon, {
-    [styles.cartIconOpened]: isOpened,
+    [styles.cartIconMenuOpened]: menuIsOpened,
+    [styles.cartIconCartOpened]: cartIsOpened,
   });
 
   const navbarOuterIcons = useNavbarOuterIcons();
-
-  if (navbarOuterIcons === null) {
-    throw new Error("navbarOuterIcons is null");
-  }
 
   const { hamburgerElement, cartElement } = navbarOuterIcons;
 
   return (
     <div className={styles.outerButtons}>
       <LanguageDropdown className={styles.languageIcon} />
-      <ShoppingCartOutlinedIcon ref={cartElement} className={cartIconClasses} />
+      <div
+        className={styles.cartIconWrapper}
+        onClick={() => handleCartIsOpened(true)}
+      >
+        <ShoppingCartOutlinedIcon
+          ref={cartElement}
+          className={cartIconClasses}
+        />
+      </div>
       <HamburgerMenu
         ref={hamburgerElement}
-        isOpened={isOpened}
-        setIsOpened={setIsOpened}
+        isOpened={menuIsOpened}
+        setIsOpened={setMenuIsOpened}
         className={styles.hamburgerIcon}
       />
     </div>

@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import ProductCard from "@/components/elements/kits-page/ProductCard";
 import Sidebar from "@/components/modules/kits-page/Sidebar";
+import Cart from "@/components/modules/Cart";
 
 function KitsPage(): JSX.Element {
   return (
@@ -58,6 +59,7 @@ function KitsPage(): JSX.Element {
           <Sidebar />
         </div>
       </Container>
+      <Cart />
     </>
   );
 }
