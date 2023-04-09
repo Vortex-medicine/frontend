@@ -1,0 +1,155 @@
+@import "@/styles/colors.module";
+
+.cartItemWrapper {
+  display: grid;
+  padding-bottom: 25px;
+  border-bottom: 1px solid $grey;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+
+  grid-template-areas:
+    "i i"
+    "f f"
+    "a p"
+    "r r";
+}
+
+.itemImg {
+  border-radius: 20px;
+  grid-area: i;
+}
+
+.itemName {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.itemInfoWrapper {
+  grid-area: f;
+  margin-bottom: 20px;
+}
+
+.amountWrapper {
+  grid-area: a;
+}
+
+.priceWrapper {
+  grid-area: p;
+  justify-self: end;
+}
+
+.removeItemOuterWrapper {
+  grid-area: r;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.removeItemInnerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.removeItemInnerWrapper:hover .removeItemIcon {
+  fill: $black;
+}
+
+.removeItemInnerWrapper:hover .removeItemText {
+  color: $black;
+}
+
+.removeItemControl {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.removeItemIcon {
+  transition: all 0.3s;
+  fill: $dark-grey;
+}
+
+.removeItemText {
+  transition: all 0.3s;
+  color: $dark-grey;
+  margin-left: 3px;
+}
+
+.amountInput {
+  width: 60px;
+}
+
+.amountInput :global(.MuiOutlinedInput-root) fieldset {
+  transition: border-color 0.3s;
+  border-color: $grey;
+}
+
+.amountInput :global(.MuiInputBase-root) {
+  border-radius: 7px;
+  font-family: var(--noto-font);
+}
+
+.amountInput :global(.MuiInputBase-root:hover) fieldset {
+    border-color: $dark-grey;
+}
+
+.amountInput :global(.MuiInputBase-root.Mui-focused) fieldset {
+    border-color: #1976d2;
+}
+
+.amountInput :global(.MuiInputBase-input) {
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.amountControlElements {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}
+
+.amountMinusBtn {
+  transition-duration: 0.3s;
+
+  &:disabled {
+    color: $dark-grey;
+  }
+}
+
+.amountPlusBtn {
+  transition-duration: 0.3s;
+
+  &:disabled {
+    color: $dark-grey;
+  }
+}
+
+.amountMinusBtn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.amountPlusBtn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.amountCaption {
+  color: #9A9A9A;
+  font-size: 14px;
+}
+
+.priceCaption {
+  color: #9A9A9A;
+  font-size: 14px;
+  text-align: right;
+}
+
+.amountControlElements {
+  margin-left: -13px;
+}

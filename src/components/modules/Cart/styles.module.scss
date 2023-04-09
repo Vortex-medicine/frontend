@@ -1,15 +1,41 @@
 @import "@/styles/colors.module";
+@import "@/styles/viewports";
 
-.modelTitleOuterWrapper {
+.modalTitleOuterWrapper {
   padding: 20px 0 28px;
   border-bottom: 1px solid $grey;
 }
 
-.modelTitleInnerContainer {
+.cartMainContentOuterWrapper {
+  padding: 0;
+  padding-top: 25px;
+  overflow-y: overlay;
+}
+
+.cartMainContentInnerContainer {
+  @include for-size(tablet) {
+    padding: 0 40px;
+  }
+
+  @include for-size(desktop) {
+    padding: 0 50px;
+  }
+}
+
+.modalTitleInnerContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  @include for-size(tablet) {
+    padding: 0 40px;
+  }
+
+  @include for-size(desktop) {
+    padding: 0 50px;
+  }
+
 }
 
 .closeModalBtn {
@@ -32,4 +58,10 @@
   &:hover {
     fill: $black;
   }
+}
+
+.cartItemList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }

@@ -7,6 +7,7 @@ import VIEWPORT_BOUNDS from "@/constants/viewport-bounds";
 import { CloseRounded } from "@mui/icons-material";
 import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
+import CartItem from "@/components/elements/CartItem";
 
 export default function Cart() {
   const { cartIsOpened, cartModalElement, handleCartIsOpened } = useCart();
@@ -21,33 +22,39 @@ export default function Cart() {
       className={styles.cartModal}
       ref={cartModalElement}
       sx={{
-        "& .MuiDialogContent-root": {
-          padding: "0",
-          overflowY: "hidden",
-        },
         "& .MuiPaper-root": {
           width: { tablet: "calc(100% - 90px)" },
           margin: { tablet: "45px" },
+          boxShadow: "none",
+          filter: "drop-shadow(0px 20px 31px rgba(0, 0, 0, 0.2))",
+          borderRadius: { tablet: "30px" },
         },
       }}
       open={cartIsOpened}
       fullScreen={fullScreen}
       fullWidth={fullWidth}
       maxWidth="cart"
+      scroll="paper"
       onClose={() => handleCartIsOpened(false)}
     >
-      <DialogContent>
-        <div className={styles.modelTitleOuterWrapper}>
-          <Container className={styles.modelTitleInnerContainer}>
-            <h2>Корзина</h2>
-            <button
-              className={styles.closeModalBtn}
-              onClick={() => handleCartIsOpened(false)}
-            >
-              <CloseRounded />
-            </button>
-          </Container>
-        </div>
+      <div className={styles.modalTitleOuterWrapper}>
+        <Container className={styles.modalTitleInnerContainer}>
+          <h2>Корзина</h2>
+          <button
+            className={styles.closeModalBtn}
+            onClick={() => handleCartIsOpened(false)}
+          >
+            <CloseRounded />
+          </button>
+        </Container>
+      </div>
+      <DialogContent className={styles.cartMainContentOuterWrapper}>
+        <Container className={styles.cartMainContentInnerContainer}>
+          <ul className={styles.cartItemList}>
+            <CartItem />
+            {/* <CartItem /> */}
+          </ul>
+        </Container>
       </DialogContent>
     </Dialog>
   );
