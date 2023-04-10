@@ -6,7 +6,8 @@ import classNames from "classnames";
 import LanguageDropdown from "@/components/modules/header/NavbarLanguageDropdown";
 
 import { Dispatch, SetStateAction } from "react";
-import { useCart } from "@/context/cart/Context";
+import { useCart, useCartDispatch } from "@/context/cart/Context";
+import { openCart } from "utils/cart-actions";
 
 interface SmallScreenNavbarOuterButtonsProps {
   menuIsOpened: boolean;
@@ -17,7 +18,8 @@ function NavbarOuterButtons({
   menuIsOpened,
   setMenuIsOpened,
 }: SmallScreenNavbarOuterButtonsProps): JSX.Element {
-  const { cartIsOpened, handleCartIsOpened } = useCart();
+  const { isOpened: cartIsOpened } = useCart();
+  const cartDispatch = useCartDispatch();
 
   const cartIconClasses = classNames(styles.cartIcon, {
     [styles.cartIconMenuOpened]: menuIsOpened,
@@ -33,7 +35,7 @@ function NavbarOuterButtons({
       <LanguageDropdown className={styles.languageIcon} />
       <div
         className={styles.cartIconWrapper}
-        onClick={() => handleCartIsOpened(true)}
+        onClick={() => openCart(cartDispatch)}
       >
         <ShoppingCartOutlinedIcon
           ref={cartElement}

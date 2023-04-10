@@ -20,7 +20,7 @@ function SmallScreenNavbarOverlay({
   const navbarOuterIcons = useNavbarOuterIcons();
 
   const { hamburgerElement, cartElement } = navbarOuterIcons;
-  const { cartModalElement } = useCart();
+  const { modalElement: cartModalElement } = useCart();
 
   useOutsideClick(
     [cartModalElement, overlayElement, hamburgerElement, cartElement],

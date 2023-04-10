@@ -1,16 +1,22 @@
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { useCart } from "@/context/cart/Context";
+import { useCart, useCartDispatch } from "@/context/cart/Context";
 import { useMediaQuery } from "@mui/material";
 import VIEWPORT_BOUNDS from "@/constants/viewport-bounds";
 import { CloseRounded } from "@mui/icons-material";
 import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import CartItem from "@/components/elements/CartItem";
+import { closeCart } from "utils/cart-actions";
 
 export default function Cart() {
-  const { cartIsOpened, cartModalElement, handleCartIsOpened } = useCart();
+  const {
+    isOpened: cartIsOpened,
+    modalElement: cartModalElement,
+    items: cartItems,
+  } = useCart();
+  const cartDispatch = useCartDispatch();
 
   const noFullScreen = useMediaQuery(
     `(min-width: ${VIEWPORT_BOUNDS.tablet}px)`
@@ -35,14 +41,14 @@ export default function Cart() {
       fullWidth={fullWidth}
       maxWidth="cart"
       scroll="paper"
-      onClose={() => handleCartIsOpened(false)}
+      onClose={() => closeCart(cartDispatch)}
     >
       <div className={styles.modalTitleOuterWrapper}>
         <Container className={styles.modalTitleInnerContainer}>
           <h2>Корзина</h2>
           <button
             className={styles.closeModalBtn}
-            onClick={() => handleCartIsOpened(false)}
+            onClick={() => closeCart(cartDispatch)}
           >
             <CloseRounded />
           </button>
@@ -50,49 +56,35 @@ export default function Cart() {
       </div>
       <DialogContent className={styles.cartMainContentOuterWrapper}>
         <Container className={styles.cartMainContentInnerContainer}>
-          <ul className={styles.cartItemList}>
-            <li className={styles.cartItem}>
-              <CartItem
-                productData={{
-                  productName: "KGS",
-                  productDescr: "Cредний по\u00A0стоимости вариант.",
-                  productImg: {
-                    path: "/kgs-kit.jpg",
-                    width: 3436,
-                    height: 1730,
-                  },
-                  productPrice: 4900,
-                }}
-              />
-            </li>
-            <li className={styles.cartItem}>
-              <CartItem
-                productData={{
-                  productName: "KGS-MINI",
-                  productDescr:
-                    "Бюджетный вариант, простой в\u00A0использовании, с\u00A0минимальной функциональностью.",
-                  productImg: {
-                    path: "/kgs-mini-kit.jpg",
-                    width: 4032,
-                    height: 2528,
-                  },
-                  productPrice: 3000,
-                }}
-              />
-            </li>
-          </ul>
-          <div className={styles.footerBtnsWrapper}>
-            <div className={styles.checkoutWrapper}>
-              <p className={styles.totalPrice}>7900 ₴</p>
-              <button className={styles.checkoutBtn}>Оформить заказ</button>
+          {cartItems.length > 0 ? (
+            <ul className={styles.cartItemList}>
+              {cartItems.map((item) => (
+                <li key={item.productId} className={styles.cartItem}>
+                  <CartItem productData={item} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className={styles.emptyCartWrapper}>
+              <h3>В корзине пусто</h3>
+              <p>Но это никогда не поздно исправить :)</p>
             </div>
-            <button
-              className={styles.continueShoppingBtn}
-              onClick={() => handleCartIsOpened(false)}
-            >
-              Продолжить покупки
-            </button>
-          </div>
+          )}
+
+          {cartItems.length > 0 && (
+            <div className={styles.footerBtnsWrapper}>
+              <div className={styles.checkoutWrapper}>
+                <p className={styles.totalPrice}>7900 ₴</p>
+                <button className={styles.checkoutBtn}>Оформить заказ</button>
+              </div>
+              <button
+                className={styles.continueShoppingBtn}
+                onClick={() => closeCart(cartDispatch)}
+              >
+                Продолжить покупки
+              </button>
+            </div>
+          )}
         </Container>
       </DialogContent>
     </Dialog>

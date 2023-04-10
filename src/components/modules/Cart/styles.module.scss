@@ -157,3 +157,22 @@
     color: #fff;
   }
 }
+
+.emptyCartWrapper {
+  height: 345px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 140px;
+}
+
+.emptyCartWrapper h3 {
+  font-size: 25px;
+  line-height: 35px;
+  margin-bottom: 15px;
+}
+
+.emptyCartWrapper p {
+  color: #9A9A9A;
+}

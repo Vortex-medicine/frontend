@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import { IconButton, TextField } from "@mui/material";
@@ -7,18 +7,32 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import classnames from "classnames";
 import { CART_ITEM_MAX_AMOUNT } from "@/constants/common";
-import { ProductData } from "@/types/product";
+import { CartItem } from "@/types/cart";
+import { getProductById } from "utils/product";
+import { useCartDispatch } from "@/context/cart/Context";
+import { removeCartItem, updateCartItemQuantity } from "utils/cart-actions";
 
 interface CartItemProps {
-  productData: ProductData;
+  productData: CartItem;
   className?: string;
 }
 
 function CartItem({
-  productData: { productName, productDescr, productPrice, productImg },
+  productData: { productId, quantity },
   className = "",
 }: CartItemProps): JSX.Element {
-  const [amount, setAmount] = useState("1");
+  const [localQuantity, setLocalQuantity] = useState(quantity.toString());
+  const cartDispatch = useCartDispatch();
+
+  const product = getProductById(productId);
+
+  if (!product) {
+    throw new Error("Product not found");
+  }
+
+  useEffect(() => {
+    setLocalQuantity(quantity.toString());
+  }, [quantity]);
 
   function handleAmountOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     let value: number | string = e.target.value;
@@ -31,39 +45,44 @@ function CartItem({
       }
 
       if (isNaN(value) || value < 1) {
-        value = "1";
+        value = 1;
       }
-    }
 
-    setAmount(value.toString());
+      updateCartItemQuantity(cartDispatch, productId, value);
+    } else {
+      setLocalQuantity(value.toString());
+    }
   }
 
   function handleAmountOnBlur(e: React.FocusEvent<HTMLInputElement>) {
-    let value = e.target.value;
+    const value = e.target.value;
 
     if (value === "") {
-      value = "1";
+      updateCartItemQuantity(cartDispatch, productId, 1);
     }
-
-    setAmount(value);
   }
 
   function handleAmountIncrease() {
-    setAmount((prevAmount) => {
-      const numericValue = parseInt(prevAmount);
+    const numericValue = parseInt(localQuantity);
 
-      if (isNaN(numericValue)) {
-        return "2";
-      }
+    if (isNaN(numericValue)) {
+      updateCartItemQuantity(cartDispatch, productId, 2);
+      return;
+    }
 
-      return (numericValue + 1).toString();
-    });
+    updateCartItemQuantity(cartDispatch, productId, numericValue + 1);
   }
 
   function handleAmountDecrease() {
-    setAmount((prevAmount) => {
-      return (parseInt(prevAmount) - 1).toString();
-    });
+    updateCartItemQuantity(
+      cartDispatch,
+      productId,
+      parseInt(localQuantity) - 1
+    );
+  }
+
+  function handleItemDelete() {
+    removeCartItem(cartDispatch, productId);
   }
 
   const cartItemClasses = classnames(styles.cartItemWrapper, className);
@@ -72,18 +91,18 @@ function CartItem({
     <div className={cartItemClasses}>
       <Image
         className={styles.itemImg}
-        src={productImg.path}
+        src={product.img.path}
         alt="cart item"
-        width={productImg.width}
-        height={productImg.height}
+        width={product.img.width}
+        height={product.img.height}
         sizes="100vw,
                (min-width: 700px) 50vw,
                (min-width: 1200px) 255px"
       />
 
       <div className={styles.itemInfoWrapper}>
-        <h3 className={styles.itemName}>{productName}</h3>
-        <p className={styles.itemDescr}>{productDescr}</p>
+        <h3 className={styles.itemName}>{product.name}</h3>
+        <p className={styles.itemDescr}>{product.descr}</p>
       </div>
 
       <div className={styles.amountWrapper}>
@@ -91,21 +110,21 @@ function CartItem({
         <div className={styles.amountControlElements}>
           <IconButton
             className={styles.amountMinusBtn}
-            disabled={amount === "1" || amount === ""}
+            disabled={localQuantity === "1" || localQuantity === ""}
             onClick={handleAmountDecrease}
             color="blue"
           >
             <RemoveRoundedIcon />
           </IconButton>
           <TextField
-            value={amount}
+            value={localQuantity}
             onChange={handleAmountOnChange}
             onBlur={handleAmountOnBlur}
             className={styles.amountInput}
           />
           <IconButton
             className={styles.amountPlusBtn}
-            disabled={amount === CART_ITEM_MAX_AMOUNT.toString()}
+            disabled={localQuantity === CART_ITEM_MAX_AMOUNT.toString()}
             onClick={handleAmountIncrease}
             color="blue"
           >
@@ -117,12 +136,18 @@ function CartItem({
       <div className={styles.priceWrapper}>
         <p className={styles.priceCaption}>Сумма</p>
         <p className={styles.price}>
-          {amount === "" ? productPrice : productPrice * parseInt(amount)} ₴
+          {localQuantity === ""
+            ? product.price
+            : product.price * parseInt(localQuantity)}{" "}
+          ₴
         </p>
       </div>
 
       <div className={styles.removeItemOuterWrapper}>
-        <div className={styles.removeItemInnerWrapper}>
+        <div
+          onClick={handleItemDelete}
+          className={styles.removeItemInnerWrapper}
+        >
           <DeleteOutlineRoundedIcon className={styles.removeItemIcon} />
           <p className={styles.removeItemText}>Удалить</p>
         </div>

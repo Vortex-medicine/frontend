@@ -1,40 +1,49 @@
+import { CartAction, CartState } from "@/types/cart";
 import {
+  Dispatch,
   ReactNode,
-  RefObject,
   createContext,
   useContext,
+  useEffect,
+  useReducer,
   useRef,
-  useState,
 } from "react";
+import cartReducer from "./reducer";
+import {
+  loadCartFromLocalStorage,
+  saveCartToLocalStorage,
+} from "utils/local-storage";
+import { setCartItems } from "utils/cart-actions";
 
-interface CartContextData {
-  cartIsOpened: boolean;
-  cartModalElement: RefObject<HTMLDivElement>;
-  handleCartIsOpened: (isOpened: boolean) => void;
-}
-
-const CartContext = createContext<CartContextData | null>(null);
+const CartContext = createContext<CartState | null>(null);
+const CartDispatchContext = createContext<Dispatch<CartAction> | null>(null);
 
 interface CartProviderProps {
   children: ReactNode;
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cartIsOpened, setCartIsOpened] = useState(false);
+  const [cart, dispatch] = useReducer(cartReducer, {
+    isOpened: false,
+    items: [],
+  });
 
-  function handleCartIsOpened(isOpened: boolean) {
-    setCartIsOpened(isOpened);
-  }
+  useEffect(() => {
+    const initialCartItems = loadCartFromLocalStorage();
+    setCartItems(dispatch, initialCartItems);
+  }, []);
+
+  useEffect(() => {
+    saveCartToLocalStorage(cart.items);
+  }, [cart.items]);
+
+  const cartModalElement = useRef<HTMLDivElement>(null);
 
   return (
-    <CartContext.Provider
-      value={{
-        cartIsOpened,
-        handleCartIsOpened,
-        cartModalElement: useRef<HTMLDivElement>(null),
-      }}
-    >
-      {children}
+    <CartContext.Provider value={{ ...cart, modalElement: cartModalElement }}>
+      <CartDispatchContext.Provider value={dispatch}>
+        {children}
+      </CartDispatchContext.Provider>
     </CartContext.Provider>
   );
 }
@@ -44,6 +53,16 @@ export function useCart() {
 
   if (!context) {
     throw new Error("cart context is null");
+  }
+
+  return context;
+}
+
+export function useCartDispatch() {
+  const context = useContext(CartDispatchContext);
+
+  if (!context) {
+    throw new Error("cart dispatch context is null");
   }
 
   return context;
