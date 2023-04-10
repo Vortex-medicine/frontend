@@ -66,7 +66,10 @@ function CartItem() {
 
       <div className={styles.itemInfoWrapper}>
         <h3 className={styles.itemName}>Комплект приборов «KGS»</h3>
-        <p className={styles.itemDescr}>Cредний по стоимости вариант.</p>
+        <p className={styles.itemDescr}>
+          Бюджетный вариант, простой в&nbsp;использовании, с&nbsp;минимальной
+          функциональностью.
+        </p>
       </div>
 
       <div className={styles.amountWrapper}>

@@ -1,9 +1,9 @@
 @import "@/styles/colors.module";
+@import "@/styles/viewports";
 
 .cartItemWrapper {
   display: grid;
   padding-bottom: 25px;
-  border-bottom: 1px solid $grey;
 
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, auto);
@@ -13,6 +13,26 @@
     "f f"
     "a p"
     "r r";
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, auto);
+
+    grid-template-areas: 
+      "i i i i i i f f f f f f"
+      "i i i i i i a a a p p p"
+      "r r r r r r r r r r r r";
+  }
+
+  @media  screen and (min-width: 1200px) {
+    grid-template-columns: repeat(11, 1fr) auto;
+    grid-template-rows: repeat(2, auto);
+
+    grid-template-areas: 
+      "i i i i i i f f f f f r"
+      "i i i i i i a a a p p p";
+  }
+
 }
 
 .itemImg {
@@ -23,20 +43,40 @@
 .itemName {
   margin-top: 20px;
   margin-bottom: 5px;
+
+  @media screen and (min-width: 1000px) {
+    margin-top: 0;
+  }
 }
 
 .itemInfoWrapper {
   grid-area: f;
   margin-bottom: 20px;
+  max-width: 500px;
+
+  @media screen and (min-width: 1000px) {
+    margin-top: -6px;
+    margin-left: 20px;
+  }
 }
 
 .amountWrapper {
   grid-area: a;
+
+  @media screen and (min-width: 1000px) {
+    margin-left: 20px;
+    margin-bottom: -8px;
+    align-self: end;
+  }
 }
 
 .priceWrapper {
   grid-area: p;
   justify-self: end;
+
+  @media screen and (min-width: 1000px) {
+    align-self: end;
+  }
 }
 
 .removeItemOuterWrapper {
@@ -45,6 +85,13 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 25px;
+
+  @media screen and (min-width: 1200px) {
+    justify-self: end;
+    align-self: start;
+    margin-top: -6px;
+    margin-left: 20px;
+  }
 }
 
 .removeItemInnerWrapper {
