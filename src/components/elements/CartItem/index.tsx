@@ -5,8 +5,19 @@ import { IconButton, TextField } from "@mui/material";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+import classnames from "classnames";
+import { CART_ITEM_MAX_AMOUNT } from "@/constants/common";
+import { ProductData } from "@/types/product";
 
-function CartItem() {
+interface CartItemProps {
+  productData: ProductData;
+  className?: string;
+}
+
+function CartItem({
+  productData: { productName, productDescr, productPrice, productImg },
+  className = "",
+}: CartItemProps): JSX.Element {
   const [amount, setAmount] = useState("1");
 
   function handleAmountOnChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -14,6 +25,10 @@ function CartItem() {
 
     if (value !== "") {
       value = parseInt(value);
+
+      if (value > CART_ITEM_MAX_AMOUNT) {
+        value = CART_ITEM_MAX_AMOUNT;
+      }
 
       if (isNaN(value) || value < 1) {
         value = "1";
@@ -51,25 +66,24 @@ function CartItem() {
     });
   }
 
+  const cartItemClasses = classnames(styles.cartItemWrapper, className);
+
   return (
-    <div className={styles.cartItemWrapper}>
+    <div className={cartItemClasses}>
       <Image
         className={styles.itemImg}
-        src="/kgs-kit.jpg"
+        src={productImg.path}
         alt="cart item"
-        width={3436}
-        height={1730}
+        width={productImg.width}
+        height={productImg.height}
         sizes="100vw,
                (min-width: 700px) 50vw,
                (min-width: 1200px) 255px"
       />
 
       <div className={styles.itemInfoWrapper}>
-        <h3 className={styles.itemName}>Комплект приборов «KGS»</h3>
-        <p className={styles.itemDescr}>
-          Бюджетный вариант, простой в&nbsp;использовании, с&nbsp;минимальной
-          функциональностью.
-        </p>
+        <h3 className={styles.itemName}>{productName}</h3>
+        <p className={styles.itemDescr}>{productDescr}</p>
       </div>
 
       <div className={styles.amountWrapper}>
@@ -91,6 +105,7 @@ function CartItem() {
           />
           <IconButton
             className={styles.amountPlusBtn}
+            disabled={amount === CART_ITEM_MAX_AMOUNT.toString()}
             onClick={handleAmountIncrease}
             color="blue"
           >
@@ -101,7 +116,9 @@ function CartItem() {
 
       <div className={styles.priceWrapper}>
         <p className={styles.priceCaption}>Сумма</p>
-        <p className={styles.price}>4900 ₴</p>
+        <p className={styles.price}>
+          {amount === "" ? productPrice : productPrice * parseInt(amount)} ₴
+        </p>
       </div>
 
       <div className={styles.removeItemOuterWrapper}>

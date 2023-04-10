@@ -3,20 +3,7 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 import AddToCartButton from "../../AddToCardButton";
 import classnames from "classnames";
-
-interface ProductImg {
-  path: string;
-  width: number;
-  height: number;
-}
-
-interface ProductCardProps {
-  productName: string;
-  productDescr: string;
-  productImg: ProductImg;
-  productPrice: number;
-  discountInfo?: string;
-}
+import { ProductData } from "@/types/product";
 
 function ProductCard({
   productName,
@@ -24,7 +11,7 @@ function ProductCard({
   productImg: { path, width, height },
   productPrice,
   discountInfo,
-}: ProductCardProps): JSX.Element {
+}: ProductData): JSX.Element {
   const productNameWrapperClasses = classnames(styles.productNameWrapper, {
     [styles.productNameWrapperWithDiscount]: discountInfo,
   });

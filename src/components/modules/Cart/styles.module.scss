@@ -65,3 +65,95 @@
   margin: 0;
   list-style: none;
 }
+
+.cartItem {
+  padding-bottom: 30px;
+  border-bottom: 1px solid $grey;
+  margin-bottom: 25px;
+
+  @media screen and (min-width: 1200px) {
+    padding-bottom: 35px;
+  }
+}
+
+.footerBtnsWrapper {
+  margin-top: 55px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 70px;
+    margin-bottom: 55px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 40px;
+  }
+}
+
+.checkoutWrapper {
+  border-radius: 20px;
+  border: 1px solid $orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 50px 40px;
+  margin-bottom: 75px;
+
+  @media screen and (min-width: 1000px) {
+    margin-bottom: 0;
+  }
+}
+
+.totalPrice {
+  font-size: 35px;
+  line-height: 45px;
+  font-weight: 600;
+  color: $orange;
+  margin-bottom: 15px;
+}
+
+.checkoutBtn {
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  border: none;
+  background: $orange;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 30px 16px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    background: darken($orange, 8%)
+  }
+}
+
+.continueShoppingBtn {
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  border: 1px solid $green;
+  border-radius: 12px;
+  background-color: transparent;
+  color: $green;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 30px 16px;
+  transition: all .2s ease-in-out;
+
+
+  &:hover {
+    background-color: $green;
+    color: #fff;
+  }
+}

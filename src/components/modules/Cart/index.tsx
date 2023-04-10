@@ -51,9 +51,48 @@ export default function Cart() {
       <DialogContent className={styles.cartMainContentOuterWrapper}>
         <Container className={styles.cartMainContentInnerContainer}>
           <ul className={styles.cartItemList}>
-            <CartItem />
-            {/* <CartItem /> */}
+            <li className={styles.cartItem}>
+              <CartItem
+                productData={{
+                  productName: "KGS",
+                  productDescr: "Cредний по\u00A0стоимости вариант.",
+                  productImg: {
+                    path: "/kgs-kit.jpg",
+                    width: 3436,
+                    height: 1730,
+                  },
+                  productPrice: 4900,
+                }}
+              />
+            </li>
+            <li className={styles.cartItem}>
+              <CartItem
+                productData={{
+                  productName: "KGS-MINI",
+                  productDescr:
+                    "Бюджетный вариант, простой в\u00A0использовании, с\u00A0минимальной функциональностью.",
+                  productImg: {
+                    path: "/kgs-mini-kit.jpg",
+                    width: 4032,
+                    height: 2528,
+                  },
+                  productPrice: 3000,
+                }}
+              />
+            </li>
           </ul>
+          <div className={styles.footerBtnsWrapper}>
+            <div className={styles.checkoutWrapper}>
+              <p className={styles.totalPrice}>7900 ₴</p>
+              <button className={styles.checkoutBtn}>Оформить заказ</button>
+            </div>
+            <button
+              className={styles.continueShoppingBtn}
+              onClick={() => handleCartIsOpened(false)}
+            >
+              Продолжить покупки
+            </button>
+          </div>
         </Container>
       </DialogContent>
     </Dialog>
