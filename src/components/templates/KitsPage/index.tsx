@@ -23,19 +23,6 @@ function KitsPage(): JSX.Element {
           </ul>
           <Sidebar />
         </div>
-        {/* <Snackbar
-          open={snackbarIsOpened}
-          className={styles.snackbar}
-          autoHideDuration={4000}
-          onClose={handleSnackbarClose}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        >
-          <div>
-            <Container>
-              <AddToCartSuccessAlert onClose={handleSnackbarClose} />
-            </Container>
-          </div>
-        </Snackbar> */}
       </Container>
       <Cart />
     </>

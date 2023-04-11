@@ -13,3 +13,7 @@ export function productIsPresentInCart(
 ): boolean {
   return cartItems.some((item) => item.productId === productId);
 }
+
+export function getCartItemsTotalQuantity(cartItems: CartItem[]): number {
+  return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+}

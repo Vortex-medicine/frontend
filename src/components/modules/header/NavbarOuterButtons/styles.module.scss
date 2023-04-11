@@ -67,3 +67,8 @@
   }
 }
 
+.cartBadge :global(.MuiBadge-badge) {
+  font-family: var(--noto-font);
+  color: #fff;
+}
+

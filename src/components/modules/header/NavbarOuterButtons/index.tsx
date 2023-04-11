@@ -8,6 +8,8 @@ import LanguageDropdown from "@/components/modules/header/NavbarLanguageDropdown
 import { Dispatch, SetStateAction } from "react";
 import { useCart, useCartDispatch } from "@/context/cart/Context";
 import { openCart } from "utils/cart-actions";
+import { Badge } from "@mui/material";
+import { getCartItemsTotalQuantity } from "utils/product";
 
 interface SmallScreenNavbarOuterButtonsProps {
   menuIsOpened: boolean;
@@ -18,7 +20,7 @@ function NavbarOuterButtons({
   menuIsOpened,
   setMenuIsOpened,
 }: SmallScreenNavbarOuterButtonsProps): JSX.Element {
-  const { isOpened: cartIsOpened } = useCart();
+  const { isOpened: cartIsOpened, items: cartItems } = useCart();
   const cartDispatch = useCartDispatch();
 
   const cartIconClasses = classNames(styles.cartIcon, {
@@ -37,10 +39,21 @@ function NavbarOuterButtons({
         className={styles.cartIconWrapper}
         onClick={() => openCart(cartDispatch)}
       >
-        <ShoppingCartOutlinedIcon
-          ref={cartElement}
-          className={cartIconClasses}
-        />
+        <Badge
+          className={styles.cartBadge}
+          badgeContent={getCartItemsTotalQuantity(cartItems)}
+          color="orange"
+          max={99}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+        >
+          <ShoppingCartOutlinedIcon
+            ref={cartElement}
+            className={cartIconClasses}
+          />
+        </Badge>
       </div>
       <HamburgerMenu
         ref={hamburgerElement}

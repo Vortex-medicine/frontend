@@ -30,6 +30,9 @@ const theme = createTheme({
     darkGrey: {
       main: "#BFBFBF",
     },
+    orange: {
+      main: "#F1521F",
+    },
   },
 });
 
