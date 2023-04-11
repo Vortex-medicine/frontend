@@ -7,6 +7,8 @@ import { Noto_Sans } from "@next/font/google";
 import { ThemeProvider } from "@emotion/react";
 import { CartProvider } from "@/context/cart/Context";
 import { createTheme } from "@mui/material/styles";
+import { SnackbarProvider } from "notistack";
+import AddToCartSuccessAlert from "@/components/elements/AddToCartSuccessAlert";
 
 const noto = Noto_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -25,6 +27,9 @@ const theme = createTheme({
     blue: {
       main: "#27A2FB",
     },
+    darkGrey: {
+      main: "#BFBFBF",
+    },
   },
 });
 
@@ -38,7 +43,17 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       `}</style>
       <CartProvider>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <SnackbarProvider
+            Components={{
+              addToCartAlert: AddToCartSuccessAlert,
+            }}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <Component {...pageProps} />
+          </SnackbarProvider>
         </ThemeProvider>
       </CartProvider>
     </>

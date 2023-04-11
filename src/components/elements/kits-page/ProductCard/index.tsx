@@ -1,21 +1,28 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import AddToCartButton from "../../AddToCardButton";
+import AddToCartButton from "../../AddToCartButton";
 import classnames from "classnames";
 import { ProductData } from "@/types/product";
 import { useCart, useCartDispatch } from "@/context/cart/Context";
 import { productIsPresentInCart } from "utils/product";
 import { addCartItem, openCart } from "utils/cart-actions";
+import { useSnackbar } from "notistack";
+
+interface ProductCardProps {
+  productData: ProductData;
+}
 
 function ProductCard({
-  id: productId,
-  name: productName,
-  descr: productDescr,
-  img: { path, width, height },
-  price: productPrice,
-  discountInfo,
-}: ProductData): JSX.Element {
+  productData: {
+    id: productId,
+    name: productName,
+    descr: productDescr,
+    img: { path, width, height },
+    price: productPrice,
+    discountInfo,
+  },
+}: ProductCardProps): JSX.Element {
   const productNameWrapperClasses = classnames(styles.productNameWrapper, {
     [styles.productNameWrapperWithDiscount]: discountInfo,
   });
@@ -25,9 +32,13 @@ function ProductCard({
 
   const cartDispatch = useCartDispatch();
 
+  const { enqueueSnackbar } = useSnackbar();
+
   function handleAddToCartBtnClick() {
     if (!presentInCart) {
       addCartItem(cartDispatch, productId);
+      // setSnackbarIsOpened(true);
+      enqueueSnackbar({ variant: "addToCartAlert" });
     } else {
       openCart(cartDispatch);
     }

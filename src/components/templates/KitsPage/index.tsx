@@ -17,12 +17,25 @@ function KitsPage(): JSX.Element {
           <ul className={styles.productList}>
             {ALL_PRODUCTS.map((product) => (
               <li className={styles.productItem} key={product.id}>
-                <ProductCard {...product} />
+                <ProductCard productData={product} />
               </li>
             ))}
           </ul>
           <Sidebar />
         </div>
+        {/* <Snackbar
+          open={snackbarIsOpened}
+          className={styles.snackbar}
+          autoHideDuration={4000}
+          onClose={handleSnackbarClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        >
+          <div>
+            <Container>
+              <AddToCartSuccessAlert onClose={handleSnackbarClose} />
+            </Container>
+          </div>
+        </Snackbar> */}
       </Container>
       <Cart />
     </>

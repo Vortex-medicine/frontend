@@ -13,15 +13,18 @@ declare module "@mui/material/styles" {
   }
   interface Palette {
     blue: Palette["primary"];
+    darkGrey: Palette["primary"];
   }
 
   interface PaletteOptions {
     blue: PaletteOptions["primary"];
+    darkGrey: PaletteOptions["primary"];
   }
 }
 
 declare module "@mui/material/IconButton" {
   interface IconButtonPropsColorOverrides {
     blue: true;
+    darkGrey: true;
   }
 }

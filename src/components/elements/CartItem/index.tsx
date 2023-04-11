@@ -59,6 +59,7 @@ function CartItem({
 
     if (value === "") {
       updateCartItemQuantity(cartDispatch, productId, 1);
+      setLocalQuantity("1");
     }
   }
 
