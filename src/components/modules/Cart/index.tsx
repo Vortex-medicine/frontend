@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import CartItem from "@/components/elements/CartItem";
 import { closeCart } from "utils/cart-actions";
+import { getCartItemsTotalPrice } from "utils/product";
 
 export default function Cart() {
   const {
@@ -74,7 +75,9 @@ export default function Cart() {
           {cartItems.length > 0 && (
             <div className={styles.footerBtnsWrapper}>
               <div className={styles.checkoutWrapper}>
-                <p className={styles.totalPrice}>7900 ₴</p>
+                <p className={styles.totalPrice}>
+                  {getCartItemsTotalPrice(cartItems)} ₴
+                </p>
                 <button className={styles.checkoutBtn}>Оформить заказ</button>
               </div>
               <button

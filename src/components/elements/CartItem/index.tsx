@@ -49,6 +49,7 @@ function CartItem({
       }
 
       updateCartItemQuantity(cartDispatch, productId, value);
+      setLocalQuantity(value.toString());
     } else {
       setLocalQuantity(value.toString());
     }

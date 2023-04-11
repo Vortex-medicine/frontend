@@ -17,3 +17,20 @@ export function productIsPresentInCart(
 export function getCartItemsTotalQuantity(cartItems: CartItem[]): number {
   return cartItems.reduce((acc, item) => acc + item.quantity, 0);
 }
+
+export function getCartItemsTotalPrice(cartItems: CartItem[]): number {
+  const products = [];
+
+  for (const item of cartItems) {
+    const product = getProductById(item.productId);
+
+    if (!product) {
+      console.log(`Product with id ${item.productId} not found`);
+      continue;
+    }
+
+    products.push({ ...product, quantity: item.quantity });
+  }
+
+  return products.reduce((acc, item) => acc + item.quantity * item.price, 0);
+}
