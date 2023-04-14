@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
-import Link from "next/link";
 import { ClassName } from "@/types/common";
 import { SubmenuData } from "@/types/navigation";
 import classNames from "classnames";
+import { useRouter } from "next/router";
+import AccorionSimpleItem from "@/components/elements/header/SmallScreenNavbarPagesAccordionSimpleItem";
 
 interface AccordionItemProps {
   submenuData: SubmenuData;
@@ -18,8 +19,11 @@ function SmallScreenNavbarPagesAccordionItem({
   globalMenuIsOpened,
   className,
 }: AccordionItemProps): JSX.Element {
+  const router = useRouter();
   const [accordionIsOpened, setAccordionIsOpened] = useState(false);
   const panelElement = useRef<HTMLUListElement>(null);
+
+  const isActive = pages.some((page) => router.pathname === page.href);
 
   function handleAccordionClick() {
     setAccordionIsOpened((prev) => !prev);
@@ -33,6 +37,7 @@ function SmallScreenNavbarPagesAccordionItem({
 
   const accordionClasses = classNames(styles.accordion, {
     [styles.accordionOpened]: accordionIsOpened,
+    [styles.accordionIsActive]: isActive,
   });
 
   return (
@@ -52,15 +57,9 @@ function SmallScreenNavbarPagesAccordionItem({
             : { maxHeight: "0px" }
         }
       >
-        {pages.map((page) => {
-          return (
-            <li key={page.name}>
-              <Link href={page.href}>
-                <Container>{page.name}</Container>
-              </Link>
-            </li>
-          );
-        })}
+        {pages.map((page) => (
+          <AccorionSimpleItem key={page.name} {...page} />
+        ))}
       </ul>
     </li>
   );

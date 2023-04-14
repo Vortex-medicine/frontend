@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import SimpleItem from "@/components/elements/header/SmallScreenNavbarPagesSimpleItem";
-import AccordionItem from "@/components/elements/header/SmallScreenNavbarPagesAccordionItem";
-import PAGES from "@/constants/navigation-links";
+import AccordionItem from "@/components/modules/header/SmallScreenNavbarPagesAccordionItem";
+import { PAGES } from "@/constants/navigation-links";
 import { isPageLinkData } from "@/types/navigation";
 import classNames from "classnames";
 

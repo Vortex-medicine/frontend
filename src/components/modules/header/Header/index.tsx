@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import NavbarOverlay from "@/components/modules/header/SmallScreenNavbarOverlay";
-import NavbarVisibleArea from "@/components/modules/header/SmallScreenNavbarVisibleArea";
+import NavbarVisibleArea from "@/components/modules/header/NavbarVisibleArea";
 import { HamburgerElementProvider } from "@/context/navbar-outer-icons/Context";
 import classNames from "classnames";
 

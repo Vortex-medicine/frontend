@@ -15,12 +15,14 @@ declare module "@mui/material/styles" {
     blue: Palette["primary"];
     darkGrey: Palette["primary"];
     orange: Palette["primary"];
+    green: Palette["primary"];
   }
 
   interface PaletteOptions {
     blue: PaletteOptions["primary"];
     darkGrey: PaletteOptions["primary"];
     orange: PaletteOptions["primary"];
+    green: PaletteOptions["primary"];
   }
 }
 
@@ -35,5 +37,11 @@ declare module "@mui/material/IconButton" {
 declare module "@mui/material/Badge" {
   interface BadgePropsColorOverrides {
     orange: true;
+  }
+}
+
+declare module "@mui/material/CircularProgress" {
+  interface CircularProgressPropsColorOverrides {
+    green: true;
   }
 }

@@ -6,6 +6,7 @@ import SubmenuLink from "@/components/elements/header/BigScreenNavbarPagesSubmen
 import { ClassName } from "@/types/common";
 import classNames from "classnames";
 import useOutsideClick from "@/hooks/use-outside-click";
+import { useRouter } from "next/router";
 
 interface PagesDropdownItemProps {
   submenuData: SubmenuData;
@@ -17,11 +18,17 @@ function BigScreenNavbarPagesItemWithSubmenu({
   className = "",
 }: PagesDropdownItemProps): JSX.Element {
   const [dropdownIsOpened, setDropdownIsOpened] = useState(false);
+  const router = useRouter();
+  const submenuItemIsActive = pages.some(
+    (page) => router.pathname === page.href
+  );
+
   const submenuGlobalNameWrapperElement = useRef<HTMLDivElement>(null);
   const dropdownItemSubmenuElement = useRef<HTMLUListElement>(null);
 
   const dropdownItemClasses = classNames(styles.dropdownItem, className, {
     [styles.dropdownItemOpened]: dropdownIsOpened,
+    [styles.dropdownItemIsActive]: submenuItemIsActive,
   });
 
   const dropdownItemSubmenuClasses = classNames(styles.dropdownItemSubmenu);

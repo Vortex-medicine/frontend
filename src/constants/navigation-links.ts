@@ -1,39 +1,48 @@
 import { PageLinkData, SubmenuData } from "@/types/navigation";
 
-const PAGES: Array<PageLinkData | SubmenuData> = [
+export const PAGE_HREFS = {
+  TREATMENT: "/treatment",
+  REVIEWS: "/reviews",
+  EXPERIENCE_SHARING_FILES: "/experience-sharing-files",
+  KITS: "/kits",
+  MISHIN_COIL_SCHEMA: "/mishin-coil-schema",
+  SINUS_GENERATOR_SCHEMA: "/sinus-generator-schema",
+  ARTICLES: "/articles",
+  CONTACTS: "/contacts",
+};
+
+export const PAGES: Array<PageLinkData | SubmenuData> = [
   {
     name: "Лечение",
-    href: "/treatment",
+    href: PAGE_HREFS.TREATMENT,
   },
   {
     name: "Отзывы",
-    href: "/reviews",
+    href: PAGE_HREFS.REVIEWS,
   },
   {
     name: "Комплекты приборов",
-    href: "/kits",
+    href: PAGE_HREFS.KITS,
   },
   {
     globalName: "Схемы приборов",
     pages: [
       {
         name: "Катушка Мишина",
-        href: "/mishin-coil-schema",
+        href: PAGE_HREFS.MISHIN_COIL_SCHEMA,
       },
       {
         name: "Генератор синуса",
-        href: "/sinus-generator-schema",
+        href: PAGE_HREFS.SINUS_GENERATOR_SCHEMA,
       },
     ],
   },
   {
     name: "Cтатьи",
-    href: "/articles",
+    href: PAGE_HREFS.ARTICLES,
   },
   {
     name: "Контакты",
-    href: "/contacts",
+    href: PAGE_HREFS.CONTACTS,
   },
 ];
-
-export default PAGES;

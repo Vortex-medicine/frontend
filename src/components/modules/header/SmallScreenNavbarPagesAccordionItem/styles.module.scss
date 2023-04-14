@@ -1,7 +1,13 @@
+@import "@/styles/colors.module";
+
 .accordion {
   cursor: pointer;
   padding-bottom: 12px;
   padding-top: 10px;
+
+  &IsActive {
+    color: $black;
+  }
 }
 
 .accordionOpened .accordionArrowIcon {
@@ -19,14 +25,19 @@
   transition: max-height 0.3s ease-in-out;
 }
 
-.accordionPanel a {
-  display: block;
-  padding-bottom: 12px;
-  padding-left: 25px;
+.accordionPanel {
+  & a, & span {
+    border: none;
+    display: block;
+    padding-bottom: 12px;
+    padding-left: 25px;
+  }
 }
 
-.accordionPanel li:last-child a {
-  padding-bottom: 22px;
+.accordionPanel li:last-child {
+  & a, & span {
+    padding-bottom: 22px;
+  }
 }
 
 .accordionInnerContainer {

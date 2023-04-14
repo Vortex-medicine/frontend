@@ -7,6 +7,10 @@
   color: $black; 
 }
 
+.dropdownItemIsActive .submenuGlobalName {
+  color: $blue;
+}
+
 .dropdownItemSubmenu {
   position: absolute;
   visibility: hidden;
@@ -46,6 +50,10 @@
   fill: $green;
 }
 
+.dropdownItemIsActive .submenuGlobalNameWrapper:hover svg {
+  fill: $green;
+}
+
 .submenuGlobalNameWrapper svg {
   margin-left: 5px;
   transition: fill 0.2s ease-in-out, transform 0.3s ease-in-out;
@@ -60,6 +68,10 @@
 
 .dropdownItemOpened .submenuGlobalName {
   color: $green;
+}
+
+.dropdownItemIsActive .submenuGlobalNameWrapper svg {
+  fill: $blue;
 }
 
 .dropdownItemOpened .submenuGlobalNameWrapper svg {

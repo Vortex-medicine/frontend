@@ -1,8 +1,8 @@
 import React from "react";
-import PAGES from "@/constants/navigation-links";
+import { PAGES } from "@/constants/navigation-links";
 import { isPageLinkData } from "@/types/navigation";
 import SimpleItem from "@/components/elements/header/BigScreenNavbarPagesSimpleItem";
-import DropdownItem from "@/components/elements/header/BigScreenNavbarPagesItemWithSubmenu";
+import DropdownItem from "@/components/modules/header/BigScreenNavbarPagesItemWithSubmenu";
 import styles from "./styles.module.scss";
 
 function BigScreenNavbarPages(): JSX.Element {
