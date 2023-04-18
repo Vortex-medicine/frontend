@@ -9,6 +9,7 @@ export const PAGE_HREFS = {
   SINUS_GENERATOR_SCHEMA: "/sinus-generator-schema",
   ARTICLES: "/articles",
   CONTACTS: "/contacts",
+  CHECKOUT: "/checkout",
 };
 
 export const PAGES: Array<PageLinkData | SubmenuData> = [

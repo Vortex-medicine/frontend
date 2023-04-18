@@ -1,0 +1,62 @@
+@import "@/styles/colors.module";
+
+.labeledWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radioInput {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+
+.labelText {
+  font-size: 20px;
+  line-height: 30px;
+  margin: 0;
+  color: $black;
+  margin-left: 10px;
+}
+
+.customRadioOuterPart {
+  width: 20px;
+  height: 20px;
+  border: 1px solid $grey;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: border-color .3s;
+  transform: translateY(1px);
+}
+
+.customRadioInnerPart {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.customRadioInnerPart::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #1976d2;
+  border-radius: 50%;
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform: scale(0);
+  transition: transform 0.3s;
+}
+
+.radioInput:checked + .customRadioOuterPart {
+  border-color: #1976d2;
+}
+
+.radioInput:checked + .customRadioOuterPart .customRadioInnerPart::after {
+  transform: scale(1);
+}

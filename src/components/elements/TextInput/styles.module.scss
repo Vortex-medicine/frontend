@@ -1,0 +1,43 @@
+@import "@/styles/colors.module";
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.input {
+  padding: 10px 25px 15px;
+  border-radius: 12px;
+  border: 1px solid $grey;
+  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+  outline: none;
+  font-size: 20px;
+  line-height: 30px;
+
+  &:hover {
+    border-color: $dark-grey;
+  }
+
+  &:focus {
+    border: 1px solid #1976d2;
+    box-shadow: 0 0 0 1px #1976d2;
+  }
+}
+
+.label {
+  align-self: flex-start;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 3px;
+  transition: color .2s ease-in-out;
+
+  &InputFocused {
+    color: #1976d2;
+  }
+}
+
+.starRequired {
+  color: $red;
+}

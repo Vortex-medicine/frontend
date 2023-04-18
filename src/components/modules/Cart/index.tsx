@@ -10,6 +10,9 @@ import Container from "@/components/elements/Container";
 import CartItem from "@/components/elements/CartItem";
 import { closeCart } from "utils/cart-actions";
 import { getCartItemsTotalPrice } from "utils/product";
+import Link from "next/link";
+import { PAGE_HREFS } from "@/constants/navigation-links";
+import classnames from "classnames";
 
 export default function Cart() {
   const {
@@ -24,9 +27,13 @@ export default function Cart() {
   );
   const [fullScreen, fullWidth] = noFullScreen ? [false, true] : [true, false];
 
+  const cartModalClasses = classnames(styles.cartModal, {
+    [styles.cartModalIsEmpty]: cartItems.length === 0,
+  });
+
   return (
     <Dialog
-      className={styles.cartModal}
+      className={cartModalClasses}
       ref={cartModalElement}
       sx={{
         "& .MuiPaper-root": {
@@ -78,7 +85,13 @@ export default function Cart() {
                 <p className={styles.totalPrice}>
                   {getCartItemsTotalPrice(cartItems)} ₴
                 </p>
-                <button className={styles.checkoutBtn}>Оформить заказ</button>
+                <Link
+                  onClick={() => closeCart(cartDispatch)}
+                  href={PAGE_HREFS.CHECKOUT}
+                  className={styles.checkoutBtn}
+                >
+                  Оформить заказ
+                </Link>
               </div>
               <button
                 className={styles.continueShoppingBtn}

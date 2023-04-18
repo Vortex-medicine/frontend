@@ -1,0 +1,243 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.contactInfoSection {
+  margin-bottom: 40px;
+}
+
+.heading {
+  margin-bottom: 25px;
+}
+
+
+.userInfoInput {
+  max-width: 400px;
+}
+
+.fullNameInputsWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include for-size(tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 15px;
+    max-width: 750px;
+
+    grid-template-areas:
+      "f l";
+  }
+}
+
+.fullNameInputsWrapper .userDataInput:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.fullNameInputsWrapper .userDataInput:first-child {
+  grid-area: f;
+}
+
+.fullNameInputsWrapper .userDataInput:nth-child(2) {
+  grid-area: l;
+}
+
+.phoneNumberEmailInputsWrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+
+  @include for-size(tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 15px;
+    max-width: 750px;
+
+    grid-template-areas:
+      "p e";
+  }
+}
+
+.phoneNumberEmailInputsWrapper .userDataInput:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.phoneNumberEmailInputsWrapper .userDataInput:first-child {
+  grid-area: p;
+}
+
+.phoneNumberEmailInputsWrapper .userDataInput:nth-child(2) {
+  grid-area: e;
+}
+
+.userInfoInput :global(.MuiOutlinedInput-root) fieldset {
+  transition: all 0.2s;
+  border-color: $grey;
+}
+
+.userInfoInput :global(.MuiInputBase-root) {
+  border-radius: 12px;
+  font-family: var(--noto-font);
+}
+
+.userInfoInput :global(.MuiInputBase-root:hover) fieldset {
+    border-color: $dark-grey;
+}
+
+.userInfoInput :global(.MuiInputBase-root.Mui-focused) fieldset {
+    border-color: #1976d2;
+    padding-left: 7px;
+}
+
+.userInfoInput :global(.MuiInputLabel-root.MuiFormLabel-filled) + :global(.MuiInputBase-root) fieldset {
+    padding-left: 7px;
+}
+
+.userInfoInput :global(.MuiInputLabel-root) + :global(.MuiInputBase-root) fieldset legend span {
+    padding-left: 7px;
+    padding-right: 5px;
+}
+
+.userInfoInput :global(.MuiInputBase-root) fieldset legend span {
+    // border-color: #1976d2;
+    padding-left: 7px;
+    padding-right: 4px;
+}
+
+.userInfoInput :global(.MuiInputBase-root) fieldset legend {
+  font-size: 15px;
+  // line-height: 23px;
+  margin-left: 12px;
+}
+
+.userInfoInput :global(.MuiInputLabel-root) + :global(.MuiInputBase-root) fieldset legend {
+  font-size: 15px;
+  // line-height: 23px;
+  margin-left: 12px;
+}
+
+.userInfoInput :global(.MuiInputBase-input) {
+  // text-align: center;
+  padding-top: 14.5px;
+  padding-bottom: 18px;
+  padding-left: 27.5px;
+  padding-right: 27.5px;
+  font-size: 20px;
+  line-height: 30px;
+  height: auto;
+}
+
+.userInfoInput :global(.MuiFormLabel-root) {
+  left: 12px;
+}
+
+
+.userInfoInput :global(.MuiInputLabel-root):not(:global(.Mui-focused)):not(:global(.MuiFormLabel-filled)) {
+  transform: translate(14px, 18px) scale(1);
+}
+
+.userInfoInput :global(.MuiInputLabel-root) {
+  font-family: var(--noto-font);
+  font-size: 20px;
+  line-height: 23px;
+  // color: $dark-grey;
+}
+
+div.phoneInput {
+  margin-bottom: 15px;
+  font-family: var(--noto-font);
+  max-width: 400px;
+}
+
+div.phoneInput div:global(.special-label) {
+  font-family: var(--noto-font);
+  color: rgba(0, 0, 0, 0.6);
+  left: 20.5px;
+  font-size: 15px;
+  top: -8.5px;
+
+  &.phoneInputActive {
+    color: #1976d2;
+  }
+}
+
+.phoneInput input:global(.form-control) {
+  width: 100%;
+  font-size: 20px;
+  line-height: 29.5px;
+  border-radius: 12px;
+  padding-left: 70px;
+  border: 1px solid $grey;
+  padding-top: 14.5px;
+  padding-bottom: 16.5px;
+
+  &:hover {
+    border: 1px solid $dark-grey;
+  }
+
+  &:focus {
+    border: 1px solid #1976d2;
+  }
+}
+
+.phoneInput :global(.country-list .search-box) {
+  margin-left: 3px;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-bottom: 6.5px;
+  font-size: 16px;
+  transition: all 0.2s;
+
+  &:hover {
+    border: 1px solid $dark-grey;
+  }
+
+  &:focus {
+    border: 1px solid #1976d2;
+    box-shadow: 0 0 0 1px #1976d2;
+  }
+}
+
+div.phoneInput :global(.selected-flag) {
+  padding-left: 26px;
+}
+
+.phoneInput :global(.country-list) {
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  border-left: 1px solid $grey;
+
+  width: 274px;
+
+  @include for-size(content-min-width) {
+    width: calc(100vw - 29px);
+    max-width: 300px;
+  }
+}
+
+.phoneInputMobile :global(.country-list) {
+  border-right: 1px solid $grey;
+}
+
+.phoneInput :global(.country-list .search) {
+  padding-top: 15px;
+  padding-left: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $grey;
+}
+
+.phoneInput :global(.country-list .country) {
+  padding-left: 64px;
+
+  &:last-child {
+    padding-bottom: 18px;
+  }
+}
+
+.phoneInput :global(.country-list .flag) {
+  left: 26px;
+}

@@ -1,0 +1,117 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+div.phoneInput {
+  margin-bottom: 15px;
+  font-family: var(--noto-font);
+  max-width: 400px;
+}
+
+div.phoneInput div:global(.special-label) {
+  display: none;
+}
+
+.phoneInput input:global(.form-control) {
+  width: 100%;
+  font-size: 20px;
+  line-height: 29.5px;
+  border-radius: 12px;
+  padding-left: 70px;
+  border: 1px solid $grey;
+  padding-top: 10px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+
+  &:hover {
+    border: 1px solid $dark-grey;
+  }
+
+  &:focus {
+    border: 1px solid #1976d2;
+  }
+}
+
+.phoneInput :global(.country-list .search-box) {
+  margin-left: 3px;
+  border: 1px solid $grey;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-bottom: 6.5px;
+  font-size: 16px;
+  transition: all 0.2s;
+
+  &:hover {
+    border: 1px solid $dark-grey;
+  }
+
+  &:focus {
+    border: 1px solid #1976d2;
+    box-shadow: 0 0 0 1px #1976d2;
+  }
+}
+
+div.phoneInput :global(.selected-flag) {
+  padding-left: 26px;
+}
+
+.phoneInput :global(.country-list) {
+  border-radius: 12px 0 0 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  border-left: 1px solid $grey;
+
+  width: 274px;
+
+  @include for-size(content-min-width) {
+    width: calc(100vw - 29px);
+    max-width: 300px;
+  }
+}
+
+.phoneInputMobile :global(.country-list) {
+  border-right: 1px solid $grey;
+}
+
+.phoneInput :global(.country-list .search) {
+  padding-top: 15px;
+  padding-left: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $grey;
+}
+
+.phoneInput :global(.country-list .country) {
+  padding-left: 64px;
+
+  &:last-child {
+    padding-bottom: 18px;
+  }
+}
+
+.phoneInput :global(.country-list .flag) {
+  left: 26px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.label {
+  align-self: flex-start;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 3px;
+  transition: color .2s ease-in-out;
+
+  &InputFocused {
+    color: #1976d2;
+  }
+}
+
+.starRequired {
+  color: $red;
+}
