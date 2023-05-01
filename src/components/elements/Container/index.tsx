@@ -1,9 +1,9 @@
 import classnames from "classnames";
 import styles from "./styles.module.scss";
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

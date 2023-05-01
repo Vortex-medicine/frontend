@@ -34,7 +34,7 @@ function ContactInfo() {
         <TextInput
           className={styles.userDataInput}
           label="Электронная почта"
-          inputProps={{ required: true }}
+          inputProps={{ required: true, type: "email" }}
         />
       </div>
     </section>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FocusEvent } from "react";
 import styles from "./styles.module.scss";
 import { v1 as uuid } from "uuid";
 import classnames from "classnames";
@@ -14,15 +14,32 @@ interface TextInputProps {
 
 function TextInput({ inputProps, label, className = "" }: TextInputProps) {
   const [focused, setFocused] = useState(false);
-  const { id = uuid(), required = false } = inputProps || {};
+  const {
+    id = uuid(),
+    required = false,
+    className: inputClassName,
+    onFocus,
+    onBlur,
+  } = inputProps || {};
 
-  const inputClasses = classnames(className, styles.inputWrapper);
+  const inputWrapperClasses = classnames(className, styles.inputWrapper);
+  const inputClasses = classnames(styles.input, inputClassName);
   const labelClasses = classnames(styles.label, {
     [styles.labelInputFocused]: focused,
   });
 
+  function handleInputOnFocus(event: FocusEvent<HTMLInputElement>) {
+    setFocused(true);
+    onFocus?.(event);
+  }
+
+  function handleInputOnBlur(event: FocusEvent<HTMLInputElement>) {
+    setFocused(false);
+    onBlur?.(event);
+  }
+
   return (
-    <div className={inputClasses}>
+    <div className={inputWrapperClasses}>
       {label && (
         <label className={labelClasses} htmlFor={id}>
           {label}
@@ -30,12 +47,12 @@ function TextInput({ inputProps, label, className = "" }: TextInputProps) {
         </label>
       )}
       <input
-        {...{ inputProps, id }}
         type="text"
-        className={styles.input}
+        {...{ ...inputProps, id }}
+        className={inputClasses}
         required={required}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onFocus={handleInputOnFocus}
+        onBlur={handleInputOnBlur}
       />
     </div>
   );

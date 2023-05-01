@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import styles from "./styles.module.scss";
 import Radio from "@/components/elements/Radio";
+import NovaposhtaOptionFields from "../NovaposhtaOptionFields";
 
 function Delivery() {
   const [selectedDeliveryOption, setSelectedDeliveryOption] =
@@ -25,7 +26,7 @@ function Delivery() {
               onChange: handleRadioOnChange,
             }}
           />
-          <div className={styles.novaposhtaOptionFieldsWrapper}></div>
+          <NovaposhtaOptionFields />
         </div>
         <Radio
           className={styles.radio}
