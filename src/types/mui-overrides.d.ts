@@ -11,6 +11,7 @@ declare module "@mui/material/styles" {
     desktop: true;
     cart: true;
   }
+
   interface Palette {
     blue: Palette["primary"];
     darkGrey: Palette["primary"];

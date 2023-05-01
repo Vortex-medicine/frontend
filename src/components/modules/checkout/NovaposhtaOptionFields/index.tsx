@@ -44,6 +44,8 @@ function NovaposhtaOptionFields() {
   return (
     <div className={styles.novaposhtaFieldsWrapper}>
       <SearchSelect
+        autoHighlight
+        disableListWrap
         disableClearable
         renderInput={(params) => <TextField {...params} />}
         options={labeledUkrainianCities}
@@ -51,6 +53,11 @@ function NovaposhtaOptionFields() {
           [props, option, state.index] as React.ReactNode
         }
         ListboxComponent={SearchSelectMenuList}
+        ListboxProps={
+          {
+            selectedValue: selectedCity?.label,
+          } as never
+        }
         value={selectedCity}
         getOptionLabel={(option) => option.label}
         onChange={(event, newValue) => {
@@ -58,7 +65,8 @@ function NovaposhtaOptionFields() {
         }}
       />
       <SearchSelect
-        open
+        autoHighlight
+        disableListWrap
         disableClearable
         renderInput={(params) => <TextField {...params} />}
         options={labeledDefaultWarehouses}
@@ -66,6 +74,11 @@ function NovaposhtaOptionFields() {
           [props, option, state.index] as React.ReactNode
         }
         ListboxComponent={SearchSelectMenuList}
+        ListboxProps={
+          {
+            selectedValue: selectedWarehouse?.label,
+          } as never
+        }
         getOptionLabel={(option) => option.label}
         value={selectedWarehouse}
         onChange={(event, newValue) => {

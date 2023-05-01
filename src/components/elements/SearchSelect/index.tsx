@@ -18,9 +18,12 @@ function SearchSelect<
     <Autocomplete
       {...props}
       className={classes}
-      filterOptions={(options, { inputValue }) =>
-        matchSorter(options, inputValue, { keys: ["label"] })
-      }
+      filterOptions={(options, { inputValue }) => {
+        if (inputValue === "") {
+          return options;
+        }
+        return matchSorter(options, inputValue, { keys: ["label"] });
+      }}
     />
   );
 }
