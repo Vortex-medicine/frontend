@@ -10,6 +10,7 @@ import { ListChildComponentProps } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { VariableSizeList as List } from "react-window";
 import classnames from "classnames";
+import styles from "./styles.module.scss";
 
 const OuterElementContext = createContext({});
 
@@ -53,15 +54,9 @@ const SearchSelectMenuList = forwardRef<
       ...style,
     };
 
-    if (index === 0) {
-      console.log("label - " + dataSet[1].label);
-    }
-
-    const itemClassName = classnames(dataSet[0].className, {
+    const itemClassName = classnames(styles.menuItem, dataSet[0].className, {
       "Mui-focused": index === 0,
     });
-
-    console.log("itemClassName - " + itemClassName);
 
     return (
       <MenuItem
@@ -73,15 +68,9 @@ const SearchSelectMenuList = forwardRef<
         style={{
           ...dataSet[0].style,
           ...inlineStyle,
-          padding: 0,
-          margin: 0,
-          whiteSpace: "normal",
         }}
       >
-        <div
-          style={{ padding: "10px 20px", width: "100%", minHeight: "48px" }}
-          ref={rowRef}
-        >
+        <div className={styles.menuItemInnerWrapper} ref={rowRef}>
           {dataSet[1].label}
         </div>
       </MenuItem>
@@ -97,7 +86,7 @@ const SearchSelectMenuList = forwardRef<
   );
 
   return (
-    <div ref={ref} style={{ height: "300px", width: "100%" }}>
+    <div ref={ref} className={styles.listWrapper}>
       <OuterElementContext.Provider value={other}>
         <AutoSizer>
           {({ height, width }) => (

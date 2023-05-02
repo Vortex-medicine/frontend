@@ -1,0 +1,17 @@
+.menuItem {
+  padding: 0 !important;
+  margin: 0 !important;
+  white-space: normal;
+}
+
+.menuItemInnerWrapper {
+  padding: 10px 20px;
+  width: 100%;
+  min-height: 48px;
+  transform: translateY(1px);
+}
+
+.listWrapper {
+  height: 288px;
+  width: 100%;
+}

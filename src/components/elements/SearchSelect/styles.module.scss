@@ -2,7 +2,7 @@
 
 .searchSelect :global(.MuiInputBase-root) {
   border-radius: 12px;
-  padding: 10px 50px 15px 25px !important;
+  padding: 10px 50px 14px 25px !important;
   color: $black;
 }
 
@@ -20,6 +20,7 @@
   padding: 0;
   font-family: var(--noto-font);
   font-size: 20px;
+  line-height: 30;
 }
 
 .searchSelect :global(.MuiInputBase-root .MuiAutocomplete-endAdornment) {
@@ -39,10 +40,35 @@
   border-left: 1px solid $grey;
 }
 
+.popperMobile :global(.MuiPaper-root) {
+  border-right: 1px solid $grey;
+}
+
 .popper[data-popper-placement="top"] {
-  margin-bottom: 10px !important;
+  margin-bottom: 28px !important;
 }
 
 .popper[data-popper-placement="bottom"] {
   margin-top: 10px !important;
+}
+
+.popper :global(.MuiAutocomplete-listbox) {
+  padding: 0;
+}
+
+.label {
+  align-self: flex-start;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 3px;
+  transition: color .0s ease-in-out;
+
+  &InputFocused {
+    color: #1976d2;
+  }
+}
+
+.starRequired {
+  color: $red;
 }

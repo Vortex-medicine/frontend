@@ -44,7 +44,11 @@ function NovaposhtaOptionFields() {
   return (
     <div className={styles.novaposhtaFieldsWrapper}>
       <SearchSelect
+        // open
+        label={"Ваш город"}
+        required
         className={styles.citySearchSelect}
+        openOnFocus
         autoHighlight
         disableListWrap
         disableClearable
@@ -66,7 +70,10 @@ function NovaposhtaOptionFields() {
         }}
       />
       <SearchSelect
+        label={"Отделение"}
+        required
         className={styles.warehouseSearchSelect}
+        openOnFocus
         autoHighlight
         disableListWrap
         disableClearable

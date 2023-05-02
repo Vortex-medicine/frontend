@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PhoneInput, { PhoneInputProps } from "react-phone-input-2";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
 import { v1 as uuid } from "uuid";
+import useMobileDetect from "@/hooks/use-mobile-detect";
 
 interface PhoneNumberInputProps {
   label?: string;
@@ -27,21 +28,7 @@ function PhoneNumberInput({
 
   const { id = uuid(), required = false } = inputProps || {};
 
-  useEffect(() => {
-    function handleResize() {
-      if (/Android|iPhone/i.test(navigator.userAgent)) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    }
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  useMobileDetect(setIsMobile);
 
   const phoneInputContainerClasses = classnames(styles.phoneInput, {
     [styles.phoneInputMobile]: isMobile,
