@@ -44,5 +44,6 @@ declare module "@mui/material/Badge" {
 declare module "@mui/material/CircularProgress" {
   interface CircularProgressPropsColorOverrides {
     green: true;
+    darkGrey: true;
   }
 }

@@ -1,24 +1,33 @@
 import React, { FocusEvent, useState } from "react";
-import { Autocomplete, Popper } from "@mui/material";
+import {
+  Autocomplete,
+  CircularProgress,
+  Popper,
+  TextField,
+} from "@mui/material";
 import { AutocompleteProps } from "@mui/material/Autocomplete/Autocomplete";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
 import { matchSorter } from "match-sorter";
 import { v1 as uuid } from "uuid";
 import useMobileDetect from "@/hooks/use-mobile-detect";
+import SearchSelectMenuList from "@/components/elements/SearchSelectMenuList";
 
 interface SearchSelectProps<
   T,
   Multiple extends boolean | undefined = false,
   DisableClearable extends boolean | undefined = false,
   FreeSolo extends boolean | undefined = false
-> extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
+> extends Omit<
+    AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
+    "renderInput"
+  > {
   label?: string;
   required?: boolean;
 }
 
 function SearchSelect<
-  T,
+  T extends { label: string },
   Multiple extends boolean | undefined = false,
   DisableClearable extends boolean | undefined = false,
   FreeSolo extends boolean | undefined = false
@@ -27,7 +36,7 @@ function SearchSelect<
 ): JSX.Element {
   const [isMobile, setIsMobile] = useState(false);
   const [focused, setFocused] = useState(false);
-  const { label, required, id = uuid(), onFocus, onBlur } = props;
+  const { label, required, id = uuid(), onFocus, onBlur, loading } = props;
 
   const classes = classnames(styles.searchSelect, props.className);
   const labelClasses = classnames(styles.label, {
@@ -68,11 +77,35 @@ function SearchSelect<
             {...props}
             className={classnames(styles.popper, props.className, {
               [styles.popperMobile]: isMobile,
+              [styles.popperLoading]: loading,
             })}
           />
         )}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <React.Fragment>
+                  {loading ? (
+                    <div className={styles.spinner}>
+                      <CircularProgress color="darkGrey" size={20} />
+                    </div>
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </React.Fragment>
+              ),
+            }}
+          />
+        )}
+        renderOption={(props, option, state) =>
+          [props, option, state.index] as React.ReactNode
+        }
         onFocus={handleInputOnFocus}
         onBlur={handleInputOnBlur}
+        ListboxComponent={SearchSelectMenuList}
+        getOptionLabel={(option) => (option as T).label}
       />
     </div>
   );

@@ -12,12 +12,10 @@ interface ResponseUkrainianCity {
 }
 
 async function getUkrainianCities(): Promise<UkrainianCity[]> {
-  const response = await axios.get<Response>(NOVAPOSHTA_API_URL, {
-    data: {
-      apiKey: process.env.NEXT_PUBLIC_NOVAPOSHTA_API_KEY,
-      modelName: "Address",
-      calledMethod: "getCities",
-    },
+  const response = await axios.post<Response>(NOVAPOSHTA_API_URL, {
+    apiKey: process.env.NEXT_PUBLIC_NOVAPOSHTA_API_KEY,
+    modelName: "Address",
+    calledMethod: "getCities",
   });
 
   return response.data.data.map((city) => ({

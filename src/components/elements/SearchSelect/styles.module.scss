@@ -6,6 +6,10 @@
   color: $black;
 }
 
+.spinner {
+  transform: translateY(5px);
+}
+
 .searchSelect :global(.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline) {
   border-color: $dark-grey;
 }
@@ -43,6 +47,12 @@
 .popperMobile :global(.MuiPaper-root) {
   border-right: 1px solid $grey;
 }
+
+.popperLoading :global(.MuiPaper-root) {
+  border-radius: 12px;
+  border-right: 1px solid $grey;
+}
+
 
 .popper[data-popper-placement="top"] {
   margin-bottom: 28px !important;
