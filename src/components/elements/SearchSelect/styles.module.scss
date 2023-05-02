@@ -1,3 +1,48 @@
-.selectWrapper {
-  width: 800px;
+@import "@/styles/colors.module";
+
+.searchSelect :global(.MuiInputBase-root) {
+  border-radius: 12px;
+  padding: 10px 50px 15px 25px !important;
+  color: $black;
+}
+
+.searchSelect :global(.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline) {
+  border-color: $dark-grey;
+}
+
+.searchSelect :global(.MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
+  border: 1px solid #1976d2;
+  box-shadow: 0 0 0 1px #1976d2;
+}
+
+
+.searchSelect :global(.MuiInputBase-root .MuiInputBase-input) {
+  padding: 0;
+  font-family: var(--noto-font);
+  font-size: 20px;
+}
+
+.searchSelect :global(.MuiInputBase-root .MuiAutocomplete-endAdornment) {
+  right: 20px;
+}
+
+.searchSelect :global(.MuiInputBase-root .MuiOutlinedInput-notchedOutline) {
+  transition: box-shadow .0s ease-in-out, border-color .2s ease-in-out;
+  border: 1px solid $grey;
+}
+
+.popper :global(.MuiPaper-root) {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-radius: 12px 0 0 12px;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  border-left: 1px solid $grey;
+}
+
+.popper[data-popper-placement="top"] {
+  margin-bottom: 10px !important;
+}
+
+.popper[data-popper-placement="bottom"] {
+  margin-top: 10px !important;
 }

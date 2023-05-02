@@ -1,5 +1,5 @@
 import React from "react";
-import { Autocomplete } from "@mui/material";
+import { Autocomplete, Popper } from "@mui/material";
 import { AutocompleteProps } from "@mui/material/Autocomplete/Autocomplete";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
@@ -24,6 +24,12 @@ function SearchSelect<
         }
         return matchSorter(options, inputValue, { keys: ["label"] });
       }}
+      PopperComponent={(props) => (
+        <Popper
+          {...props}
+          className={classnames(styles.popper, props.className)}
+        />
+      )}
     />
   );
 }

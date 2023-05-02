@@ -44,6 +44,7 @@ function NovaposhtaOptionFields() {
   return (
     <div className={styles.novaposhtaFieldsWrapper}>
       <SearchSelect
+        className={styles.citySearchSelect}
         autoHighlight
         disableListWrap
         disableClearable
@@ -65,6 +66,7 @@ function NovaposhtaOptionFields() {
         }}
       />
       <SearchSelect
+        className={styles.warehouseSearchSelect}
         autoHighlight
         disableListWrap
         disableClearable

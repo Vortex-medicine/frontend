@@ -16,12 +16,9 @@ div.phoneInput div:global(.special-label) {
   font-size: 20px;
   line-height: 29.5px;
   border-radius: 12px;
-  padding-left: 70px;
   border: 1px solid $grey;
-  padding-top: 10px;
-  padding-right: 25px;
-  padding-bottom: 15px;
-  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+  padding: 10px 25px 15px 70px;
+  transition: box-shadow .0s ease-in-out, border-color .2s ease-in-out;
 
   &:hover {
     border: 1px solid $dark-grey;
@@ -39,7 +36,7 @@ div.phoneInput div:global(.special-label) {
   padding-left: 15px;
   padding-bottom: 6.5px;
   font-size: 16px;
-  transition: all 0.2s;
+  transition: box-shadow .0s ease-in-out, border-color .2s ease-in-out;
 
   &:hover {
     border: 1px solid $dark-grey;
@@ -57,7 +54,7 @@ div.phoneInput :global(.selected-flag) {
 
 .phoneInput :global(.country-list) {
   border-radius: 12px 0 0 12px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
   border-left: 1px solid $grey;
@@ -93,6 +90,10 @@ div.phoneInput :global(.selected-flag) {
   left: 26px;
 }
 
+.phoneInput :global(.selected-flag .flag) {
+  margin-top: -13.5px;
+}
+
 .inputWrapper {
   display: flex;
   flex-direction: column;
@@ -105,7 +106,7 @@ div.phoneInput :global(.selected-flag) {
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 3px;
-  transition: color .2s ease-in-out;
+  transition: color .0s ease-in-out;
 
   &InputFocused {
     color: #1976d2;
