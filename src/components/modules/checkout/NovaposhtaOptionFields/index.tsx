@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { useCheckout } from "@/context/checkout/Context";
 import { CityId, NovaposhtaWarehouse, UkrainianCity } from "@/types/checkout";
 import SearchSelect from "@/components/elements/SearchSelect";
 import getWarehousesByCityId from "../../../../api/get-novaposhta-warehouses";
+import TextInput from "@/components/elements/TextInput";
+import { Backdrop, CircularProgress } from "@mui/material";
+import getUkrainianCities from "../../../../api/get-ukrainian-cities";
 
 interface UkrainianCityWithLabel extends UkrainianCity {
   label: string;
@@ -14,43 +16,81 @@ interface NovaposhtaWarehouseWithLabel extends NovaposhtaWarehouse {
 }
 
 function NovaposhtaOptionFields() {
-  const { ukrainianCities, defaultSelectedCity, defaultWarehouses } =
-    useCheckout();
+  const [defaultOptionsLoading, setDefaultOptionsLoading] = useState(true);
+  const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
+  const [cities, setCities] = useState<UkrainianCityWithLabel[]>([]);
 
-  const labeledUkrainianCities = ukrainianCities.map((city) => ({
-    ...city,
-    label: city.name,
-  }));
+  useEffect(() => {
+    async function fetchDefaultOptions() {
+      let ukrainianCities: UkrainianCity[];
 
-  const labeledDefaultSelectedCity = {
-    ...defaultSelectedCity,
-    label: defaultSelectedCity.name,
-  };
+      try {
+        ukrainianCities = await getUkrainianCities();
+      } catch (error) {
+        ukrainianCities = [];
+      }
 
-  const labeledDefaultWarehouses = defaultWarehouses.map((warehouse) => ({
-    ...warehouse,
-    label: warehouse.name,
-  }));
+      if (ukrainianCities.length > 0) {
+        let defaultSelectedCity: number | null = ukrainianCities.findIndex(
+          (city) => city.name === "Київ"
+        );
+
+        if (defaultSelectedCity === -1) {
+          console.log("Default city not found");
+          defaultSelectedCity = null;
+        }
+
+        let defaultWarehouses: NovaposhtaWarehouse[];
+
+        if (!defaultSelectedCity) {
+          defaultWarehouses = [];
+        } else {
+          try {
+            defaultWarehouses = await getWarehousesByCityId(
+              ukrainianCities[defaultSelectedCity].id
+            );
+          } catch (error) {
+            setWarehousesNotAvailable(true);
+            defaultWarehouses = [];
+          }
+        }
+
+        const labeledUkrainianCities = ukrainianCities.map((city) => ({
+          ...city,
+          label: city.name,
+        }));
+
+        const labeledDefaultWarehouses = defaultWarehouses.map((warehouse) => ({
+          ...warehouse,
+          label: warehouse.name,
+        }));
+
+        setCities(labeledUkrainianCities);
+        setSelectedCity(defaultSelectedCity);
+        setWarehouses(labeledDefaultWarehouses);
+      }
+
+      setDefaultOptionsLoading(false);
+    }
+
+    fetchDefaultOptions();
+  }, []);
 
   const [warehouseCache, setWarehouseCache] = useState<{
     [key: CityId]: NovaposhtaWarehouseWithLabel[];
-  }>({
-    [labeledDefaultSelectedCity.id]: labeledDefaultWarehouses,
-  });
+  }>({});
 
-  const [selectedCity, setSelectedCity] = useState<
-    UkrainianCityWithLabel | undefined
-  >(labeledDefaultSelectedCity);
+  const [selectedCity, setSelectedCity] = useState<number | null>(null);
 
   const [warehouses, setWarehouses] = useState<NovaposhtaWarehouseWithLabel[]>(
-    labeledDefaultWarehouses
+    []
   );
 
-  const [selectedWarehouse, setSelectedWarehouse] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(0);
+  const [warehousesLoading, setWarehousesLoading] = useState(false);
 
   async function handleCityChange(newCity: UkrainianCityWithLabel) {
-    setSelectedCity(newCity);
+    setSelectedCity(cities.findIndex((city) => city.id === newCity.id));
 
     if (warehouseCache[newCity.id]) {
       console.log(`warehouses for ${newCity.name} already fetched`);
@@ -60,9 +100,16 @@ function NovaposhtaOptionFields() {
     }
 
     setWarehouses([]);
-    setLoading(true);
+    setWarehousesLoading(true);
 
-    const newWarehouses = await getWarehousesByCityId(newCity.id);
+    let newWarehouses;
+    try {
+      newWarehouses = await getWarehousesByCityId(newCity.id);
+    } catch (error) {
+      setWarehousesNotAvailable(true);
+      return;
+    }
+
     const newLabeledWarehouses = newWarehouses.map((warehouse) => ({
       ...warehouse,
       label: warehouse.name,
@@ -79,83 +126,116 @@ function NovaposhtaOptionFields() {
 
     setWarehouses(newLabeledWarehouses);
     setSelectedWarehouse(0);
-    setLoading(false);
+    setWarehousesLoading(false);
   }
 
   function handleWarehouseChange(newWarehouse: NovaposhtaWarehouseWithLabel) {
-    let index = warehouses.findIndex(
-      (warehouse) => warehouse.id === newWarehouse.id
+    setSelectedWarehouse(
+      warehouses.findIndex((warehouse) => warehouse.id === newWarehouse.id)
     );
-
-    if (index === -1) {
-      console.log("warehouse not found");
-      index = 0;
-    }
-
-    setSelectedWarehouse(index);
   }
 
   let warehousesNotFound = false;
-  if (!loading && warehouses.length === 0) {
+  if (
+    !warehousesLoading &&
+    warehouses.length === 0 &&
+    !warehousesNotAvailable &&
+    !defaultOptionsLoading
+  ) {
     warehousesNotFound = true;
   }
 
   return (
     <div className={styles.novaposhtaFieldsWrapper}>
-      <SearchSelect
-        // open
-        label={"Ваш город"}
-        required
-        className={styles.citySearchSelect}
-        openOnFocus
-        autoHighlight
-        disableListWrap
-        disableClearable
-        options={labeledUkrainianCities}
-        ListboxProps={
-          {
-            selectedValue: selectedCity?.label,
-          } as never
-        }
-        value={selectedCity}
-        onChange={async (event, newValue) => {
-          await handleCityChange(newValue);
-        }}
-      />
-      {warehousesNotFound ? (
-        <p className={styles.noWarehousesText}>
-          <strong>
-            На данный момент в вашем городе нет ни одного доступного отделения.{" "}
-          </strong>
-          Выберите курьерскую доставку, и мы постараемся найти оптимальный
-          вариант, как вам получить заказ. Вы также можете выбрать другой город,
-          если сможете забрать там посылку.
-        </p>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={defaultOptionsLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      {defaultOptionsLoading || cities.length === 0 ? (
+        <>
+          <TextInput
+            className={styles.cityTextInput}
+            label={"Ваш город"}
+            inputProps={{ required: true }}
+          />
+          <TextInput
+            className={styles.warehouseTextInput}
+            label={"Номер отделения или почтомата"}
+            inputProps={{ required: true }}
+          />
+        </>
       ) : (
-        <SearchSelect
-          label={"Отделение"}
-          loading={loading}
-          required
-          className={styles.warehouseSearchSelect}
-          openOnFocus
-          autoHighlight
-          disableListWrap
-          disableClearable
-          options={warehouses}
-          ListboxProps={
-            {
-              selectedValue: warehouses[selectedWarehouse]?.label,
-            } as never
-          }
-          value={
-            loading
-              ? (null as unknown as NovaposhtaWarehouseWithLabel)
-              : warehouses[selectedWarehouse]
-          }
-          onChange={(event, newValue) => {
-            handleWarehouseChange(newValue);
-          }}
-        />
+        <>
+          <SearchSelect
+            // open
+            label={"Ваш город"}
+            required
+            className={styles.citySearchSelect}
+            openOnFocus
+            autoHighlight
+            disableListWrap
+            disableClearable
+            options={cities}
+            ListboxProps={
+              {
+                selectedValue: cities[selectedCity ?? 0]?.label,
+              } as never
+            }
+            value={cities[selectedCity ?? 0]}
+            onChange={async (event, newValue) => {
+              await handleCityChange(newValue);
+            }}
+          />
+          {warehousesNotFound ? (
+            <p className={styles.noWarehousesText}>
+              <strong>
+                На данный момент в вашем городе нет ни одного доступного
+                отделения.{" "}
+              </strong>
+              Выберите курьерскую доставку, и мы постараемся найти оптимальный
+              вариант, как вам получить заказ. Вы также можете выбрать другой
+              город, если сможете забрать там посылку.
+            </p>
+          ) : (
+            <>
+              {warehousesNotAvailable ? (
+                <TextInput
+                  className={styles.warehouseTextInput}
+                  label={"Номер отделения или почтомата"}
+                  inputProps={{ required: true }}
+                />
+              ) : (
+                <SearchSelect
+                  // open
+                  label={"Отделение или почтомат"}
+                  loading={warehousesLoading}
+                  required
+                  className={styles.warehouseSearchSelect}
+                  openOnFocus
+                  autoHighlight
+                  disableListWrap
+                  disableClearable
+                  options={warehouses}
+                  ListboxProps={
+                    {
+                      selectedValue: warehouses[selectedWarehouse]?.label,
+                    } as never
+                  }
+                  value={
+                    warehousesLoading
+                      ? (null as unknown as NovaposhtaWarehouseWithLabel)
+                      : warehouses[selectedWarehouse]
+                  }
+                  onChange={(event, newValue) => {
+                    handleWarehouseChange(newValue);
+                  }}
+                />
+              )}
+            </>
+          )}
+        </>
       )}
     </div>
   );

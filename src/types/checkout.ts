@@ -16,6 +16,6 @@ export interface NovaposhtaWarehouse {
 
 export interface CheckoutProps {
   ukrainianCities: UkrainianCity[];
-  defaultSelectedCity: UkrainianCity;
+  defaultSelectedCity: UkrainianCity | null;
   defaultWarehouses: NovaposhtaWarehouse[];
 }

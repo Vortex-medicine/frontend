@@ -10,7 +10,7 @@
   padding: 10px 25px 14px;
   border-radius: 12px;
   border: 1px solid $grey;
-  transition: box-shadow .0s ease-in-out, border-color .2s ease-in-out;
+  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
   outline: none;
   font-size: 20px;
   line-height: 30px;
@@ -31,7 +31,7 @@
   font-size: 16px;
   line-height: 26px;
   margin-bottom: 3px;
-  transition: color .0s ease-in-out;
+  transition: color .2s ease-in-out;
 
   &InputFocused {
     color: #1976d2;

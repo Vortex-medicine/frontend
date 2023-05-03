@@ -2,6 +2,7 @@ import React, { FocusEvent, useState } from "react";
 import {
   Autocomplete,
   CircularProgress,
+  Fade,
   Popper,
   TextField,
 } from "@mui/material";
@@ -37,6 +38,8 @@ function SearchSelect<
   const [isMobile, setIsMobile] = useState(false);
   const [focused, setFocused] = useState(false);
   const { label, required, id = uuid(), onFocus, onBlur, loading } = props;
+  const [popperOpen, setPopperOpen] = useState(false);
+  const [noScrolling, setNoScrolling] = useState(false);
 
   const classes = classnames(styles.searchSelect, props.className);
   const labelClasses = classnames(styles.label, {
@@ -66,6 +69,7 @@ function SearchSelect<
       <Autocomplete
         {...{ ...props, id }}
         className={classes}
+        onOpen={() => setPopperOpen(true)}
         filterOptions={(options, { inputValue }) => {
           if (inputValue === "") {
             return options;
@@ -75,11 +79,25 @@ function SearchSelect<
         PopperComponent={(props) => (
           <Popper
             {...props}
+            transition
             className={classnames(styles.popper, props.className, {
               [styles.popperMobile]: isMobile,
               [styles.popperLoading]: loading,
+              [styles.popperOpen]: popperOpen,
+              [styles.popperNoScrolling]: noScrolling,
             })}
-          />
+          >
+            {({ TransitionProps }) => {
+              if (React.isValidElement(props.children)) {
+                return (
+                  <Fade {...TransitionProps} timeout={300}>
+                    {props.children}
+                  </Fade>
+                );
+              }
+              return null;
+            }}
+          </Popper>
         )}
         renderInput={(params) => (
           <TextField
@@ -105,6 +123,12 @@ function SearchSelect<
         onFocus={handleInputOnFocus}
         onBlur={handleInputOnBlur}
         ListboxComponent={SearchSelectMenuList}
+        ListboxProps={
+          {
+            ...props.ListboxProps,
+            setNoScrolling: setNoScrolling,
+          } as never
+        }
         getOptionLabel={(option) => (option as T).label}
       />
     </div>
