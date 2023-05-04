@@ -6,7 +6,7 @@ import countries from "@/constants/countries";
 import { matchSorter } from "match-sorter";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
-import { Fade, Popper } from "@mui/material";
+import { Popper } from "@mui/material";
 import useMobileDetect from "@/hooks/use-mobile-detect";
 import { SEARCH_SELECT_POPPER_MAX_HEIGHT } from "@/constants/common";
 
@@ -39,21 +39,16 @@ export default function CountrySelect() {
   useMobileDetect(setIsMobile);
 
   function handleListChildrenChange() {
-    console.log("popperRef", popperRef);
     if (popperRef.current) {
       const listElem = popperRef.current.querySelector(
         ".MuiAutocomplete-listbox"
       );
-      console.log("listElem", listElem);
       if (listElem) {
         let totalHeight = 0;
         for (let i = 0; i < listElem.children.length; i++) {
           totalHeight += listElem.children[i].clientHeight;
         }
-        console.log("children length", listElem.children.length);
-        console.log("totalHeight", totalHeight);
         if (totalHeight <= SEARCH_SELECT_POPPER_MAX_HEIGHT) {
-          console.log("setNoScrolling(true)");
           setNoScrolling(true);
         } else {
           setNoScrolling(false);
@@ -66,6 +61,7 @@ export default function CountrySelect() {
 
   return (
     <Autocomplete
+      // open
       className={styles.countrySelect}
       options={countries}
       autoHighlight
@@ -73,6 +69,7 @@ export default function CountrySelect() {
       disableClearable
       getOptionLabel={(option) => option.label}
       filterOptions={(options, { inputValue }) => {
+        console.log(inputValue);
         if (inputValue === "") {
           return options;
         }
@@ -102,23 +99,11 @@ export default function CountrySelect() {
         <Popper
           {...props}
           ref={popperRef}
-          transition
           className={classnames(styles.popper, props.className, {
             [styles.popperMobile]: isMobile,
             [styles.popperNoScrolling]: noScrolling,
           })}
-        >
-          {({ TransitionProps }) => {
-            if (React.isValidElement(props.children)) {
-              return (
-                <Fade {...TransitionProps} timeout={300}>
-                  {props.children}
-                </Fade>
-              );
-            }
-            return null;
-          }}
-        </Popper>
+        />
       )}
     />
   );

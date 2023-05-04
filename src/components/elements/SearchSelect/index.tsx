@@ -90,7 +90,7 @@ function SearchSelect<
             {({ TransitionProps }) => {
               if (React.isValidElement(props.children)) {
                 return (
-                  <Fade {...TransitionProps} timeout={300}>
+                  <Fade {...TransitionProps} timeout={1}>
                     {props.children}
                   </Fade>
                 );
