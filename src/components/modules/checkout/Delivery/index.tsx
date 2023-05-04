@@ -2,6 +2,8 @@ import React, { ChangeEvent, useState } from "react";
 import styles from "./styles.module.scss";
 import Radio from "@/components/elements/Radio";
 import NovaposhtaOptionFields from "../NovaposhtaOptionFields";
+import CourierOptionFields from "@/components/modules/checkout/CourierOptionFields";
+import WorldwideOptionFields from "@/components/modules/checkout/WorldwideOptionFields";
 
 function Delivery() {
   const [selectedDeliveryOption, setSelectedDeliveryOption] =
@@ -28,27 +30,33 @@ function Delivery() {
           />
           <NovaposhtaOptionFields />
         </div>
-        <Radio
-          className={styles.radio}
-          label="Курьер на ваш адрес"
-          inputProps={{
-            checked: selectedDeliveryOption === "courier",
-            value: "courier",
-            onChange: handleRadioOnChange,
-          }}
-        />
+        <div className={styles.courierOptionWrapper}>
+          <Radio
+            className={styles.radio}
+            label="Курьер на ваш адрес"
+            inputProps={{
+              checked: selectedDeliveryOption === "courier",
+              value: "courier",
+              onChange: handleRadioOnChange,
+            }}
+          />
+          <CourierOptionFields />
+        </div>
       </div>
       <div className={styles.worldwideSubgroup}>
         <p className={styles.radioSubgroupLabel}>или</p>
-        <Radio
-          className={styles.radio}
-          label="По миру"
-          inputProps={{
-            checked: selectedDeliveryOption === "worldwide",
-            value: "worldwide",
-            onChange: handleRadioOnChange,
-          }}
-        />
+        <div className={styles.worldwideOptionWrapper}>
+          <Radio
+            className={styles.radio}
+            label="По миру"
+            inputProps={{
+              checked: selectedDeliveryOption === "worldwide",
+              value: "worldwide",
+              onChange: handleRadioOnChange,
+            }}
+          />
+          <WorldwideOptionFields />
+        </div>
       </div>
     </section>
   );

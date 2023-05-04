@@ -157,7 +157,7 @@ function NovaposhtaOptionFields() {
         <>
           <TextInput
             className={styles.cityTextInput}
-            label={"Ваш город"}
+            label={"Город"}
             inputProps={{ required: true }}
           />
           <TextInput
@@ -169,8 +169,7 @@ function NovaposhtaOptionFields() {
       ) : (
         <>
           <SearchSelect
-            // open
-            label={"Ваш город"}
+            label={"Город"}
             required
             className={styles.citySearchSelect}
             openOnFocus

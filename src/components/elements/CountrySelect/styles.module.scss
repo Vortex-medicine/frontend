@@ -1,0 +1,105 @@
+@import "@/styles/colors.module";
+
+.countrySelect {
+  max-width: 300px;
+}
+
+.countrySelect :global(.MuiInputBase-root) {
+  border-radius: 12px;
+  padding: 10px 50px 14px 25px !important;
+  color: $black;
+}
+
+.countrySelect :global(.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline) {
+  border-color: $dark-grey;
+}
+
+.countrySelect :global(.MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
+  border: 1px solid #1976d2;
+  box-shadow: 0 0 0 1px #1976d2;
+}
+
+
+.countrySelect :global(.MuiInputBase-root .MuiInputBase-input) {
+  padding: 0;
+  font-family: var(--noto-font);
+  font-size: 20px;
+  line-height: 30;
+}
+
+.countrySelect :global(.MuiInputBase-root .MuiButtonBase-root) {
+  transition: transform .3s ease-in-out;
+}
+
+.countrySelect :global(.MuiInputBase-root.Mui-focused .MuiButtonBase-root) {
+  transform: rotate(-180deg);
+}
+
+.countrySelect :global(.MuiInputBase-root .MuiAutocomplete-endAdornment) {
+  right: 20px;
+}
+
+.countrySelect :global(.MuiInputBase-root .MuiOutlinedInput-notchedOutline) {
+  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+  border: 1px solid $grey;
+}
+
+.popper :global(.MuiPaper-root) {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-radius: 12px 0 0 12px;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  border-left: 1px solid $grey;
+}
+
+.popperMobile :global(.MuiPaper-root) {
+  border-right: 1px solid $grey;
+}
+
+.popperNoScrolling :global(.MuiPaper-root) {
+  border-radius: 12px;
+  border-right: 1px solid $grey;
+}
+
+.popper[data-popper-placement="top"] {
+  margin-bottom: 28px !important;
+}
+
+.popper[data-popper-placement="bottom"] {
+  margin-top: 10px !important;
+}
+
+.popper :global(.MuiAutocomplete-listbox) {
+  padding: 0;
+  max-height: 288px;
+}
+
+.label {
+  align-self: flex-start;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 3px;
+  transition: color .2s ease-in-out;
+
+  &InputFocused {
+    color: #1976d2;
+  }
+}
+
+.starRequired {
+  color: $red;
+}
+
+.popper .countryOption {
+  padding: 10px 20px 12px;
+  display: flex;
+  flex-direction: row;
+  font-family: var(--noto-font);
+}
+
+.countryOptionLabel {
+  font-size: 16px;
+  line-height: 24px;
+  margin-left: 12px;
+}
