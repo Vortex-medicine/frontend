@@ -61,7 +61,6 @@ export default function CountrySelect() {
 
   return (
     <Autocomplete
-      // open
       className={styles.countrySelect}
       options={countries}
       autoHighlight
@@ -78,10 +77,12 @@ export default function CountrySelect() {
         setAmountOfListChildren(result.length);
         return result;
       }}
-      renderOption={(props, option) => (
+      renderOption={(props, option, state) => (
         <li
           {...props}
-          className={classnames(props.className, styles.countryOption)}
+          className={classnames(props.className, styles.countryOption, {
+            ["Mui-focused"]: state.index === 0,
+          })}
         >
           <img
             className={styles.countryOptionFlag}

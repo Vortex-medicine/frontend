@@ -90,6 +90,10 @@ function NovaposhtaOptionFields() {
   const [warehousesLoading, setWarehousesLoading] = useState(false);
 
   async function handleCityChange(newCity: UkrainianCityWithLabel) {
+    if (!newCity) {
+      return;
+    }
+
     setSelectedCity(cities.findIndex((city) => city.id === newCity.id));
 
     if (warehouseCache[newCity.id]) {
@@ -177,11 +181,6 @@ function NovaposhtaOptionFields() {
             disableListWrap
             disableClearable
             options={cities}
-            ListboxProps={
-              {
-                selectedValue: cities[selectedCity ?? 0]?.label,
-              } as never
-            }
             value={cities[selectedCity ?? 0]}
             onChange={async (event, newValue) => {
               await handleCityChange(newValue);
@@ -207,7 +206,6 @@ function NovaposhtaOptionFields() {
                 />
               ) : (
                 <SearchSelect
-                  // open
                   label={"Отделение или почтомат"}
                   loading={warehousesLoading}
                   required
@@ -217,11 +215,6 @@ function NovaposhtaOptionFields() {
                   disableListWrap
                   disableClearable
                   options={warehouses}
-                  ListboxProps={
-                    {
-                      selectedValue: warehouses[selectedWarehouse]?.label,
-                    } as never
-                  }
                   value={
                     warehousesLoading
                       ? (null as unknown as NovaposhtaWarehouseWithLabel)
