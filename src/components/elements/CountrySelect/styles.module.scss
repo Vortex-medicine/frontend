@@ -1,13 +1,14 @@
 @import "@/styles/colors.module";
 
 .countrySelect {
-  max-width: 300px;
+  max-width: 400px;
 }
 
 .countrySelect :global(.MuiInputBase-root) {
   border-radius: 12px;
   padding: 10px 50px 14px 25px !important;
   color: $black;
+  height: 56px;
 }
 
 .countrySelect :global(.MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline) {
@@ -24,7 +25,7 @@
   padding: 0;
   font-family: var(--noto-font);
   font-size: 20px;
-  line-height: 30;
+  line-height: 30px;
 }
 
 .countrySelect :global(.MuiInputBase-root .MuiButtonBase-root) {
@@ -112,4 +113,8 @@
   background-color: rgba(0, 0, 0, 0.04);
 }
 
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+}
 

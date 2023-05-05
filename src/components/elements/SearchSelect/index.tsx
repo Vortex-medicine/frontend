@@ -24,6 +24,7 @@ interface SearchSelectProps<
   > {
   label?: string;
   required?: boolean;
+  id?: string;
 }
 
 function SearchSelect<
@@ -58,7 +59,7 @@ function SearchSelect<
   useMobileDetect(setIsMobile);
 
   return (
-    <div>
+    <div className={styles.selectWrapper}>
       {label && (
         <label className={labelClasses} htmlFor={id}>
           {label}

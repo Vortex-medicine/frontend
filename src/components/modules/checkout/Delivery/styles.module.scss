@@ -1,11 +1,15 @@
 @import "@/styles/colors.module";
+@import "@/styles/viewports";
 
 .deliverySection {
   margin-bottom: 80px;
 }
 
-.radio:not(:last-of-type) {
-  margin-bottom: 10px;
+.radioWrapper {
+  display: inline-block;
+  transform: translateY(-16px) translateX(-5px);
+  background-color: #fff;
+  padding: 0 7px;
 }
 
 .radioSubgroupLabel {
@@ -18,5 +22,44 @@
 }
 
 .ukraineSubgroup {
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
+}
+
+.ukraineSubgroupLabel {
+  margin-bottom: 25px;
+}
+
+.worldwideSubgroupLabel {
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+
+.optionWrapper {
+  border: 1px solid transparent;
+  border-radius: 30px;
+  position: relative;
+  margin-bottom: 5px;
+  max-width: 750px;
+  transition: all .3s ease-in-out;
+  padding: 0 25px;
+  @include for-size(tablet) {
+    padding: 0 50px;
+  }
+
+  &Opened {
+    border-color: #1976d2;
+    padding: 0 25px 45px;
+    margin-bottom: 30px;
+
+    @include for-size(tablet) {
+      padding: 0 50px 40px;
+    }
+  }
+
+}
+
+.optionContentWrapper {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  padding: 2px;
 }

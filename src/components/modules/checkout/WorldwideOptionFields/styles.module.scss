@@ -1,0 +1,60 @@
+
+.countrySelect {
+  grid-area: o;
+
+  @media screen and (min-width: 800px) {
+    margin-right: 20px;
+    max-width: none;
+  }
+}
+
+.cityInput {
+  grid-area: c;
+
+  @media screen and (min-width: 800px) {
+    max-width: none;
+  }
+}
+
+.addressInput {
+  grid-area: a;
+
+  @media screen and (min-width: 800px) {
+    margin-right: 20px;
+    max-width: none;
+    margin-top: 20px;
+  }
+}
+
+.zipInput {
+  grid-area: z;
+  max-width: 170px;
+
+  @media screen and (min-width: 800px) {
+    max-width: none;
+    margin-top: 20px;
+  }
+}
+
+.worldwideOptionFieldsWrapper {
+  max-width: 750px;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr) auto;
+
+  grid-template-areas:
+    "o"
+    "c"
+    "a"
+    "z";
+
+  @media screen and (min-width: 800px) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(2, auto);
+
+    grid-template-areas:
+      "o o o o o o c c c c c c"
+      "a a a a a a a a a z z z";
+  }
+}
