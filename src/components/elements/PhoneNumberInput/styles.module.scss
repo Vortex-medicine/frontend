@@ -84,6 +84,10 @@ div.phoneInput :global(.selected-flag) {
   &:last-child {
     padding-bottom: 18px;
   }
+
+  &[aria-selected="true"] {
+    background-color: rgba(25, 118, 210, 0.12) !important;
+  }
 }
 
 .phoneInput :global(.country-list .flag) {

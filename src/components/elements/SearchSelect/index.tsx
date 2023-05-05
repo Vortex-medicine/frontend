@@ -80,7 +80,6 @@ function SearchSelect<
         PopperComponent={(props) => (
           <Popper
             {...props}
-            // transition
             className={classnames(styles.popper, props.className, {
               [styles.popperMobile]: isMobile,
               [styles.popperLoading]: loading,

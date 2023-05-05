@@ -15,6 +15,7 @@ import classnames from "classnames";
 import styles from "./styles.module.scss";
 import { SEARCH_SELECT_POPPER_MAX_HEIGHT } from "@/constants/common";
 import colors from "@/styles/colors.module.scss";
+import useMobileDetect from "@/hooks/use-mobile-detect";
 
 const OuterElementContext = createContext({});
 
@@ -33,6 +34,9 @@ const SearchSelectMenuList = forwardRef<HTMLDivElement, MenuListProps>(
     const rowHeights = useRef<Record<number, number>>({});
     const [popperHeight, setPopperHeight] = useState(1);
     const virtualListWrapperRef = useRef<HTMLDivElement | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useMobileDetect(setIsMobile);
 
     const itemData: React.ReactElement[] = [];
     (children as React.ReactElement[]).forEach(
@@ -99,7 +103,7 @@ const SearchSelectMenuList = forwardRef<HTMLDivElement, MenuListProps>(
       };
 
       const itemClassName = classnames(styles.menuItem, dataSet[0].className, {
-        "Mui-focused": index === 0,
+        "Mui-focused": index === 0 && !isMobile,
       });
 
       return (

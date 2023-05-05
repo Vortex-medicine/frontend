@@ -74,6 +74,10 @@
   max-height: 288px;
 }
 
+.popper :global(.MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected="true"].Mui-focused) {
+  background-color: rgba(25, 118, 210, 0.12) !important;
+}
+
 .label {
   align-self: flex-start;
   color: rgba(0, 0, 0, 0.6);
