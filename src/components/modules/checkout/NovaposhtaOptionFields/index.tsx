@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { CityId, NovaposhtaWarehouse, UkrainianCity } from "@/types/checkout";
 import SearchSelect from "@/components/elements/SearchSelect";
@@ -15,9 +15,20 @@ interface NovaposhtaWarehouseWithLabel extends NovaposhtaWarehouse {
   label: string;
 }
 
-function NovaposhtaOptionFields() {
+interface NovaposhtaOptionFieldsProps {
+  warehousesNotFound: boolean;
+  setWarehousesNotFound: Dispatch<SetStateAction<boolean>>;
+  setWarehousesNotAvailable: Dispatch<SetStateAction<boolean>>;
+  warehousesNotAvailable: boolean;
+}
+
+function NovaposhtaOptionFields({
+  setWarehousesNotFound,
+  warehousesNotFound,
+  setWarehousesNotAvailable,
+  warehousesNotAvailable,
+}: NovaposhtaOptionFieldsProps) {
   const [defaultOptionsLoading, setDefaultOptionsLoading] = useState(true);
-  const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
   const [cities, setCities] = useState<UkrainianCityWithLabel[]>([]);
 
   useEffect(() => {
@@ -139,14 +150,15 @@ function NovaposhtaOptionFields() {
     );
   }
 
-  let warehousesNotFound = false;
   if (
     !warehousesLoading &&
     warehouses.length === 0 &&
     !warehousesNotAvailable &&
     !defaultOptionsLoading
   ) {
-    warehousesNotFound = true;
+    setWarehousesNotFound(true);
+  } else {
+    setWarehousesNotFound(false);
   }
 
   return (

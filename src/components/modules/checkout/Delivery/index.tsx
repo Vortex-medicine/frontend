@@ -28,6 +28,9 @@ function Delivery() {
   const worldwideRadioIconElem = useRef(null);
   const worldwideRadioLabelElem = useRef(null);
 
+  const [warehousesNotFound, setWarehousesNotFound] = useState(false);
+  const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
+
   useEffect(() => {
     function resizeSingleRadio(
       wrapperElem: HTMLLabelElement,
@@ -139,6 +142,8 @@ function Delivery() {
     novaposhtaOptionContentWrapperElem,
     courierOptionContentWrapperElem,
     worldwideOptionContentWrapperElem,
+    warehousesNotFound,
+    warehousesNotAvailable,
   ]);
 
   return (
@@ -184,7 +189,12 @@ function Delivery() {
               maxHeight: maxHeights.novaposhta,
             }}
           >
-            <NovaposhtaOptionFields />
+            <NovaposhtaOptionFields
+              setWarehousesNotFound={setWarehousesNotFound}
+              setWarehousesNotAvailable={setWarehousesNotAvailable}
+              warehousesNotFound={warehousesNotFound}
+              warehousesNotAvailable={warehousesNotAvailable}
+            />
           </div>
         </div>
         <div
