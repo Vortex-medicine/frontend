@@ -28,9 +28,7 @@ function NavbarOuterButtons({
     [styles.cartIconCartOpened]: cartIsOpened,
   });
 
-  const navbarOuterIcons = useNavbarOuterIcons();
-
-  const { hamburgerElement, cartElement } = navbarOuterIcons;
+  const { hamburgerElement, cartElement } = useNavbarOuterIcons();
 
   return (
     <div className={styles.outerButtons}>

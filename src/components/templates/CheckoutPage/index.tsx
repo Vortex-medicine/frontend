@@ -1,11 +1,23 @@
 import Container from "@/components/elements/Container";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import ContactInfo from "@/components/modules/checkout/ContactInfo";
 import Delivery from "@/components/modules/checkout/Delivery";
+import ProductsInCart from "@/components/modules/checkout/ProductsInCart";
+import { useCart } from "@/context/cart/Context";
+import { useRouter } from "next/router";
 
 function CheckoutPage() {
+  const { items } = useCart();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (items.length === 0) {
+      router.push("/");
+    }
+  }, [items, router]);
+
   const methods = useForm();
 
   return (
@@ -14,6 +26,7 @@ function CheckoutPage() {
         <h1 className={styles.heading}>Оформление заказа</h1>
         <ContactInfo />
         <Delivery />
+        <ProductsInCart />
       </Container>
     </FormProvider>
   );

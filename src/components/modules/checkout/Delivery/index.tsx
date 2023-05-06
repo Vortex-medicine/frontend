@@ -43,12 +43,6 @@ function Delivery() {
       const iconElemWidth = iconElem.getBoundingClientRect().width;
       const labelElemWidth = labelElem.getBoundingClientRect().width;
 
-      console.log("iconMargin", iconMargin);
-      console.log("iconElemWidth", iconElemWidth);
-      console.log("labelElemWidth", labelElemWidth);
-
-      console.log("labelElem", labelElem);
-
       const radioContentWidth = iconMargin + iconElemWidth + labelElemWidth;
       wrapperElem.style.width = `${radioContentWidth}px`;
     }

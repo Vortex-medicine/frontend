@@ -27,7 +27,7 @@ function CartItem({
   const product = getProductById(productId);
 
   if (!product) {
-    throw new Error("Product not found");
+    throw new Error("product not found");
   }
 
   useEffect(() => {

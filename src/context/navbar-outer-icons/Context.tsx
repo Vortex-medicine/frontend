@@ -3,6 +3,7 @@ import { RefObject, createContext, useContext, useRef } from "react";
 interface NavbarOuterIconsRefElements {
   hamburgerElement: RefObject<HTMLDivElement>;
   cartElement: RefObject<SVGSVGElement>;
+  logoElement: RefObject<HTMLDivElement>;
 }
 
 const NavbarOuterIconsContext =
@@ -12,12 +13,13 @@ interface NavbarOuterIconsContext {
   children: React.ReactNode;
 }
 
-export function HamburgerElementProvider({
+export function NavbarOuterIconsProvider({
   children,
 }: NavbarOuterIconsContext) {
   const refElements = {
     hamburgerElement: useRef<HTMLDivElement>(null),
     cartElement: useRef<SVGSVGElement>(null),
+    logoElement: useRef<HTMLDivElement>(null),
   };
 
   return (

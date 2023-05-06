@@ -19,11 +19,17 @@ function SmallScreenNavbarOverlay({
   const overlayElement = useRef<HTMLDivElement>(null);
   const navbarOuterIcons = useNavbarOuterIcons();
 
-  const { hamburgerElement, cartElement } = navbarOuterIcons;
+  const { hamburgerElement, cartElement, logoElement } = navbarOuterIcons;
   const { modalElement: cartModalElement } = useCart();
 
   useOutsideClick(
-    [cartModalElement, overlayElement, hamburgerElement, cartElement],
+    [
+      cartModalElement,
+      overlayElement,
+      hamburgerElement,
+      cartElement,
+      logoElement,
+    ],
     () => setMenuIsOpened(false)
   );
 

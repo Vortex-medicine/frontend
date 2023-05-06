@@ -8,6 +8,7 @@ function useOutsideClick(
     function handleClick(e: MouseEvent) {
       let targetClickIsOutsideRefs = true;
       for (const ref of refs) {
+        console.log(ref);
         if (ref && ref.current && ref.current.contains(e.target as Node)) {
           targetClickIsOutsideRefs = false;
         }

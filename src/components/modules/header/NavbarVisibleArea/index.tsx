@@ -6,6 +6,7 @@ import NavbarLogo from "@/components/elements/header/NavbarLogo";
 import BigScreenNavbarPages from "@/components/modules/header/BigScreenNavbarPages";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useNavbarOuterIcons } from "@/context/navbar-outer-icons/Context";
 
 interface NavbarVisibleAreaProps {
   menuIsOpened: boolean;
@@ -17,12 +18,13 @@ function NavbarVisibleArea({
   setMenuIsOpened,
 }: NavbarVisibleAreaProps): JSX.Element {
   const router = useRouter();
+  const { logoElement } = useNavbarOuterIcons();
 
   const mainPageIsActive = router.pathname === "/";
 
   return (
     <Container className={styles.navbarVisibleArea}>
-      <div className={styles.bigScreenLogoPagesWrapper}>
+      <div ref={logoElement} className={styles.bigScreenLogoPagesWrapper}>
         {mainPageIsActive ? (
           <NavbarLogo menuIsOpened={menuIsOpened} />
         ) : (

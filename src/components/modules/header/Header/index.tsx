@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import { useEffect, useRef, useState } from "react";
 import NavbarOverlay from "@/components/modules/header/SmallScreenNavbarOverlay";
 import NavbarVisibleArea from "@/components/modules/header/NavbarVisibleArea";
-import { HamburgerElementProvider } from "@/context/navbar-outer-icons/Context";
+import { NavbarOuterIconsProvider } from "@/context/navbar-outer-icons/Context";
 import classNames from "classnames";
 
 function Header(): JSX.Element {
@@ -37,7 +37,7 @@ function Header(): JSX.Element {
   return (
     <header ref={headerElement} className={headerClasses}>
       <nav className={styles.navbar}>
-        <HamburgerElementProvider>
+        <NavbarOuterIconsProvider>
           <NavbarVisibleArea
             menuIsOpened={menuIsOpened}
             setMenuIsOpened={setMenuIsOpened}
@@ -46,7 +46,7 @@ function Header(): JSX.Element {
             menuIsOpened={menuIsOpened}
             setMenuIsOpened={setMenuIsOpened}
           />
-        </HamburgerElementProvider>
+        </NavbarOuterIconsProvider>
       </nav>
     </header>
   );
