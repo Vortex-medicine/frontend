@@ -38,18 +38,9 @@
 
 .worldwideOptionFieldsWrapper {
   max-width: 750px;
-  display: grid;
-
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr) auto;
-
-  grid-template-areas:
-    "o"
-    "c"
-    "a"
-    "z";
 
   @media screen and (min-width: 800px) {
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(2, auto);
 

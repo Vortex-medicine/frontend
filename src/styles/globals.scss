@@ -23,15 +23,15 @@ textarea,
 button,
 select,
 a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-a:focus,a:visited,a:active{
+a:focus, a:visited, a:active {
   outline: none;
 }
 
 * {
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1 {
@@ -101,4 +101,12 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.global-container {
+  padding: 0 15px;
+
+  @include for-size(tablet) {
+    padding: 0 30px;
+  }
 }

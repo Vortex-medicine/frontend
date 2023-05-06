@@ -16,6 +16,94 @@ function Delivery() {
   const courierOptionContentWrapperElem = useRef<HTMLDivElement | null>(null);
   const worldwideOptionContentWrapperElem = useRef<HTMLDivElement | null>(null);
 
+  const novaposhtaRadioWrapperElem = useRef(null);
+  const novaposhtaRadioIconElem = useRef(null);
+  const novaposhtaRadioLabelElem = useRef(null);
+
+  const courierRadioWrapperElem = useRef(null);
+  const courierRadioIconElem = useRef(null);
+  const courierRadioLabelElem = useRef(null);
+
+  const worldwideRadioWrapperElem = useRef(null);
+  const worldwideRadioIconElem = useRef(null);
+  const worldwideRadioLabelElem = useRef(null);
+
+  useEffect(() => {
+    function resizeSingleRadio(
+      wrapperElem: HTMLLabelElement,
+      iconElem: HTMLSpanElement,
+      labelElem: HTMLSpanElement
+    ) {
+      wrapperElem.style.width = `auto`;
+
+      const iconMargin = parseFloat(getComputedStyle(iconElem).marginRight);
+      const iconElemWidth = iconElem.getBoundingClientRect().width;
+      const labelElemWidth = labelElem.getBoundingClientRect().width;
+
+      console.log("iconMargin", iconMargin);
+      console.log("iconElemWidth", iconElemWidth);
+      console.log("labelElemWidth", labelElemWidth);
+
+      console.log("labelElem", labelElem);
+
+      const radioContentWidth = iconMargin + iconElemWidth + labelElemWidth;
+      wrapperElem.style.width = `${radioContentWidth}px`;
+    }
+
+    function resizeRadios() {
+      if (
+        novaposhtaRadioWrapperElem.current &&
+        novaposhtaRadioIconElem.current &&
+        novaposhtaRadioLabelElem.current
+      ) {
+        resizeSingleRadio(
+          novaposhtaRadioWrapperElem.current,
+          novaposhtaRadioIconElem.current,
+          novaposhtaRadioLabelElem.current
+        );
+      }
+
+      if (
+        courierRadioWrapperElem.current &&
+        courierRadioIconElem.current &&
+        courierRadioLabelElem.current
+      ) {
+        resizeSingleRadio(
+          courierRadioWrapperElem.current,
+          courierRadioIconElem.current,
+          courierRadioLabelElem.current
+        );
+      }
+
+      if (
+        worldwideRadioWrapperElem.current &&
+        worldwideRadioIconElem.current &&
+        worldwideRadioLabelElem.current
+      ) {
+        resizeSingleRadio(
+          worldwideRadioWrapperElem.current,
+          worldwideRadioIconElem.current,
+          worldwideRadioLabelElem.current
+        );
+      }
+    }
+
+    resizeRadios();
+
+    window.addEventListener("resize", resizeRadios);
+    return () => window.removeEventListener("resize", resizeRadios);
+  }, [
+    novaposhtaRadioWrapperElem,
+    novaposhtaRadioIconElem,
+    novaposhtaRadioLabelElem,
+    courierRadioWrapperElem,
+    courierRadioIconElem,
+    courierRadioLabelElem,
+    worldwideRadioWrapperElem,
+    worldwideRadioIconElem,
+    worldwideRadioLabelElem,
+  ]);
+
   function handleRadioOnChange(e: ChangeEvent<HTMLInputElement>) {
     setSelectedDeliveryOption(e.target.value);
   }
@@ -84,6 +172,9 @@ function Delivery() {
                 value: "novaposhta",
                 onChange: handleRadioOnChange,
               }}
+              wrapperRef={novaposhtaRadioWrapperElem}
+              radioIconRef={novaposhtaRadioIconElem}
+              labelTextRef={novaposhtaRadioLabelElem}
             />
           </div>
           <div
@@ -115,6 +206,9 @@ function Delivery() {
                 value: "courier",
                 onChange: handleRadioOnChange,
               }}
+              wrapperRef={courierRadioWrapperElem}
+              radioIconRef={courierRadioIconElem}
+              labelTextRef={courierRadioLabelElem}
             />
           </div>
           <div
@@ -156,6 +250,9 @@ function Delivery() {
                 value: "worldwide",
                 onChange: handleRadioOnChange,
               }}
+              wrapperRef={worldwideRadioWrapperElem}
+              radioIconRef={worldwideRadioIconElem}
+              labelTextRef={worldwideRadioLabelElem}
             />
           </div>
           <div
