@@ -60,9 +60,11 @@
 }
 
 .productPriceQuantityWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include for-size(tablet) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .productPriceQuantityItem {
@@ -70,5 +72,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+.productPriceQuantityItem:not(:last-child) {
+  margin-bottom: 5px;
+
+  @include for-size(tablet) {
+    margin-bottom: 0;
   }
 }
