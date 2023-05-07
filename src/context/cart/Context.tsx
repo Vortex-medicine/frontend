@@ -27,6 +27,7 @@ export function CartProvider({ children }: CartProviderProps) {
     isOpened: false,
     items: [],
     itemsAreLoading: true,
+    orderIsConfirmed: false,
   });
 
   useEffect(() => {

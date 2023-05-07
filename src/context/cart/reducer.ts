@@ -55,6 +55,10 @@ const cartReducer = produce((draft: CartState, action: CartAction): void => {
 
       break;
     }
+    case "SET_ORDER_IS_CONFIRMED": {
+      draft.orderIsConfirmed = action.payload;
+      break;
+    }
     default: {
       const exhaustiveCheck: never = action;
       throw new Error(`Unhandled cart action type: ${exhaustiveCheck}`);

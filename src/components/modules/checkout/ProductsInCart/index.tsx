@@ -3,11 +3,11 @@ import styles from "./styles.module.scss";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import { useCart, useCartDispatch } from "@/context/cart/Context";
 import { openCart } from "../../../../utils/cart-actions";
-import CheckoutProduct from "components/elements/CheckoutProduct";
+import CheckoutProductsList from "@/components/modules/CheckoutProductsList";
 
 function ProductsInCart(): JSX.Element {
-  const { items } = useCart();
   const cartDispatch = useCartDispatch();
+  const { items } = useCart();
 
   return (
     <section className={styles.productsInCartSection}>
@@ -21,13 +21,7 @@ function ProductsInCart(): JSX.Element {
           <p className={styles.editCartBtnText}>Редактировать</p>
         </button>
       </div>
-      <ul className={styles.productsList}>
-        {items.map((item) => (
-          <li className={styles.productsListItem} key={item.productId}>
-            <CheckoutProduct productData={item} />
-          </li>
-        ))}
-      </ul>
+      <CheckoutProductsList variant={"checkout"} cartItems={items} />
     </section>
   );
 }

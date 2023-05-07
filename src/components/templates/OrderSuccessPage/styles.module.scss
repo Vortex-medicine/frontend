@@ -1,0 +1,55 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.receiptSection {
+  margin-top: 90px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.allContentWrapper {
+  background-color: #F6F6F6;
+  border-radius: 30px;
+  padding: 25px 20px 50px;
+  max-width: 780px;
+
+  @include for-size(tablet) {
+    padding: 25px 65px 45px;
+  }
+}
+
+.orderSummaryDescr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.totalPrice {
+  font-weight: 700;
+}
+
+.mainPageBtn {
+  margin-top: 40px;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  border: 1px solid $green;
+  border-radius: 12px;
+  background-color: transparent;
+  color: $green;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 30px 16px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    background-color: $green;
+    color: #fff;
+  }
+}

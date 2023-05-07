@@ -13,6 +13,7 @@ export interface CartState {
   modalElement?: RefObject<HTMLDivElement>;
   items: CartItem[];
   itemsAreLoading: boolean;
+  orderIsConfirmed: boolean;
 }
 
 export type CartAction =
@@ -21,4 +22,5 @@ export type CartAction =
   | { type: "SET_CART_ITEMS"; payload: CartItem[] }
   | { type: "UPDATE_ITEM_QUANTITY"; payload: CartItem }
   | { type: "ADD_ITEM"; payload: ProductId }
-  | { type: "REMOVE_ITEM"; payload: ProductId };
+  | { type: "REMOVE_ITEM"; payload: ProductId }
+  | { type: "SET_ORDER_IS_CONFIRMED"; payload: boolean };

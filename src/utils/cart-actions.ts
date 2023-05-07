@@ -42,3 +42,10 @@ export function removeCartItem(
 ) {
   dispatch({ type: "REMOVE_ITEM", payload: productId });
 }
+
+export function setOrderIsConfirmed(
+  dispatch: Dispatch<CartAction>,
+  isConfirmed: boolean
+) {
+  dispatch({ type: "SET_ORDER_IS_CONFIRMED", payload: isConfirmed });
+}

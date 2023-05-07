@@ -10,6 +10,7 @@ export const PAGE_HREFS = {
   ARTICLES: "/articles",
   CONTACTS: "/contacts",
   CHECKOUT: "/checkout",
+  ORDER_SUCCESS: "/order-success",
 };
 
 export const PAGES: Array<PageLinkData | SubmenuData> = [

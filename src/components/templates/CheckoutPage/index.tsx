@@ -1,5 +1,5 @@
 import Container from "@/components/elements/Container";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { FormProvider, useForm } from "react-hook-form";
 import ContactInfo from "@/components/modules/checkout/ContactInfo";
@@ -12,17 +12,22 @@ import { PAGE_HREFS } from "@/constants/navigation-links";
 
 function CheckoutPage() {
   const { items, itemsAreLoading } = useCart();
+  const [showPage, setShowPage] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     if (!itemsAreLoading && items.length === 0) {
       router.push(PAGE_HREFS.KITS);
+    } else {
+      if (!showPage && items.length > 0) {
+        setShowPage(true);
+      }
     }
-  }, [items, itemsAreLoading, router]);
+  }, [items, itemsAreLoading, router, showPage]);
 
   const methods = useForm();
 
-  return (
+  return showPage ? (
     <FormProvider {...methods}>
       <Container>
         <h1 className={styles.heading}>Оформление заказа</h1>
@@ -36,7 +41,7 @@ function CheckoutPage() {
         </div>
       </Container>
     </FormProvider>
-  );
+  ) : null;
 }
 
 export default CheckoutPage;
