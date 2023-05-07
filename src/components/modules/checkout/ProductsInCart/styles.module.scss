@@ -5,11 +5,15 @@
   border: 1px solid $grey;
   border-radius: 30px;
   padding: 25px 20px 40px;
-  margin-bottom: 40px;
+  margin-bottom: 70px;
   max-width: 750px;
 
   @include for-size(tablet) {
     padding: 25px 50px 40px;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 95px;
   }
 }
 
