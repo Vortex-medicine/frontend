@@ -8,6 +8,7 @@ import ProductsInCart from "@/components/modules/checkout/ProductsInCart";
 import { useCart } from "@/context/cart/Context";
 import { useRouter } from "next/router";
 import ConfirmationSidebar from "@/components/modules/checkout/ConfirmationSidebar";
+import { PAGE_HREFS } from "@/constants/navigation-links";
 
 function CheckoutPage() {
   const { items, itemsAreLoading } = useCart();
@@ -15,7 +16,7 @@ function CheckoutPage() {
 
   useEffect(() => {
     if (!itemsAreLoading && items.length === 0) {
-      router.push("/");
+      router.push(PAGE_HREFS.KITS);
     }
   }, [items, itemsAreLoading, router]);
 

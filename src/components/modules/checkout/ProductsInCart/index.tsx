@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import { useCart, useCartDispatch } from "@/context/cart/Context";
 import { openCart } from "../../../../utils/cart-actions";
-import CheckoutProduct from "components/elements/checkout-page/CheckoutProduct";
+import CheckoutProduct from "components/elements/CheckoutProduct";
 
 function ProductsInCart(): JSX.Element {
   const { items } = useCart();

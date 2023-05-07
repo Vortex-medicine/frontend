@@ -2,7 +2,7 @@ import React from "react";
 import { CartItem } from "@/types/cart";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import { getProductById } from "../../../../utils/product";
+import { getProductById } from "../../../utils/product";
 
 interface CheckoutProductProps {
   productData: CartItem;
