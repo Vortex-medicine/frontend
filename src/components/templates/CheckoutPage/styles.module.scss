@@ -1,8 +1,18 @@
 @import "@/styles/colors.module";
+@import "@/styles/viewports";
 
 .heading {
   margin-top: 80px;
   padding-bottom: 20px;
   border-bottom: 1px solid $grey;
   margin-bottom: 35px;
+}
+
+.allContentWrapper {
+  @include for-size(desktop) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }

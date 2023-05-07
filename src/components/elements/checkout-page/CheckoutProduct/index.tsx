@@ -2,7 +2,7 @@ import React from "react";
 import { CartItem } from "@/types/cart";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import { getProductById } from "../../../utils/product";
+import { getProductById } from "../../../../utils/product";
 
 interface CheckoutProductProps {
   productData: CartItem;
@@ -54,7 +54,7 @@ function CheckoutProduct({
           <span className={styles.productPriceQuantityLabel}>
             Сумма<span className={styles.colon}>:</span>
           </span>{" "}
-          <span className={styles.produtctPriceQuantityValue}>
+          <span className={styles.productPriceQuantityValue}>
             {product.price * quantity} ₴
           </span>
         </p>

@@ -7,6 +7,7 @@ import Delivery from "@/components/modules/checkout/Delivery";
 import ProductsInCart from "@/components/modules/checkout/ProductsInCart";
 import { useCart } from "@/context/cart/Context";
 import { useRouter } from "next/router";
+import ConfirmationSidebar from "@/components/modules/checkout/ConfirmationSidebar";
 
 function CheckoutPage() {
   const { items, itemsAreLoading } = useCart();
@@ -24,9 +25,14 @@ function CheckoutPage() {
     <FormProvider {...methods}>
       <Container>
         <h1 className={styles.heading}>Оформление заказа</h1>
-        <ContactInfo />
-        <Delivery />
-        <ProductsInCart />
+        <div className={styles.allContentWrapper}>
+          <div className={styles.mainContentWrapper}>
+            <ContactInfo />
+            <Delivery />
+            <ProductsInCart />
+          </div>
+          <ConfirmationSidebar />
+        </div>
       </Container>
     </FormProvider>
   );

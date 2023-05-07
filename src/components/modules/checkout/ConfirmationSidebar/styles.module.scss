@@ -1,0 +1,102 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+.confirmationSidebarSection {
+  margin-bottom: 60px;
+  max-width: 750px;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include for-size(desktop) {
+    display: block;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.allContentWrapper {
+  background-color: #F6F6F6;
+  border-radius: 30px;
+  padding: 25px 20px 50px;
+
+  @media screen and (min-width: 500px) {
+    display: inline-block;
+  }
+
+  @include for-size(tablet) {
+    padding: 25px 50px 50px;
+  }
+
+  @include for-size(desktop) {
+    display: block;
+    padding: 35px 30px 60px;
+  }
+}
+
+.contentWrapper {
+  @media screen and (min-width: 500px) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @include for-size(desktop) {
+    display: block;
+  }
+}
+
+.heading {
+  margin-bottom: 12px;
+}
+
+.orderSummaryItem:first-child {
+  @media screen and (min-width: 500px) {
+    margin-right: 40px;
+  }
+}
+
+.orderSummaryItem:not(:last-child) {
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 500px) {
+    margin-bottom: 0;
+  }
+
+  @include for-size(desktop) {
+    margin-bottom: 20px;
+  }
+}
+
+.orderSummaryItemLabel {
+  margin-bottom: 5px;
+}
+
+.orderSummaryItemValue {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.confirmOrderBtn {
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  border: none;
+  background: $orange;
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 12px 30px 16px;
+  transition: all .2s ease-in-out;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+
+  &:hover {
+    background: darken($orange, 8%)
+  }
+}

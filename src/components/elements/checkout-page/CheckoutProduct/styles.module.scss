@@ -27,8 +27,6 @@
 }
 
 .productPriceQuantityLabel {
-  font-weight: 700;
-
   @include for-size(tablet) {
     display: block;
     color: #9A9A9A;
@@ -45,8 +43,11 @@
 }
 
 .productPriceQuantityValue {
+  font-weight: 700;
+
   @include for-size(tablet) {
     display: block;
+    font-weight: 400;
   }
 }
 
