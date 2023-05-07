@@ -13,9 +13,10 @@ const cartReducer = produce((draft: CartState, action: CartAction): void => {
     }
     case "SET_CART_ITEMS": {
       draft.items = action.payload;
+      draft.itemsAreLoading = false;
       break;
     }
-    case "UPATE_ITEM_QUANTITY": {
+    case "UPDATE_ITEM_QUANTITY": {
       const { productId, quantity } = action.payload;
 
       const itemIndex = draft.items.findIndex(

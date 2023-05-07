@@ -1,3 +1,74 @@
+@import "@/styles/colors.module";
+@import "@/styles/viewports";
+
+
 .productImg {
   border-radius: 20px;
+  margin-bottom: 17px;
+  width: 100%;
+
+  @include for-size(tablet) {
+    width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+.productName {
+  margin-bottom: 4px;
+}
+
+.productNameDescrWrapper {
+  margin-bottom: 12px;
+
+  @include for-size(tablet) {
+    margin-left: 25px;
+    margin-top: -5px;
+  }
+}
+
+.productPriceQuantityLabel {
+  font-weight: 700;
+
+  @include for-size(tablet) {
+    display: block;
+    color: #9A9A9A;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+
+.colon {
+  @include for-size(tablet) {
+    display: none;
+  }
+}
+
+.productPriceQuantityValue {
+  @include for-size(tablet) {
+    display: block;
+  }
+}
+
+.productImgDescrWrapper {
+  @include for-size(tablet) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 17px;
+  }
+}
+
+.productPriceQuantityWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.productPriceQuantityItem {
+  @include for-size(tablet) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

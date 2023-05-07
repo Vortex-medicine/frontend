@@ -19,38 +19,44 @@ function CheckoutProduct({
 
   return (
     <div className={styles.productWrapper}>
-      <Image
-        className={styles.productImg}
-        src={product.img.path}
-        alt="cart item"
-        width={product.img.width}
-        height={product.img.height}
-        sizes="100vw,
+      <div className={styles.productImgDescrWrapper}>
+        <Image
+          className={styles.productImg}
+          src={product.img.path}
+          alt="cart item"
+          width={product.img.width}
+          height={product.img.height}
+          sizes="100vw,
                (min-width: 700px) 50vw,
                (min-width: 1200px) 330px"
-      />
-      <div className={styles.productNameDescrWrapper}>
-        <h3 className={styles.productName}>{product.name}</h3>
-        <p className={styles.productDescr}>{product.descr}</p>
+        />
+        <div className={styles.productNameDescrWrapper}>
+          <h3 className={styles.productName}>{product.name}</h3>
+          <p className={styles.productDescr}>{product.descr}</p>
+        </div>
       </div>
       <div className={styles.productPriceQuantityWrapper}>
-        <p className={styles.productPriceQuanityItem}>
-          <span className={styles.productPriceQuantitySmallScreenLabel}>
-            Цена:
+        <p className={styles.productPriceQuantityItem}>
+          <span className={styles.productPriceQuantityLabel}>
+            Цена<span className={styles.colon}>:</span>
           </span>{" "}
-          {product.price}₴
+          <span className={styles.productPriceQuantityValue}>
+            {product.price} ₴
+          </span>
         </p>
         <p className={styles.productPriceQuantityItem}>
-          <span className={styles.productPriceQuantitySmallScreenLabel}>
-            Количество:
+          <span className={styles.productPriceQuantityLabel}>
+            Количество<span className={styles.colon}>:</span>
           </span>{" "}
-          {quantity}
+          <span className={styles.productPriceQuantityValue}>{quantity}</span>
         </p>
         <p className={styles.productPriceQuantityItem}>
-          <span className={styles.productPriceQuantitySmallScreenLabel}>
-            Сумма:
+          <span className={styles.productPriceQuantityLabel}>
+            Сумма<span className={styles.colon}>:</span>
           </span>{" "}
-          {product.price * quantity}₴
+          <span className={styles.produtctPriceQuantityValue}>
+            {product.price * quantity} ₴
+          </span>
         </p>
       </div>
     </div>

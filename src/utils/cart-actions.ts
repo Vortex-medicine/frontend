@@ -24,7 +24,7 @@ export function updateCartItemQuantity(
   quantity: ProductQuantity
 ) {
   dispatch({
-    type: "UPATE_ITEM_QUANTITY",
+    type: "UPDATE_ITEM_QUANTITY",
     payload: { productId, quantity },
   });
 }

@@ -1,26 +1,73 @@
 @import "@/styles/colors.module";
+@import "@/styles/viewports";
 
 .productsInCartSection {
   border: 1px solid $grey;
   border-radius: 30px;
-  padding: 25px 20px 30px;
+  padding: 25px 20px 40px;
+  margin-bottom: 40px;
+  max-width: 750px;
+
+  @include for-size(tablet) {
+    padding: 25px 50px 40px;
+  }
 }
 
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .editCartBtn {
   border: none;
   padding: 0;
   background-color: transparent;
-  //margin-bottom: -4px;
+  cursor: pointer;
+  transform: translateY(1px);
+
+  @include for-size(tablet) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transform: translateY(2px);
+  }
+}
+
+.editCartBtn:hover .editCartBtnText {
+  color: $black;
+}
+
+.editCartBtnText {
+  color: $dark-grey;
+  display: none;
+  transition: color 0.2s ease-in-out;
+
+  @include for-size(tablet) {
+    display: block;
+    margin-left: 5px;
+  }
+}
+
+.editCartBtn svg {
+  fill: $dark-grey;
+  transition: fill 0.2s ease-in-out;
+}
+
+.editCartBtn:hover svg {
+  fill: $black;
 }
 
 .productsList {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.productsListItem:not(:last-child) {
+  border-bottom: 1px solid $grey;
+  padding-bottom: 35px;
+  margin-bottom: 25px;
 }

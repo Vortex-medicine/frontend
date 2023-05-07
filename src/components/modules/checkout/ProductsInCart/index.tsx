@@ -18,6 +18,7 @@ function ProductsInCart(): JSX.Element {
           onClick={() => openCart(cartDispatch)}
         >
           <EditRoundedIcon className={styles.editCartIcon} />
+          <p className={styles.editCartBtnText}>Редактировать</p>
         </button>
       </div>
       <ul className={styles.productsList}>

@@ -26,6 +26,7 @@ export function CartProvider({ children }: CartProviderProps) {
   const [cart, dispatch] = useReducer(cartReducer, {
     isOpened: false,
     items: [],
+    itemsAreLoading: true,
   });
 
   useEffect(() => {

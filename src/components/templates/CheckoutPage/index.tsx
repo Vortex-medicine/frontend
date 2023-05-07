@@ -9,14 +9,14 @@ import { useCart } from "@/context/cart/Context";
 import { useRouter } from "next/router";
 
 function CheckoutPage() {
-  const { items } = useCart();
+  const { items, itemsAreLoading } = useCart();
   const router = useRouter();
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (!itemsAreLoading && items.length === 0) {
       router.push("/");
     }
-  }, [items, router]);
+  }, [items, itemsAreLoading, router]);
 
   const methods = useForm();
 

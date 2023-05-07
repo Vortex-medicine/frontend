@@ -50,7 +50,6 @@ const SearchSelectMenuList = forwardRef<HTMLDivElement, MenuListProps>(
       const listbox = virtualListWrapperRef.current?.querySelector(
         ".MuiAutocomplete-listbox"
       ) as HTMLDivElement;
-      console.log("listbox", listbox);
       listbox.scrollTop = 0;
     }
 

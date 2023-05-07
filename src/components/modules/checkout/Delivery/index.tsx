@@ -165,7 +165,7 @@ function Delivery() {
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label="Самовывоз с Новой Почты"
+              label={"Самовывоз с\u00A0Новой Почты"}
               inputProps={{
                 checked: selectedDeliveryOption === "novaposhta",
                 value: "novaposhta",
@@ -204,7 +204,7 @@ function Delivery() {
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label="Курьер на ваш адрес"
+              label={"Курьер на\u00A0ваш адрес"}
               inputProps={{
                 checked: selectedDeliveryOption === "courier",
                 value: "courier",
@@ -248,7 +248,7 @@ function Delivery() {
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label="По миру"
+              label={"По\u00A0миру"}
               inputProps={{
                 checked: selectedDeliveryOption === "worldwide",
                 value: "worldwide",

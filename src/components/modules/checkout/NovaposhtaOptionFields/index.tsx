@@ -156,9 +156,13 @@ function NovaposhtaOptionFields({
     !warehousesNotAvailable &&
     !defaultOptionsLoading
   ) {
-    setWarehousesNotFound(true);
+    if (!warehousesNotFound) {
+      setWarehousesNotFound(true);
+    }
   } else {
-    setWarehousesNotFound(false);
+    if (warehousesNotFound) {
+      setWarehousesNotFound(false);
+    }
   }
 
   return (
