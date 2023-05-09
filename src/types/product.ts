@@ -3,6 +3,7 @@ export type ProductName = string;
 export type ProductDescr = string;
 export type ProductPrice = number;
 export type ProductDiscountInfo = string;
+export type ProductQuantity = number;
 
 export type ProductImgPath = string;
 export type ProductImgWidth = number;
@@ -21,4 +22,12 @@ export interface ProductData {
   img: ProductImg;
   price: ProductPrice;
   discountInfo?: ProductDiscountInfo;
+}
+
+export interface OrderItem {
+  id: ProductId;
+  name: ProductName;
+  descr: ProductDescr;
+  price: ProductPrice;
+  quantity: number;
 }

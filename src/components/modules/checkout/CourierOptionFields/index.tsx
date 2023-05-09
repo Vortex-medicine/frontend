@@ -1,26 +1,59 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import TextInput from "@/components/elements/TextInput";
-import classnames from "classnames";
+import { useFormContext } from "react-hook-form";
+import FieldErrorMessage from "@/components/elements/FieldErrorMessage";
 
 function CourierOptionFields() {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <div className={styles.courierOptionFieldsWrapper}>
-      <TextInput
-        className={styles.input}
-        label={"Город"}
-        inputProps={{ required: true }}
-      />
-      <TextInput
-        className={styles.input}
-        label={"Адрес"}
-        inputProps={{ required: true }}
-      />
-      <TextInput
-        className={classnames(styles.input, styles.zipInput)}
-        label={"Почтовый индекс"}
-        inputProps={{ required: true }}
-      />
+      <div className={styles.input}>
+        <TextInput
+          label={"Город"}
+          inputProps={{ required: true, ...register("courierCityInput") }}
+          errorState={!!errors.courierCityInput}
+        />
+        {errors.courierCityInput && (
+          <FieldErrorMessage
+            className={styles.errorMessage}
+            message={errors.courierCityInput.message as string}
+          />
+        )}
+      </div>
+
+      <div className={styles.input}>
+        <TextInput
+          label={"Адрес"}
+          inputProps={{ required: true, ...register("courierAddressInput") }}
+          errorState={!!errors.courierAddressInput}
+        />
+        {errors.courierAddressInput && (
+          <FieldErrorMessage
+            className={styles.errorMessage}
+            message={errors.courierAddressInput.message as string}
+          />
+        )}
+      </div>
+
+      <div className={styles.input}>
+        <TextInput
+          className={styles.zipInput}
+          label={"Почтовый индекс"}
+          inputProps={{ required: true, ...register("courierZipInput") }}
+          errorState={!!errors.courierZipInput}
+        />
+        {errors.courierZipInput && (
+          <FieldErrorMessage
+            className={styles.errorMessage}
+            message={errors.courierZipInput.message as string}
+          />
+        )}
+      </div>
     </div>
   );
 }

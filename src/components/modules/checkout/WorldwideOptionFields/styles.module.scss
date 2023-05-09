@@ -8,31 +8,44 @@
   }
 }
 
-.cityInput {
+.cityInputWrapper {
   grid-area: c;
+}
 
+.cityInput {
   @media screen and (min-width: 800px) {
     max-width: none;
   }
 }
 
-.addressInput {
+.addressInputWrapper {
   grid-area: a;
 
   @media screen and (min-width: 800px) {
     margin-right: 20px;
+    margin-top: 20px;
+  }
+}
+
+.addressInput {
+  @media screen and (min-width: 800px) {
     max-width: none;
+  }
+}
+
+.zipInputWrapper {
+  grid-area: z;
+
+  @media screen and (min-width: 800px) {
     margin-top: 20px;
   }
 }
 
 .zipInput {
-  grid-area: z;
   max-width: 170px;
 
   @media screen and (min-width: 800px) {
     max-width: none;
-    margin-top: 20px;
   }
 }
 

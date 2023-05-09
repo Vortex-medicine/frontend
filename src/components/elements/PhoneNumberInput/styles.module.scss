@@ -2,7 +2,7 @@
 @import "@/styles/viewports";
 
 div.phoneInput {
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
   font-family: var(--noto-font);
   max-width: 400px;
 }
@@ -26,6 +26,15 @@ div.phoneInput div:global(.special-label) {
 
   &:focus {
     border: 1px solid #1976d2;
+  }
+}
+
+.phoneInputError input:global(.form-control) {
+  border-color: $red;
+
+  &:focus {
+    box-shadow: 0 0 0 1px $red;
+    border-color: $red;
   }
 }
 
@@ -114,6 +123,10 @@ div.phoneInput :global(.selected-flag) {
 
   &InputFocused {
     color: #1976d2;
+  }
+
+  &Error {
+    color: $red;
   }
 }
 

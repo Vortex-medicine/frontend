@@ -1,21 +1,26 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { CityId, NovaposhtaWarehouse, UkrainianCity } from "@/types/checkout";
+import {
+  CityId,
+  NovaposhtaWarehouse,
+  UkrainianCity,
+  UkrainianCityWithLabel,
+} from "@/types/checkout";
 import SearchSelect from "@/components/elements/SearchSelect";
 import getWarehousesByCityId from "../../../../api/get-novaposhta-warehouses";
 import TextInput from "@/components/elements/TextInput";
 import { Backdrop, CircularProgress } from "@mui/material";
 import getUkrainianCities from "../../../../api/get-ukrainian-cities";
-
-interface UkrainianCityWithLabel extends UkrainianCity {
-  label: string;
-}
+import { Controller, useFormContext } from "react-hook-form";
+import FieldErrorMessage from "@/components/elements/FieldErrorMessage";
 
 interface NovaposhtaWarehouseWithLabel extends NovaposhtaWarehouse {
   label: string;
 }
 
 interface NovaposhtaOptionFieldsProps {
+  cities: UkrainianCityWithLabel[];
+  setCities: Dispatch<SetStateAction<UkrainianCityWithLabel[]>>;
   warehousesNotFound: boolean;
   setWarehousesNotFound: Dispatch<SetStateAction<boolean>>;
   setWarehousesNotAvailable: Dispatch<SetStateAction<boolean>>;
@@ -23,13 +28,19 @@ interface NovaposhtaOptionFieldsProps {
 }
 
 function NovaposhtaOptionFields({
+  cities,
+  setCities,
   setWarehousesNotFound,
   warehousesNotFound,
   setWarehousesNotAvailable,
   warehousesNotAvailable,
 }: NovaposhtaOptionFieldsProps) {
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext();
   const [defaultOptionsLoading, setDefaultOptionsLoading] = useState(true);
-  const [cities, setCities] = useState<UkrainianCityWithLabel[]>([]);
 
   useEffect(() => {
     async function fetchDefaultOptions() {
@@ -85,7 +96,7 @@ function NovaposhtaOptionFields({
     }
 
     fetchDefaultOptions();
-  }, []);
+  }, [setCities, setWarehousesNotAvailable]);
 
   const [warehouseCache, setWarehouseCache] = useState<{
     [key: CityId]: NovaposhtaWarehouseWithLabel[];
@@ -175,32 +186,68 @@ function NovaposhtaOptionFields({
       </Backdrop>
       {defaultOptionsLoading || cities.length === 0 ? (
         <>
-          <TextInput
-            className={styles.cityTextInput}
-            label={"Город"}
-            inputProps={{ required: true }}
-          />
-          <TextInput
-            className={styles.warehouseTextInput}
-            label={"Номер отделения или почтомата"}
-            inputProps={{ required: true }}
-          />
+          <div className={styles.cityTextInputWrapper}>
+            <TextInput
+              className={styles.cityTextInput}
+              label={"Город"}
+              inputProps={{
+                required: true,
+                ...register("novaposhtaCityInputNoApiCities"),
+              }}
+              errorState={!!errors.novaposhtaCityInputNoApiCities}
+            />
+            {errors.novaposhtaCityInputNoApiCities && (
+              <FieldErrorMessage
+                className={styles.errorMessage}
+                message={
+                  errors.novaposhtaCityInputNoApiCities.message as string
+                }
+              />
+            )}
+          </div>
+          <div className={styles.warehouseTextInputWrapper}>
+            <TextInput
+              className={styles.warehouseTextInput}
+              label={"Номер отделения или почтомата"}
+              inputProps={{
+                required: true,
+                ...register("novaposhtaWarehouseInputNoApiCities"),
+              }}
+              errorState={!!errors.novaposhtaWarehouseInputNoApiCities}
+            />
+            {errors.novaposhtaWarehouseInputNoApiCities && (
+              <FieldErrorMessage
+                className={styles.errorMessage}
+                message={
+                  errors.novaposhtaWarehouseInputNoApiCities.message as string
+                }
+              />
+            )}
+          </div>
         </>
       ) : (
         <>
-          <SearchSelect
-            label={"Город"}
-            required
-            className={styles.citySearchSelect}
-            openOnFocus
-            autoHighlight
-            disableListWrap
-            disableClearable
-            options={cities}
-            value={cities[selectedCity ?? 0]}
-            onChange={async (event, newValue) => {
-              await handleCityChange(newValue);
-            }}
+          <Controller
+            control={control}
+            name={"novaposhtaCitySelect"}
+            defaultValue={cities[selectedCity ?? 0]}
+            render={({ field }) => (
+              <SearchSelect
+                label={"Город"}
+                required
+                className={styles.citySearchSelect}
+                openOnFocus
+                autoHighlight
+                disableListWrap
+                disableClearable
+                options={cities}
+                value={field.value}
+                onChange={async (event, newValue) => {
+                  field.onChange(newValue);
+                  await handleCityChange(newValue);
+                }}
+              />
+            )}
           />
           {warehousesNotFound ? (
             <p className={styles.noWarehousesText}>
@@ -215,30 +262,55 @@ function NovaposhtaOptionFields({
           ) : (
             <>
               {warehousesNotAvailable ? (
-                <TextInput
-                  className={styles.warehouseTextInput}
-                  label={"Номер отделения или почтомата"}
-                  inputProps={{ required: true }}
-                />
+                <div>
+                  <TextInput
+                    className={styles.warehouseTextInput}
+                    label={"Номер отделения или почтомата"}
+                    inputProps={{
+                      required: true,
+                      ...register("novaposhtaWarehouseInputNoApiWarehouses"),
+                    }}
+                    errorState={
+                      !!errors.novaposhtaWarehouseInputNoApiWarehouses
+                    }
+                  />
+                  {errors.novaposhtaWarehouseInputNoApiWarehouses && (
+                    <FieldErrorMessage
+                      className={styles.errorMessage}
+                      message={
+                        errors.novaposhtaWarehouseInputNoApiWarehouses
+                          .message as string
+                      }
+                    />
+                  )}
+                </div>
               ) : (
-                <SearchSelect
-                  label={"Отделение или почтомат"}
-                  loading={warehousesLoading}
-                  required
-                  className={styles.warehouseSearchSelect}
-                  openOnFocus
-                  autoHighlight
-                  disableListWrap
-                  disableClearable
-                  options={warehouses}
-                  value={
+                <Controller
+                  control={control}
+                  name={"novaposhtaWarehouseSelect"}
+                  defaultValue={
                     warehousesLoading
                       ? (null as unknown as NovaposhtaWarehouseWithLabel)
                       : warehouses[selectedWarehouse]
                   }
-                  onChange={(event, newValue) => {
-                    handleWarehouseChange(newValue);
-                  }}
+                  render={({ field }) => (
+                    <SearchSelect
+                      label={"Отделение или почтомат"}
+                      loading={warehousesLoading}
+                      required
+                      className={styles.warehouseSearchSelect}
+                      openOnFocus
+                      autoHighlight
+                      disableListWrap
+                      disableClearable
+                      options={warehouses}
+                      value={field.value}
+                      onChange={(event, newValue) => {
+                        field.onChange(newValue);
+                        handleWarehouseChange(newValue);
+                      }}
+                    />
+                  )}
                 />
               )}
             </>

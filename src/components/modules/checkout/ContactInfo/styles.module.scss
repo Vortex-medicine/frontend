@@ -30,15 +30,15 @@
   }
 }
 
-.fullNameInputsWrapper .userDataInput:not(:last-child) {
+.fullNameInputsWrapper .userDataInputWrapper:not(:last-child) {
   margin-bottom: 15px;
 }
 
-.fullNameInputsWrapper .userDataInput:first-child {
+.fullNameInputsWrapper .userDataInputWrapper:first-child {
   grid-area: f;
 }
 
-.fullNameInputsWrapper .userDataInput:nth-child(2) {
+.fullNameInputsWrapper .userDataInputWrapper:nth-child(2) {
   grid-area: l;
 }
 
@@ -59,15 +59,15 @@
   }
 }
 
-.phoneNumberEmailInputsWrapper .userDataInput:not(:last-child) {
+.phoneNumberEmailInputsWrapper .userDataInputWrapper:not(:last-child) {
   margin-bottom: 15px;
 }
 
-.phoneNumberEmailInputsWrapper .userDataInput:first-child {
+.phoneNumberEmailInputsWrapper .userDataInputWrapper:first-child {
   grid-area: p;
 }
 
-.phoneNumberEmailInputsWrapper .userDataInput:nth-child(2) {
+.phoneNumberEmailInputsWrapper .userDataInputWrapper:nth-child(2) {
   grid-area: e;
 }
 
@@ -82,27 +82,27 @@
 }
 
 .userInfoInput :global(.MuiInputBase-root:hover) fieldset {
-    border-color: $dark-grey;
+  border-color: $dark-grey;
 }
 
 .userInfoInput :global(.MuiInputBase-root.Mui-focused) fieldset {
-    border-color: #1976d2;
-    padding-left: 7px;
+  border-color: #1976d2;
+  padding-left: 7px;
 }
 
 .userInfoInput :global(.MuiInputLabel-root.MuiFormLabel-filled) + :global(.MuiInputBase-root) fieldset {
-    padding-left: 7px;
+  padding-left: 7px;
 }
 
 .userInfoInput :global(.MuiInputLabel-root) + :global(.MuiInputBase-root) fieldset legend span {
-    padding-left: 7px;
-    padding-right: 5px;
+  padding-left: 7px;
+  padding-right: 5px;
 }
 
 .userInfoInput :global(.MuiInputBase-root) fieldset legend span {
-    // border-color: #1976d2;
-    padding-left: 7px;
-    padding-right: 4px;
+  // border-color: #1976d2;
+  padding-left: 7px;
+  padding-right: 4px;
 }
 
 .userInfoInput :global(.MuiInputBase-root) fieldset legend {
@@ -240,4 +240,8 @@ div.phoneInput :global(.selected-flag) {
 
 .phoneInput :global(.country-list .flag) {
   left: 26px;
+}
+
+.errorMessage {
+  margin-top: 5px;
 }

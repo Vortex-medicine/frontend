@@ -5,6 +5,9 @@
 
 .cityTextInput {
   max-width: 400px;
+}
+
+.cityTextInputWrapper {
   margin-bottom: 20px;
 }
 
@@ -22,4 +25,8 @@
 
 .warehouseTextInput {
   max-width: 400px;
+}
+
+.errorMessage {
+  margin-top: 5px;
 }

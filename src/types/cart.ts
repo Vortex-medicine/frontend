@@ -1,7 +1,5 @@
 import { RefObject } from "react";
-import { ProductId } from "./product";
-
-export type ProductQuantity = number;
+import { ProductId, ProductQuantity } from "./product";
 
 export interface CartItem {
   productId: ProductId;

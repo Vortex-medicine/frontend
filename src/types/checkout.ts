@@ -6,6 +6,12 @@ export interface UkrainianCity {
   name: CityName;
 }
 
+export type DeliveryOption = "novaposhta" | "courier" | "worldwide";
+
+export interface UkrainianCityWithLabel extends UkrainianCity {
+  label: string;
+}
+
 export type WarehouseId = string;
 export type WarehouseName = string;
 

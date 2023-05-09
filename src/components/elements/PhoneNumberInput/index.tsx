@@ -15,6 +15,7 @@ interface PhoneNumberInputProps {
   defaultCountry?: string;
   searchPlaceholder?: string;
   className?: string;
+  errorState?: boolean;
 }
 
 function PhoneNumberInput({
@@ -22,6 +23,7 @@ function PhoneNumberInput({
   inputProps,
   innerSearchComponentProps,
   className = "",
+  errorState,
 }: PhoneNumberInputProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -32,11 +34,13 @@ function PhoneNumberInput({
 
   const phoneInputContainerClasses = classnames(styles.phoneInput, {
     [styles.phoneInputMobile]: isMobile,
+    [styles.phoneInputError]: errorState,
   });
 
   const inputWrapperClasses = classnames(className, styles.inputWrapper);
   const labelClasses = classnames(styles.label, {
     [styles.labelInputFocused]: isFocused,
+    [styles.labelError]: errorState && isFocused,
   });
 
   return (
@@ -50,13 +54,18 @@ function PhoneNumberInput({
       <PhoneInput
         inputProps={{ ...inputProps, id }}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
         {...{
           ...innerSearchComponentProps,
           containerClass: classnames(
             phoneInputContainerClasses,
             innerSearchComponentProps?.containerClass
           ),
+        }}
+        onBlur={(event, data) => {
+          setIsFocused(false);
+          if (innerSearchComponentProps) {
+            innerSearchComponentProps.onBlur?.(event, data);
+          }
         }}
       />
     </div>

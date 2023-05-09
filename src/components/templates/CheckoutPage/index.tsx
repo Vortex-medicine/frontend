@@ -9,11 +9,33 @@ import { useCart } from "@/context/cart/Context";
 import { useRouter } from "next/router";
 import ConfirmationSidebar from "@/components/modules/checkout/ConfirmationSidebar";
 import { PAGE_HREFS } from "@/constants/navigation-links";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { DeliveryOption, UkrainianCityWithLabel } from "@/types/checkout";
+import {
+  CombinedSchemaType,
+  getCombinedSchema,
+} from "../../../utils/order-form-schema";
 
 function CheckoutPage() {
   const { items, itemsAreLoading } = useCart();
   const [showPage, setShowPage] = useState(false);
+
+  const [selectedDeliveryOption, setSelectedDeliveryOption] =
+    useState<DeliveryOption>("novaposhta");
+  const [cities, setCities] = useState<UkrainianCityWithLabel[]>([]);
+  const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
+
   const router = useRouter();
+  const schema = getCombinedSchema(
+    selectedDeliveryOption,
+    cities,
+    warehousesNotAvailable
+  );
+
+  const methods = useForm<CombinedSchemaType>({
+    mode: "onBlur",
+    resolver: yupResolver(schema),
+  });
 
   useEffect(() => {
     if (!itemsAreLoading && items.length === 0) {
@@ -25,8 +47,6 @@ function CheckoutPage() {
     }
   }, [items, itemsAreLoading, router, showPage]);
 
-  const methods = useForm();
-
   return showPage ? (
     <FormProvider {...methods}>
       <Container>
@@ -34,10 +54,19 @@ function CheckoutPage() {
         <div className={styles.allContentWrapper}>
           <div className={styles.mainContentWrapper}>
             <ContactInfo />
-            <Delivery />
+            <Delivery
+              selectedDeliveryOption={selectedDeliveryOption}
+              setSelectedDeliveryOption={setSelectedDeliveryOption}
+              cities={cities}
+              setCities={setCities}
+              warehousesNotAvailable={warehousesNotAvailable}
+              setWarehousesNotAvailable={setWarehousesNotAvailable}
+            />
             <ProductsInCart />
           </div>
-          <ConfirmationSidebar />
+          <ConfirmationSidebar
+            selectedDeliveryOption={selectedDeliveryOption}
+          />
         </div>
       </Container>
     </FormProvider>

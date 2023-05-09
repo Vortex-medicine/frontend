@@ -2,7 +2,7 @@ import * as React from "react";
 import { MutableRefObject, useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import countries from "@/constants/countries";
+import countries, { CountryType } from "@/constants/countries";
 import { matchSorter } from "match-sorter";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
@@ -37,6 +37,8 @@ interface CountrySelectProps {
   required?: boolean;
   id?: string;
   className?: ClassName;
+  value: CountryType;
+  onChange: (value: CountryType) => void;
 }
 
 export default function CountrySelect(props: CountrySelectProps): JSX.Element {
@@ -44,7 +46,7 @@ export default function CountrySelect(props: CountrySelectProps): JSX.Element {
   const [noScrolling, setNoScrolling] = useState(false);
   const [, setAmountOfListChildren] = useState(countries.length);
   const popperRef = useRef<HTMLDivElement>(null);
-  const { label, required, id = uuid(), className } = props;
+  const { label, required, id = uuid(), className, onChange, value } = props;
   const [focused, setFocused] = useState(false);
 
   function handleInputOnFocus() {
@@ -95,7 +97,7 @@ export default function CountrySelect(props: CountrySelectProps): JSX.Element {
         className={styles.countrySelect}
         options={countries}
         autoHighlight
-        defaultValue={countries.find((country) => country.label === "Poland")}
+        // defaultValue={countries.find((country) => country.label === "Poland")}
         disableClearable
         getOptionLabel={(option) => option.label}
         filterOptions={(options, { inputValue }) => {
@@ -139,6 +141,8 @@ export default function CountrySelect(props: CountrySelectProps): JSX.Element {
         )}
         onFocus={handleInputOnFocus}
         onBlur={handleInputOnBlur}
+        onChange={(e, newValue) => onChange(newValue)}
+        value={value}
       />
     </div>
   );

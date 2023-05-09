@@ -1,5 +1,5 @@
-import { CartAction, CartItem, ProductQuantity } from "@/types/cart";
-import { ProductId } from "@/types/product";
+import { CartAction, CartItem } from "@/types/cart";
+import { ProductId, ProductQuantity } from "@/types/product";
 import { Dispatch } from "react";
 
 export function openCart(dispatch: Dispatch<CartAction>) {

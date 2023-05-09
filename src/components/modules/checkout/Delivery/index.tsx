@@ -1,14 +1,42 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.scss";
 import Radio from "@/components/elements/Radio";
 import NovaposhtaOptionFields from "../NovaposhtaOptionFields";
 import CourierOptionFields from "@/components/modules/checkout/CourierOptionFields";
 import WorldwideOptionFields from "@/components/modules/checkout/WorldwideOptionFields";
 import classnames from "classnames";
+import { DeliveryOption, UkrainianCityWithLabel } from "@/types/checkout";
+import { useFormContext } from "react-hook-form";
 
-function Delivery() {
-  const [selectedDeliveryOption, setSelectedDeliveryOption] =
-    useState("novaposhta");
+interface DeliveryProps {
+  selectedDeliveryOption: string;
+  setSelectedDeliveryOption: Dispatch<SetStateAction<DeliveryOption>>;
+  cities: UkrainianCityWithLabel[];
+  setCities: Dispatch<SetStateAction<UkrainianCityWithLabel[]>>;
+  warehousesNotAvailable: boolean;
+  setWarehousesNotAvailable: Dispatch<SetStateAction<boolean>>;
+}
+
+function Delivery({
+  selectedDeliveryOption,
+  setSelectedDeliveryOption,
+  cities,
+  setCities,
+  warehousesNotAvailable,
+  setWarehousesNotAvailable,
+}: DeliveryProps) {
+  const {
+    setError,
+    clearErrors,
+    formState: { errors },
+  } = useFormContext();
 
   const novaposhtaOptionContentWrapperElem = useRef<HTMLDivElement | null>(
     null
@@ -29,7 +57,18 @@ function Delivery() {
   const worldwideRadioLabelElem = useRef(null);
 
   const [warehousesNotFound, setWarehousesNotFound] = useState(false);
-  const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
+
+  useEffect(() => {
+    if (selectedDeliveryOption === "novaposhta") {
+      if (warehousesNotFound) {
+        setError("warehousesNotFound", { message: "No warehouses found" });
+      } else {
+        clearErrors("warehousesNotFound");
+      }
+    } else {
+      clearErrors("warehousesNotFound");
+    }
+  }, [selectedDeliveryOption, warehousesNotFound, setError, clearErrors]);
 
   useEffect(() => {
     function resizeSingleRadio(
@@ -102,7 +141,7 @@ function Delivery() {
   ]);
 
   function handleRadioOnChange(e: ChangeEvent<HTMLInputElement>) {
-    setSelectedDeliveryOption(e.target.value);
+    setSelectedDeliveryOption(e.target.value as DeliveryOption);
   }
 
   const [maxHeights, setMaxHeights] = useState({
@@ -138,6 +177,15 @@ function Delivery() {
     worldwideOptionContentWrapperElem,
     warehousesNotFound,
     warehousesNotAvailable,
+    errors.novaposhtaCityInputNoApiCities,
+    errors.novaposhtaWarehouseInputNoApiCities,
+    errors.novaposhtaWarehouseInputNoApiWarehouses,
+    errors.courierCityInput,
+    errors.courierAddressInput,
+    errors.courierZipInput,
+    errors.worldwideCityInput,
+    errors.worldwideAddressInput,
+    errors.worldwideZipInput,
   ]);
 
   return (
@@ -184,6 +232,8 @@ function Delivery() {
             }}
           >
             <NovaposhtaOptionFields
+              cities={cities}
+              setCities={setCities}
               setWarehousesNotFound={setWarehousesNotFound}
               setWarehousesNotAvailable={setWarehousesNotAvailable}
               warehousesNotFound={warehousesNotFound}

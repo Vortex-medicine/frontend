@@ -10,9 +10,15 @@ interface TextInputProps {
     HTMLInputElement
   >;
   className?: string;
+  errorState?: boolean;
 }
 
-function TextInput({ inputProps, label, className = "" }: TextInputProps) {
+function TextInput({
+  inputProps,
+  label,
+  className = "",
+  errorState,
+}: TextInputProps) {
   const [focused, setFocused] = useState(false);
   const {
     id = uuid(),
@@ -23,9 +29,12 @@ function TextInput({ inputProps, label, className = "" }: TextInputProps) {
   } = inputProps || {};
 
   const inputWrapperClasses = classnames(className, styles.inputWrapper);
-  const inputClasses = classnames(styles.input, inputClassName);
+  const inputClasses = classnames(styles.input, inputClassName, {
+    [styles.inputError]: errorState,
+  });
   const labelClasses = classnames(styles.label, {
     [styles.labelInputFocused]: focused,
+    [styles.labelError]: errorState && focused,
   });
 
   function handleInputOnFocus(event: FocusEvent<HTMLInputElement>) {
