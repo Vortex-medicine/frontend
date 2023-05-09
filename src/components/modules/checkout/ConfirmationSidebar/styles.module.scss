@@ -79,24 +79,16 @@
   line-height: 50px;
 }
 
-.confirmOrderBtn {
-  cursor: pointer;
-  text-align: center;
-  display: block;
-  border: none;
-  background: $orange;
-  border-radius: 12px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
-  line-height: 25px;
-  padding: 12px 30px 16px;
-  transition: all .2s ease-in-out;
-  margin-top: 40px;
-  margin-right: auto;
-  margin-left: auto;
-
-  &:hover {
-    background: darken($orange, 8%)
-  }
+.confirmBtnAndErrorWrapper {
+  display: flex;
+  flex-direction: column;
 }
+
+.backendRequestErrorMessage {
+  color: $red;
+  align-self: center;
+  max-width: 245px;
+  margin-top: 15px;
+  text-align: center;
+}
+

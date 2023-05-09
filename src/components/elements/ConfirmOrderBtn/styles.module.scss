@@ -1,11 +1,14 @@
+@import "@/styles/colors.module";
+
 .confirmOrderBtn {
   cursor: pointer;
   text-align: center;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border: none;
   background: $orange;
   border-radius: 12px;
-  color: #fff;
   text-decoration: none;
   font-size: 20px;
   line-height: 25px;
@@ -18,4 +21,13 @@
   &:hover {
     background: darken($orange, 8%)
   }
+}
+
+.text {
+  color: #fff;
+}
+
+.spinner {
+  color: #fff;
+  margin-left: 15px;
 }

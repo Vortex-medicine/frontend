@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import { useCart, useCartDispatch } from "@/context/cart/Context";
 import {
@@ -15,10 +15,19 @@ import { DeliveryOption } from "@/types/checkout";
 import axios from "axios";
 import { BACKEND_URL } from "@/constants/api-urls";
 import { setOrderIsConfirmed } from "../../../../utils/cart-actions";
+import ConfirmOrderBtn from "@/components/elements/ConfirmOrderBtn";
+
+// import { setTimeout } from "timers/promises";
 
 interface ConfirmationSidebarProps {
   selectedDeliveryOption: DeliveryOption;
 }
+
+// function sleep(duration: number) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, duration);
+//   });
+// }
 
 function ConfirmationSidebar({
   selectedDeliveryOption,
@@ -32,6 +41,11 @@ function ConfirmationSidebar({
   const itemsTotalPrice = getCartItemsTotalPrice(items);
   const orderItems = getAllOrderItemsFromCart(items);
 
+  const [backendRequestInProgress, setBackendRequestInProgress] =
+    useState(false);
+
+  const [backendRequestError, setBackendRequestError] = useState(false);
+
   async function handleConfirmOrder(data: CombinedSchemaType) {
     const formattedData = formatOrderObject(
       data,
@@ -41,9 +55,16 @@ function ConfirmationSidebar({
     console.log("Form data:", formattedData);
 
     try {
+      setBackendRequestInProgress(true);
+      setBackendRequestError(false);
       await axios.post(`${BACKEND_URL}/orders`, formattedData);
+      // await sleep(3000);
+      // await setTimeout(3000);
+      // throw new Error("test error");
       setOrderIsConfirmed(cartDispatch, true);
     } catch (error) {
+      setBackendRequestInProgress(false);
+      setBackendRequestError(true);
       console.log("error on POST /orders: ", error);
     }
   }
@@ -68,14 +89,17 @@ function ConfirmationSidebar({
             <p className={styles.orderSummaryItemValue}>{itemsTotalPrice} ₴</p>
           </div>
         </div>
-        <button
-          className={styles.confirmOrderBtn}
-          onClick={() => {
-            handleSubmit(handleConfirmOrder)();
-          }}
-        >
-          Подтвердить заказ
-        </button>
+        <div className={styles.confirmBtnAndErrorWrapper}>
+          <ConfirmOrderBtn
+            handleSubmit={() => handleSubmit(handleConfirmOrder)()}
+            loading={backendRequestInProgress}
+          />
+          {backendRequestError && (
+            <p className={styles.backendRequestErrorMessage}>
+              Произошла ошибка, попробуйте ещё раз!
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

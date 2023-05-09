@@ -1,22 +1,26 @@
 import React from "react";
-import styles from "@/components/modules/checkout/ConfirmationSidebar/styles.module.scss";
 import { CircularProgress } from "@mui/material";
-
-type ConfirmOrderBtnVariant = "default" | "loading" | "error";
+import classnames from "classnames";
+import styles from "./styles.module.scss";
 
 interface ConfirmOrderBtnProps {
   handleSubmit: () => void;
-  variant: ConfirmOrderBtnVariant;
+  loading?: boolean;
 }
 
 function ConfirmOrderBtn({
   handleSubmit,
-  variant,
+  loading,
 }: ConfirmOrderBtnProps): JSX.Element {
   return (
-    <button className={styles.confirmOrderBtn} onClick={handleSubmit}>
-      <p>Подтвердить заказ</p>
-      {variant === "loading" && <CircularProgress />}
+    <button
+      className={classnames(styles.confirmOrderBtn, {
+        [styles.confirmOrderBtnLoading]: loading,
+      })}
+      onClick={handleSubmit}
+    >
+      <p className={styles.text}>Подтвердить заказ</p>
+      {loading && <CircularProgress className={styles.spinner} size={25} />}
     </button>
   );
 }
