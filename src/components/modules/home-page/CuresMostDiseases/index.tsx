@@ -52,24 +52,24 @@ function CuresMostDiseases() {
   return (
     <section className={styles.curesMostDiseasesSection}>
       <Container className={styles.curesMostDiseasesSectionContainer}>
-        <h2 className={styles.heading}>Лечит большинство заболеваний</h2>
+        <h2 className={styles.heading}>Лікує більшість захворювань</h2>
         <div className={styles.mainContentWrapper}>
           <p>
-            Катушка Мишина помогает организму справиться с&nbsp;большинством
-            заболеваний.
+            Котушка Мішина допомагає організму впоратися з&nbsp;більшістю
+            захворювань.
           </p>
           <p>
-            Скорость выздоровления зависит от&nbsp;количества ресурсов
-            организма. Ресурсы&nbsp;— состояние организма на&nbsp;текущий
-            момент: сколько у&nbsp;него сил и&nbsp;насколько правильно работают
-            все функции. Чем больше ресурсов, тем организм быстрее избавляется
-            от&nbsp;остатков заболеваний. Если предыдущие болезни забрали
-            у&nbsp;организма силы и&nbsp;нарушили его функции, организму будет
-            труднее справиться с&nbsp;новыми проблемами.
+            Швидкість одужання залежить від кількості ресурсів організму.
+            Ресурси&nbsp;— це стан організму на поточний момент: скільки
+            в&nbsp;нього сил і&nbsp;наскільки правильно працюють
+            усі&nbsp;функції. Чим більше ресурсів, тим організм швидше
+            позбавляється залишків захворювань. Якщо попередні хвороби забрали
+            в&nbsp; організму сили і&nbsp;порушили його функції, організму буде
+            важче впоратися з&nbsp;новими проблемами.
           </p>
           <p>
-            Список заболеваний, по лечению которых есть{" "}
-            <Link href="/reviews">положительные отзывы</Link>
+            Список захворювань, щодо&nbsp;лікування яких є{" "}
+            <Link href="/reviews">позитивні відгуки</Link>
             <span style={{ color: colors.blue }}>:</span>
           </p>
         </div>
@@ -78,103 +78,103 @@ function CuresMostDiseases() {
             <p>гайморит;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>простуда и&nbsp;грипп;</p>
+            <p>застуда та&nbsp;грип;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>ангина;</p>
+            <p>ангіна;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>физическая травма;</p>
+            <p>фізична травма;</p>
           </li>
           <li className={styles.diseasesListItem}>
             <p>артроз, остеоартроз, остеопороз;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>артриты;</p>
+            <p>артрити;</p>
           </li>
           <li className={styles.diseasesListItem}>
             <p>простатит;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>аденома простаты;</p>
+            <p>аденома простати;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>сахарный диабет I и&nbsp;II;</p>
+            <p>цукровий діабет I та&nbsp;II;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>болезни почек, камни в&nbsp;почках;</p>
+            <p>хвороби нирок, каміння в&nbsp;нирках;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>пиелонефрит;</p>
+            <p>пієлонефрит;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>язвы желудка и&nbsp;двенадцатиперстной кишки;</p>
+            <p>виразки шлунка та &nbsp;дванадцятипалої кишки;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>болезни желчного, камни в&nbsp;желчном;</p>
+            <p>хвороби жовчного, каміння в&nbsp;жовчному;</p>
           </li>
           <li className={styles.diseasesListItem}>
             <p>холецистит;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>аллергии;</p>
+            <p>алергії;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>варикозное расширение вен;</p>
+            <p>варикозне розширення вен;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>почернение пальцев;</p>
+            <p>почорніння пальців;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>рубцы, рубцовая ткань;</p>
+            <p>рубці, рубцева тканина;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>головные боли, мигрени;</p>
+            <p>головний біль, мігрені;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>никотиновая зависимость;</p>
+            <p>нікотинова залежність;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>ВСД, панические атаки;</p>
+            <p>ВСД, панічні атаки;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>желтуха, гепатит;</p>
+            <p>жовтяниця, гепатит;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>стенокардии и&nbsp;ИБС;</p>
+            <p>стенокардії та&nbsp;ІХС;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>инфаркт миокарда;</p>
+            <p>інфаркт міокарда;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>заболевания щитовидной железы, узлы на&nbsp;щитовидке;</p>
+            <p>захворювання щитовидної залози, вузли на&nbsp;щитовидці;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>СПИД;</p>
+            <p>СНІД;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>киста яичников;</p>
+            <p>кіста яєчників;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>аритмия сердца;</p>
+            <p>аритмія серця;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>онкология;</p>
+            <p>онкологія;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>наркотические зависимости;</p>
+            <p>наркотичні залежності;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>псориаз;</p>
+            <p>псоріаз;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>лимфостаз;</p>
+            <p>лімфостаз;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>эпилепсия;</p>
+            <p>епілепсія;</p>
           </li>
           <li className={styles.diseasesListItem}>
-            <p>болезни крови.</p>
+            <p>хвороби крові.</p>
           </li>
         </ul>
         <div
@@ -203,8 +203,8 @@ function CuresMostDiseases() {
 
           <p ref={coilTeaExampleParagraphElement}>
             <span ref={coilTeaExampleSpanElement}>
-              Если заболели простудой, пользуйтесь катушкой и&nbsp;пейте
-              подкисленные чаи.
+              Якщо захворіли на&nbsp;застуду, користуйтеся котушкою і&nbsp;пийте
+              підкислені чаї.
             </span>
           </p>
         </div>

@@ -8,7 +8,7 @@ function IntroImage() {
     <div className={styles.introIllustration}>
       <Container className={styles.imageCaptionContainer}>
         <p className={styles.imageCaption}>
-          <span>Здоровье</span>
+          <span>Здоров&apos;я</span>
           <br />
           без таблеток
         </p>

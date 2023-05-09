@@ -8,7 +8,7 @@ function ReviewsFromSkype() {
   return (
     <section className={styles.reviewsFromSkypeSection}>
       <Container>
-        <h2 className={styles.heading}>Отзывы из групп в скайпе</h2>
+        <h2 className={styles.heading}>Відгуки з&nbsp;груп у&nbsp;скайпі</h2>
 
         <ul className={styles.reviewsList}>
           <li className={styles.review}>
@@ -23,7 +23,7 @@ function ReviewsFromSkype() {
                 quality={100}
               />
             </div>
-            <p className={styles.imgCaption}>Вылечил простуду за&nbsp;4 дня</p>
+            <p className={styles.imgCaption}>Вилікував застуду за&nbsp;4 дні</p>
           </li>
 
           <li className={styles.review}>
@@ -39,7 +39,7 @@ function ReviewsFromSkype() {
               />
             </div>
             <p className={styles.imgCaption}>
-              Избавился от&nbsp;гипертонии и&nbsp;аритмии
+              Позбувся &nbsp;гіпертонії та &nbsp;аритмії
             </p>
           </li>
 
@@ -70,7 +70,7 @@ function ReviewsFromSkype() {
                 quality={100}
               />
             </div>
-            <p className={styles.imgCaption}>Вылечил травмированную ногу</p>
+            <p className={styles.imgCaption}>Вилікував травмовану ногу</p>
           </li>
 
           <li className={styles.review}>
@@ -86,7 +86,7 @@ function ReviewsFromSkype() {
               />
             </div>
             <p className={styles.imgCaption}>
-              Прошла сердечная боль и&nbsp;опухоль на&nbsp;ноге
+              Пройшов серцевий біль і&nbsp;пухлина на&nbsp;нозі
             </p>
           </li>
 
@@ -102,11 +102,11 @@ function ReviewsFromSkype() {
                 quality={100}
               />
             </div>
-            <p className={styles.imgCaption}>Улучшилось зрение</p>
+            <p className={styles.imgCaption}>Поліпшився зір</p>
           </li>
         </ul>
         <p className={styles.allReviewsLink}>
-          <Link href="/reviews">Все отзывы</Link>
+          <Link href="/reviews">Усі відгуки</Link>
         </p>
       </Container>
     </section>

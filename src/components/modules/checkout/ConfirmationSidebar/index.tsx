@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { useFormContext } from "react-hook-form";
 import { CombinedSchemaType } from "../../../../utils/order-form-schema";
 import formatOrderObject from "../../../../utils/format-order-object";
-import { DeliveryOption } from "@/types/checkout";
+import { DeliveryOption, UkrainianCityWithLabel } from "@/types/checkout";
 import axios from "axios";
 import { BACKEND_URL } from "@/constants/api-urls";
 import { setOrderIsConfirmed } from "../../../../utils/cart-actions";
@@ -21,6 +21,8 @@ import ConfirmOrderBtn from "@/components/elements/ConfirmOrderBtn";
 
 interface ConfirmationSidebarProps {
   selectedDeliveryOption: DeliveryOption;
+  cities: UkrainianCityWithLabel[];
+  warehousesNotAvailable: boolean;
 }
 
 // function sleep(duration: number) {
@@ -31,6 +33,8 @@ interface ConfirmationSidebarProps {
 
 function ConfirmationSidebar({
   selectedDeliveryOption,
+  cities,
+  warehousesNotAvailable,
 }: ConfirmationSidebarProps): JSX.Element {
   const { items, orderIsConfirmed } = useCart();
   const { handleSubmit } = useFormContext<CombinedSchemaType>();
@@ -50,6 +54,8 @@ function ConfirmationSidebar({
     const formattedData = formatOrderObject(
       data,
       selectedDeliveryOption,
+      cities,
+      warehousesNotAvailable,
       orderItems
     );
     console.log("Form data:", formattedData);
@@ -59,7 +65,6 @@ function ConfirmationSidebar({
       setBackendRequestError(false);
       await axios.post(`${BACKEND_URL}/orders`, formattedData);
       // await sleep(3000);
-      // await setTimeout(3000);
       // throw new Error("test error");
       setOrderIsConfirmed(cartDispatch, true);
     } catch (error) {

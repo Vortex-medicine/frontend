@@ -75,24 +75,24 @@ function Course() {
               <div>
                 <h2 className={styles.heading}>
                   <div className={styles.headingCourseDescr}>
-                    3-дневный видеокурс
+                    3-денний відеокурс
                   </div>
                   <div className={styles.headingCourseName}>
                     <span ref={headingSpanElement}>
-                      Закрытая технология здоровья
+                      Закрита технологія здоров&apos;я
                     </span>
                   </div>
                 </h2>
                 <p className={styles.courseDescr}>
                   <span ref={courseDescrSpanElement}>
-                    В&nbsp;курсе подробно рассказываем о&nbsp;том,
-                    что&nbsp;такое вихревая медицина, как она работает
-                    и&nbsp;отвечаем на&nbsp;распространенные вопросы.
+                    У&nbsp;курсі докладно розповідаємо про&nbsp;те, що&nbsp;таке
+                    вихрова медицина, як&nbsp;вона працює і&nbsp;відповідаємо
+                    на&nbsp;поширені питання.
                   </span>
                 </p>
                 <TelegramButton
                   className={styles.telegramButton}
-                  text="Получить курс в&nbsp;Telegram"
+                  text="Отримати курс у&nbsp;Telegram"
                   href="https://t.me/vortex_medicine/32"
                 />
               </div>

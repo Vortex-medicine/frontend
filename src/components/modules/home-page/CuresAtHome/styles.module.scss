@@ -47,8 +47,8 @@
 }
 
 .factoid {
-  width: 163px !important;
-  height: 163px !important;
+  width: 170px !important;
+  height: 170px !important;
   margin-top: 45px;
   justify-self: center;
   grid-area: f;
@@ -59,13 +59,18 @@
 
   @media screen and (min-width: 1000px) {
     margin-top: 9.395vw;
-    width: 163px !important;
-    height: 163px !important;
+    width: 170px !important;
+    height: 170px !important;
   }
 
   @media screen and (min-width: 1250px) {
     margin-top: 119px;
   }
+}
+
+.factoid div {
+  width: 170px !important;
+  height: 170px !important;
 }
 
 .factoid p {

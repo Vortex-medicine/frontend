@@ -22,7 +22,7 @@ function WellnessMagazine() {
           >
             Журнал Wellness
           </a>{" "}
-          о&nbsp;катушках Мишина
+          про&nbsp;котушки Мішина
         </p>
       </Container>
     </section>

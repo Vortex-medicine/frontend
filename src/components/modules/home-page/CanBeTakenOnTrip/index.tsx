@@ -66,12 +66,12 @@ function CanBeTakenOnTrip() {
       </Container>
       <Container ref={mainContainerElement} className={styles.mainContainer}>
         <div ref={textContentBlockElement} className={styles.textContentBlock}>
-          <h2 className={styles.heading}>Можно взять в&nbsp;путешествие</h2>
+          <h2 className={styles.heading}>Можна взяти в&nbsp;подорож</h2>
           <p className={styles.descr}>
             <span ref={spanElement}>
-              Катушка Мишина и&nbsp;генератор синуса заменят большинство
-              лекарств, которые вы берёте с&nbsp;собой в&nbsp;дорогу. Приборы
-              легко помещаются в&nbsp;чемодан, дорожную сумку и&nbsp;рюкзак.
+              Котушка Мішина та&nbsp;генератор синуса замінять більшість ліків,
+              які&nbsp;ви берете з&nbsp;собою в&nbsp;дорогу. Прилади легко
+              поміщаються у&nbsp;валізу, дорожню сумку та&nbsp;рюкзак.
             </span>
           </p>
         </div>

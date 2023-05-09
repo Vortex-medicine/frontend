@@ -13,6 +13,7 @@ function Factoid({ text, className }: FactoidProps) {
 
   return (
     <div className={factoidClasses}>
+      <div className={styles.factoidCircle} />
       <p>{text}</p>
     </div>
   );

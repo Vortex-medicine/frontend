@@ -26,7 +26,12 @@ export type NovaposhtaSchemaNoApiCitiesType = yup.InferType<
 >;
 
 export const novaposhtaSchemaNoApiWarehouses = yup.object().shape({
-  novaposhtaCitySelect: yup.object().required(),
+  novaposhtaCitySelect: yup
+    .object()
+    .shape({
+      name: yup.string().required(),
+    })
+    .required(),
   novaposhtaWarehouseInputNoApiWarehouses: yup.string().required(),
 });
 export type NovaposhtaSchemaNoApiWarehousesType = yup.InferType<

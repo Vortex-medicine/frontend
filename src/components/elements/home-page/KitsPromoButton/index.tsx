@@ -9,7 +9,7 @@ function KitsPromoButton() {
       <Link href="/kits" legacyBehavior passHref>
         <DefaultButton
           className={styles.kitsButton}
-          text="Перейти к&nbsp;описанию и&nbsp;стоимости приборов"
+          text="Перейти до&nbsp;опису та&nbsp;вартості приладів"
         />
       </Link>
     </div>

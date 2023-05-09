@@ -7,7 +7,7 @@ function OneDeviceForWholeLife() {
   return (
     <section className={styles.oneDeviceForWholeLifeSection}>
       <Container>
-        <h2 className={styles.heading}>Один прибор на&nbsp;всю жизнь</h2>
+        <h2 className={styles.heading}>Один прилад на&nbsp;все життя</h2>
         <div className={styles.contentWrapper}>
           <div className={styles.pillsBlock}>
             <div className={styles.pillsImgWrapper}>
@@ -21,9 +21,9 @@ function OneDeviceForWholeLife() {
               />
             </div>
             <p className={styles.pillsImgCaption}>
-              Таблетки нужно покупать всю жизнь.{" "}
-              <a>По&nbsp;данным statista.com</a> за&nbsp;2021 год
-              на&nbsp;лекарства было потрачено около 1.42 триллиона долларов.
+              Пігулки потрібно купувати все&nbsp;життя.{" "}
+              <a>За&nbsp;даними statista.com</a> за&nbsp;2021 рік на&nbsp;ліки
+              було витрачено близько 1.42 трильйона доларів.
             </p>
           </div>
           <div className={styles.deviceBlock}>
@@ -38,8 +38,8 @@ function OneDeviceForWholeLife() {
               />
             </div>
             <p className={styles.deviceImgCaption}>
-              Генератор синуса и катушку Мишина достаточно купить один раз и
-              пользоваться всю жизнь.
+              Генератор синуса та&nbsp;котушку Мішина достатньо купити один раз
+              і&nbsp;користуватися все життя.
             </p>
           </div>
         </div>

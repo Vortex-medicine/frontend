@@ -9,7 +9,7 @@ function EasyToUse() {
   return (
     <section className={styles.easyToUseSection}>
       <Container>
-        <h2 className={styles.heading}>Легко пользоваться</h2>
+        <h2 className={styles.heading}>Легко користуватися</h2>
         <div className={styles.instructionStepsWrapper}>
           <div className={styles.stepOne}>
             <Image
@@ -23,7 +23,7 @@ function EasyToUse() {
               quality={100}
             />
             <p className={styles.imgCaption}>
-              1. Включить генератор синуса в&nbsp;розетку.
+              1. Увімкнути генератор синуса в&nbsp;розетку.
             </p>
           </div>
           <div className={styles.stepTwo}>
@@ -38,7 +38,7 @@ function EasyToUse() {
               quality={100}
             />
             <p className={styles.imgCaption}>
-              2. Подключить катушку к&nbsp;генератору синуса.
+              2. Підключити котушку до&nbsp;генератора синуса.
             </p>
           </div>
           <div className={styles.stepThree}>
@@ -62,17 +62,19 @@ function EasyToUse() {
               quality={100}
             />
             <p className={styles.imgCaption}>
-              3. Положить катушку на&nbsp;проблемое место.
+              3. Покласти котушку на&nbsp;проблемне місце.
             </p>
           </div>
         </div>
         <div className={styles.coilTreatmentDetailsBlock}>
           <p className={styles.coilTreatmentDetailsLinkParagraph}>
             <Link href="/treatment">
-              Подробно о&nbsp;лечении катушками Мишина
+              Детально про&nbsp; лікування котушками Мішина
             </Link>
           </p>
-          <p>Виды катушек • когда использовать • как лечить ваше заболевание</p>
+          <p>
+            Види котушок • коли використовувати • як лікувати ваше захворювання
+          </p>
         </div>
         <KitsPromoButton />
       </Container>

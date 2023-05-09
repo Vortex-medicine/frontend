@@ -1,10 +1,12 @@
 import {
   CombinedSchemaType,
   CourierSchemaType,
+  NovaposhtaSchemaNoApiCitiesType,
+  NovaposhtaSchemaNoApiWarehousesType,
   NovaposhtaSchemaWithApiType,
   WorldwideSchemaType,
 } from "./order-form-schema";
-import { DeliveryOption } from "@/types/checkout";
+import { DeliveryOption, UkrainianCityWithLabel } from "@/types/checkout";
 import { OrderItem } from "@/types/product";
 
 export interface NovaposhtaDeliveryData {
@@ -40,17 +42,38 @@ export interface FormatOrderObject {
 export default function formatOrderObject(
   formData: CombinedSchemaType,
   selectedDeliveryOption: DeliveryOption,
+  cities: UkrainianCityWithLabel[],
+  warehousesNotAvailable: boolean,
   orderItems: OrderItem[]
 ) {
   let deliveryData;
 
   switch (selectedDeliveryOption) {
     case "novaposhta": {
+      console.log("formData", formData);
+      let city;
+      let warehouse;
+
+      if (cities.length === 0) {
+        city = (formData as NovaposhtaSchemaNoApiCitiesType)
+          .novaposhtaCityInputNoApiCities;
+        warehouse = (formData as NovaposhtaSchemaNoApiCitiesType)
+          .novaposhtaWarehouseInputNoApiCities;
+      } else if (warehousesNotAvailable) {
+        city = (formData as NovaposhtaSchemaNoApiWarehousesType)
+          .novaposhtaCitySelect.name;
+        warehouse = (formData as NovaposhtaSchemaNoApiWarehousesType)
+          .novaposhtaWarehouseInputNoApiWarehouses;
+      } else {
+        city = (formData as NovaposhtaSchemaWithApiType).novaposhtaCitySelect
+          .name;
+        warehouse = (formData as NovaposhtaSchemaWithApiType)
+          .novaposhtaWarehouseSelect.name;
+      }
+
       deliveryData = {
-        city: (formData as NovaposhtaSchemaWithApiType).novaposhtaCitySelect
-          .name,
-        warehouse: (formData as NovaposhtaSchemaWithApiType)
-          .novaposhtaWarehouseSelect.name,
+        city,
+        warehouse,
       };
       break;
     }

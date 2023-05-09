@@ -15,22 +15,22 @@ export const PAGE_HREFS = {
 
 export const PAGES: Array<PageLinkData | SubmenuData> = [
   {
-    name: "Лечение",
+    name: "Лікування",
     href: PAGE_HREFS.TREATMENT,
   },
   {
-    name: "Отзывы",
+    name: "Відгуки",
     href: PAGE_HREFS.REVIEWS,
   },
   {
-    name: "Комплекты приборов",
+    name: "Комплекти приладів",
     href: PAGE_HREFS.KITS,
   },
   {
-    globalName: "Схемы приборов",
+    globalName: "Схеми приладів",
     pages: [
       {
-        name: "Катушка Мишина",
+        name: "Котушка Мішина",
         href: PAGE_HREFS.MISHIN_COIL_SCHEMA,
       },
       {
@@ -40,11 +40,11 @@ export const PAGES: Array<PageLinkData | SubmenuData> = [
     ],
   },
   {
-    name: "Cтатьи",
+    name: "Cтатті",
     href: PAGE_HREFS.ARTICLES,
   },
   {
-    name: "Контакты",
+    name: "Контакти",
     href: PAGE_HREFS.CONTACTS,
   },
 ];

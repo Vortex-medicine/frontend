@@ -19,17 +19,16 @@ function CuresAtHome() {
           quality={100}
         />
         <div className={styles.contentWrapper}>
-          <h2 className={styles.heading}>Лечит в домашних условиях</h2>
+          <h2 className={styles.heading}>Лікує в&nbsp;домашніх умовах</h2>
           <p className={styles.text}>
-            Чтобы пользоваться катушкой Мишина, не&nbsp;нужно ходить
-            к&nbsp;доктору. Достаточно просто сесть на&nbsp;диван, взять
-            ноутбук, включить любимый фильм и&nbsp;положить катушку
-            на&nbsp;тело.
+            Щоб користуватися котушкою Мішина, не&nbsp;потрібно ходити
+            до&nbsp;лікаря. Досить просто сісти на&nbsp;диван, взяти ноутбук,
+            включити улюблений фільм і&nbsp;покласти котушку на&nbsp;тіло.
           </p>
         </div>
         <Factoid
           className={styles.factoid}
-          text="1 час&nbsp;— средняя длительность сеанса"
+          text="1&nbsp;година&nbsp;— середня тривалість сеансу"
         />
       </Container>
     </section>

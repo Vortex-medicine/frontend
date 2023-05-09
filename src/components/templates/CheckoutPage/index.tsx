@@ -66,6 +66,8 @@ function CheckoutPage() {
           </div>
           <ConfirmationSidebar
             selectedDeliveryOption={selectedDeliveryOption}
+            cities={cities}
+            warehousesNotAvailable={warehousesNotAvailable}
           />
         </div>
       </Container>

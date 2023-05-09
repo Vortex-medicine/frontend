@@ -26,7 +26,7 @@ function ShareTechnologyWithFriends() {
   return (
     <section className={styles.shareTechnologyWithFriendsSection}>
       <Container>
-        <p className={styles.heading}>Расскажите друзьям о технологии:</p>
+        <p className={styles.heading}>Розкажіть друзям про технологію:</p>
         <ul className={styles.socialBtnsList}>
           <li className={styles.socialItem}>
             <FacebookShareButton url={"https://vortex-medicine.com.ua"}>

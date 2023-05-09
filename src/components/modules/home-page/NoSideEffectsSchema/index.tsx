@@ -106,7 +106,7 @@ function NoSideEffectsSchema() {
       >
         <p ref={firstTextBlockElement} className={styles.firstTextBlock}>
           <span ref={firstTextBlockSpanElement}>
-            Катушка Мишина разбивает чужеродные структуры
+            Котушка Мішина розбиває чужорідні структури
           </span>
         </p>
         <Arrow
@@ -116,13 +116,11 @@ function NoSideEffectsSchema() {
         />
         <Arrow className={styles.arrowVertical} type="vertical" />
         <p ref={secondTextBlockElement} className={styles.secondTextBlock}>
-          <span>
-            Организм самостоятельно выводит остатки от&nbsp;заболеваний
-          </span>
+          <span>Організм самостійно виводить залишки від&nbsp;захворювань</span>
         </p>
       </div>
       <div className={styles.coilCaptionWrapper}>
-        <p className={styles.coilCaption}>Катушка Мишина</p>
+        <p className={styles.coilCaption}>Котушка Мішина</p>
         <div className={styles.captionLine}></div>
       </div>
       <Image
@@ -138,7 +136,7 @@ function NoSideEffectsSchema() {
         quality={100}
       />
       <p className={styles.sinusGeneratorDescr}>
-        Генератор синуса&nbsp;— прибор для&nbsp;питания катушки Мишина
+        Генератор синуса&nbsp;— прилад для&nbsp;живлення котушки Мішина
       </p>
       <div className={styles.speakerWrapper}>
         <Image
@@ -150,7 +148,7 @@ function NoSideEffectsSchema() {
           quality={100}
         />
         <p className={styles.mozartRecommendation}>
-          Во время сеанса хорошо слушать{" "}
+          Під&nbsp;час сеансу добре слухати{" "}
           <a href="https://youtu.be/DWVXa_Ism6g">анданте Моцарта</a>{" "}
           <span style={{ color: colors.blue }}>:)</span>
         </p>

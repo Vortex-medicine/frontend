@@ -8,19 +8,19 @@ function WhatElseToExplore() {
   return (
     <section className={styles.whatElseToExploreSection}>
       <Container>
-        <h2 className={styles.heading}>Что ещё изучить</h2>
+        <h2 className={styles.heading}>Що ще подивитися</h2>
         <ul className={styles.linkList}>
           <li className={styles.linkItem}>
             <p>
               <Link href={PAGE_HREFS.EXPERIENCE_SHARING_FILES}>
-                Полные беседы в&nbsp;скайпе о&nbsp;вихревой медицине
+                Повні бесіди в&nbsp;скайпі про&nbsp;вихрову медицину
               </Link>
             </p>
           </li>
           <li className={styles.linkItem}>
             <p>
               <Link href={PAGE_HREFS.MISHIN_COIL_SCHEMA}>
-                Схемы катушек Мишина
+                Схеми котушок Мішина
               </Link>
             </p>
           </li>
@@ -33,7 +33,7 @@ function WhatElseToExplore() {
           </li>
           <li className={styles.linkItem}>
             <p>
-              <Link href={PAGE_HREFS.ARTICLES}>Статьи</Link>
+              <Link href={PAGE_HREFS.ARTICLES}>Статті</Link>
             </p>
           </li>
         </ul>
