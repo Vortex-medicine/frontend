@@ -5,15 +5,16 @@ import Container from "@/components/elements/Container";
 import Factoid from "@/components/elements/Factoid";
 import colors from "@/styles/colors.module.scss";
 import KitsPromoButton from "@/components/elements/home-page/KitsPromoButton";
+import { useTranslation } from "next-i18next";
 
 function Intro() {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.intro}>
       <IntroImage />
       <Container>
-        <h1 className={styles.heading}>
-          Котушка Мішина&nbsp;— ваш домашній лікар
-        </h1>
+        <h1 className={styles.heading}>{t("home:intro.heading")}</h1>
         <p className={styles.subheading}>
           Прилад для лікування більшості захворювань у&nbsp;домашніх умовах
         </p>

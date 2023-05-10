@@ -17,12 +17,12 @@ function ContactInfo() {
 
   return (
     <section className={styles.contactInfoSection}>
-      <h2 className={styles.heading}>Контактные данные получателя заказа</h2>
+      <h2 className={styles.heading}>Контактні дані одержувача замовлення</h2>
       <div className={styles.fullNameInputsWrapper}>
         <div className={styles.userDataInputWrapper}>
           <TextInput
             className={styles.userDataInput}
-            label="Имя"
+            label="Імʼя"
             inputProps={{
               required: true,
               ...register("firstName"),
@@ -39,7 +39,7 @@ function ContactInfo() {
         <div>
           <TextInput
             className={styles.userDataInput}
-            label="Фамилия"
+            label="Прізвище"
             inputProps={{
               required: true,
               ...register("lastName"),
@@ -66,12 +66,13 @@ function ContactInfo() {
               return (
                 <PhoneNumberInput
                   {...field}
-                  label="Номер телефона"
+                  label="Номер телефону"
                   innerSearchComponentProps={{
                     country: "ua",
                     countryCodeEditable: false,
                     enableSearch: true,
-                    searchPlaceholder: "Поиск",
+                    searchPlaceholder: "Пошук",
+                    searchNotFound: "Нічого не знайдено",
                     onChange: (value, data, e, formattedValue) => {
                       const shouldValidate = submitCount > 0;
                       setValue(
@@ -103,7 +104,7 @@ function ContactInfo() {
         <div>
           <TextInput
             className={styles.userDataInput}
-            label="Электронная почта"
+            label="Електронна пошта"
             inputProps={{
               required: true,
               type: "email",

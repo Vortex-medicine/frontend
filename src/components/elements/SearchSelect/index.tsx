@@ -1,10 +1,5 @@
 import React, { FocusEvent, useRef, useState } from "react";
-import {
-  Autocomplete,
-  CircularProgress,
-  Popper,
-  TextField,
-} from "@mui/material";
+import { Autocomplete, Popper } from "@mui/material";
 import { AutocompleteProps } from "@mui/material/Autocomplete/Autocomplete";
 import styles from "./styles.module.scss";
 import classnames from "classnames";
@@ -18,10 +13,7 @@ interface SearchSelectProps<
   Multiple extends boolean | undefined = false,
   DisableClearable extends boolean | undefined = false,
   FreeSolo extends boolean | undefined = false
-> extends Omit<
-    AutocompleteProps<T, Multiple, DisableClearable, FreeSolo>,
-    "renderInput"
-  > {
+> extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
   label?: string;
   required?: boolean;
   id?: string;
@@ -87,24 +79,6 @@ function SearchSelect<
               [styles.popperOpen]: popperOpen,
             })}
             ref={popperRef}
-          />
-        )}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <React.Fragment>
-                  {loading ? (
-                    <div className={styles.spinner}>
-                      <CircularProgress color="darkGrey" size={20} />
-                    </div>
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </React.Fragment>
-              ),
-            }}
           />
         )}
         renderOption={(props, option, state) =>

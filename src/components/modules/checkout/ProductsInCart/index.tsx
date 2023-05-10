@@ -12,13 +12,13 @@ function ProductsInCart(): JSX.Element {
   return (
     <section className={styles.productsInCartSection}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Товары в заказе</h2>
+        <h2 className={styles.title}>Товари в замовленні</h2>
         <button
           className={styles.editCartBtn}
           onClick={() => openCart(cartDispatch)}
         >
           <EditRoundedIcon className={styles.editCartIcon} />
-          <p className={styles.editCartBtnText}>Редактировать</p>
+          <p className={styles.editCartBtnText}>Редагувати</p>
         </button>
       </div>
       <CheckoutProductsList variant={"checkout"} cartItems={items} />

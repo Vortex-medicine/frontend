@@ -2,37 +2,30 @@ import React from "react";
 import styles from "./styles.module.scss";
 import DoneRoundedIcon from "@mui/icons-material/DoneRounded";
 import classNames from "classnames";
-
-type LanguageId = number;
-type LanguageName = string;
-
-interface Language {
-  id: LanguageId;
-  name: LanguageName;
-}
+import { LanguageOption } from "@/types/navigation";
 
 interface LanguageDropdownItemProps {
-  item: Language;
-  selectedLanguageId: LanguageId;
-  setSelectedLanguageId: (id: LanguageId) => void;
+  item: LanguageOption;
+  selectedLanguage: LanguageOption;
+  setSelectedLanguage: (option: LanguageOption) => void;
 }
 
 function NavbarLanguageDropdownOptionsItem({
   item,
-  selectedLanguageId,
-  setSelectedLanguageId,
+  selectedLanguage,
+  setSelectedLanguage,
 }: LanguageDropdownItemProps): JSX.Element {
   const optionsItemClasses = classNames(styles.optionsItem, {
-    [styles.optionsItemActive]: selectedLanguageId === item.id,
+    [styles.optionsItemActive]: selectedLanguage.value === item.value,
   });
 
   return (
     <li
-      key={item.id}
+      key={item.value}
       className={optionsItemClasses}
-      onClick={() => setSelectedLanguageId(item.id)}
+      onClick={() => setSelectedLanguage(item)}
     >
-      <p>{item.name}</p>
+      <p>{item.label}</p>
       <DoneRoundedIcon />
     </li>
   );

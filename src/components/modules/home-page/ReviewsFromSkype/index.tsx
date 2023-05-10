@@ -55,7 +55,7 @@ function ReviewsFromSkype() {
                 quality={100}
               />
             </div>
-            <p className={styles.imgCaption}>Избавился от&nbsp;мигрени</p>
+            <p className={styles.imgCaption}>Позбувся мігрені</p>
           </li>
 
           <li className={styles.review}>

@@ -14,7 +14,7 @@ function CourierOptionFields() {
     <div className={styles.courierOptionFieldsWrapper}>
       <div className={styles.input}>
         <TextInput
-          label={"Город"}
+          label={"Місто"}
           inputProps={{ required: true, ...register("courierCityInput") }}
           errorState={!!errors.courierCityInput}
         />
@@ -28,7 +28,7 @@ function CourierOptionFields() {
 
       <div className={styles.input}>
         <TextInput
-          label={"Адрес"}
+          label={"Адреса"}
           inputProps={{ required: true, ...register("courierAddressInput") }}
           errorState={!!errors.courierAddressInput}
         />
@@ -43,7 +43,7 @@ function CourierOptionFields() {
       <div className={styles.input}>
         <TextInput
           className={styles.zipInput}
-          label={"Почтовый индекс"}
+          label={"Поштовий індекс"}
           inputProps={{ required: true, ...register("courierZipInput") }}
           errorState={!!errors.courierZipInput}
         />

@@ -22,6 +22,8 @@ interface DeliveryProps {
   setCities: Dispatch<SetStateAction<UkrainianCityWithLabel[]>>;
   warehousesNotAvailable: boolean;
   setWarehousesNotAvailable: Dispatch<SetStateAction<boolean>>;
+  warehousesNotFound: boolean;
+  setWarehousesNotFound: Dispatch<SetStateAction<boolean>>;
 }
 
 function Delivery({
@@ -31,10 +33,10 @@ function Delivery({
   setCities,
   warehousesNotAvailable,
   setWarehousesNotAvailable,
+  warehousesNotFound,
+  setWarehousesNotFound,
 }: DeliveryProps) {
   const {
-    setError,
-    clearErrors,
     formState: { errors },
   } = useFormContext();
 
@@ -55,20 +57,6 @@ function Delivery({
   const worldwideRadioWrapperElem = useRef(null);
   const worldwideRadioIconElem = useRef(null);
   const worldwideRadioLabelElem = useRef(null);
-
-  const [warehousesNotFound, setWarehousesNotFound] = useState(false);
-
-  useEffect(() => {
-    if (selectedDeliveryOption === "novaposhta") {
-      if (warehousesNotFound) {
-        setError("warehousesNotFound", { message: "No warehouses found" });
-      } else {
-        clearErrors("warehousesNotFound");
-      }
-    } else {
-      clearErrors("warehousesNotFound");
-    }
-  }, [selectedDeliveryOption, warehousesNotFound, setError, clearErrors]);
 
   useEffect(() => {
     function resizeSingleRadio(
@@ -198,7 +186,7 @@ function Delivery({
             styles.ukraineSubgroupLabel
           )}
         >
-          По Украине
+          Україною
         </p>
         <div
           className={classnames(
@@ -213,7 +201,7 @@ function Delivery({
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label={"Самовывоз с\u00A0Новой Почты"}
+              label={"Самовивіз з\u00A0Нової Пошти"}
               inputProps={{
                 checked: selectedDeliveryOption === "novaposhta",
                 value: "novaposhta",
@@ -254,7 +242,7 @@ function Delivery({
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label={"Курьер на\u00A0ваш адрес"}
+              label={"Кур'єр за\u00A0вашою адресою"}
               inputProps={{
                 checked: selectedDeliveryOption === "courier",
                 value: "courier",
@@ -283,7 +271,7 @@ function Delivery({
             styles.worldwideSubgroupLabel
           )}
         >
-          или
+          чи
         </p>
         <div
           className={classnames(
@@ -298,7 +286,7 @@ function Delivery({
           <div className={styles.radioWrapper}>
             <Radio
               className={styles.radio}
-              label={"По\u00A0миру"}
+              label={"Світом"}
               inputProps={{
                 checked: selectedDeliveryOption === "worldwide",
                 value: "worldwide",

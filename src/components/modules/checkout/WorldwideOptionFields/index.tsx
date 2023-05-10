@@ -21,7 +21,7 @@ function WorldwideOptionFields() {
         defaultValue={countries.find((country) => country.label === "Poland")}
         render={({ field }) => (
           <CountrySelect
-            label={"Страна"}
+            label={"Країна"}
             required
             className={styles.countrySelect}
             onChange={field.onChange}
@@ -32,7 +32,7 @@ function WorldwideOptionFields() {
 
       <div className={styles.cityInputWrapper}>
         <TextInput
-          label={"Город"}
+          label={"Місто"}
           inputProps={{ required: true, ...register("worldwideCityInput") }}
           className={styles.cityInput}
           errorState={!!errors.worldwideCityInput}
@@ -47,7 +47,7 @@ function WorldwideOptionFields() {
 
       <div className={styles.addressInputWrapper}>
         <TextInput
-          label={"Адрес"}
+          label={"Адреса"}
           inputProps={{ required: true, ...register("worldwideAddressInput") }}
           className={styles.addressInput}
           errorState={!!errors.worldwideAddressInput}
@@ -62,7 +62,7 @@ function WorldwideOptionFields() {
 
       <div className={styles.zipInputWrapper}>
         <TextInput
-          label={"Почтовый индекс"}
+          label={"Поштовий індекс"}
           inputProps={{ required: true, ...register("worldwideZipInput") }}
           className={styles.zipInput}
           errorState={!!errors.worldwideZipInput}

@@ -1,7 +1,7 @@
-const LANGUAGES = [
-  { name: "Українська", id: 0 },
-  { name: "Русский", id: 1 },
-  { name: "English", id: 2 },
-];
+const LANGUAGES = {
+  uk: "Українська",
+  ru: "Русский",
+  en: "English",
+};
 
 export default LANGUAGES;

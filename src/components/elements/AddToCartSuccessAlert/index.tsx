@@ -17,13 +17,13 @@ const AddToCartSuccessAlert = forwardRef<HTMLDivElement, CustomContentProps>(
         <div className={styles.alertWrapper}>
           <div className={styles.messageWrapper}>
             <CheckCircleOutlineRoundedIcon className={styles.successIcon} />
-            <p className={styles.message}>Товар добавлен в&nbsp;корзину!</p>
+            <p className={styles.message}>Товар додано до&nbsp;кошика!</p>
           </div>
           <button
             className={styles.openCartBtn}
             onClick={() => openCart(cartDispatch)}
           >
-            Открыть
+            Відкрити
           </button>
           <button className={styles.closeBtn} onClick={() => closeSnackbar(id)}>
             <CloseRoundedIcon />

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import useOutsideClick from "@/hooks/use-outside-click";
@@ -6,6 +6,9 @@ import NavbarLanguageDropdownOptionsItem from "@/components/elements/header/Navb
 import LANGUAGES from "@/constants/languages";
 import classNames from "classnames";
 import { ClassName } from "@/types/common";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import { LanguageOption } from "@/types/navigation";
 
 interface LanguageDropdownProps {
   menuIsOpened?: boolean;
@@ -16,7 +19,38 @@ function NavbarLanguageDropdown({
   menuIsOpened,
   className = "",
 }: LanguageDropdownProps): JSX.Element {
-  const [selectedLanguageId, setSelectedLanguageId] = useState(1);
+  const { i18n } = useTranslation();
+  const { language: currentLanguage } = i18n;
+  const router = useRouter();
+  const locales = router.locales ?? [currentLanguage];
+
+  console.log("i18n.language", i18n.language);
+
+  const [value, setValue] = useState({
+    value: i18n.language,
+    label: LANGUAGES[currentLanguage as keyof typeof LANGUAGES],
+  });
+
+  const switchToLocale = useCallback(
+    (locale: string) => {
+      const path = router.asPath;
+
+      return router.push(path, path, { locale, scroll: false });
+    },
+    [router]
+  );
+
+  const languageChanged = useCallback(
+    async (option: LanguageOption) => {
+      setValue(option);
+
+      const locale = option.value;
+
+      await switchToLocale(locale);
+    },
+    [switchToLocale]
+  );
+
   const [dropdownIsOpened, setDropdownIsOpened] = useState(false);
 
   const dropdownOptionsElement = useRef(null);
@@ -48,13 +82,21 @@ function NavbarLanguageDropdown({
         <LanguageOutlinedIcon className={styles.dropdownIcon} />
       </div>
       <ul ref={dropdownOptionsElement} className={styles.dropdownOptions}>
-        {LANGUAGES.map((item) => {
+        {locales.map((locale) => {
+          console.log("locale", locale);
+          console.log("currentLanguage", value);
+          const label = LANGUAGES[locale as keyof typeof LANGUAGES];
+          const option = {
+            value: locale,
+            label,
+          };
+
           return (
             <NavbarLanguageDropdownOptionsItem
-              key={item.id}
-              item={item}
-              selectedLanguageId={selectedLanguageId}
-              setSelectedLanguageId={setSelectedLanguageId}
+              key={option.value}
+              item={option}
+              selectedLanguage={value}
+              setSelectedLanguage={languageChanged}
             />
           );
         })}

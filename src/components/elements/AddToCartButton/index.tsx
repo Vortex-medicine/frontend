@@ -17,9 +17,7 @@ function AddToCartButton({
 
   return (
     <button className={buttonClasses}>
-      <span>
-        {presentInCart ? "В\u00A0корзине" : "Добавить в\u00A0корзину"}
-      </span>
+      <span>{presentInCart ? "У\u00A0кошику" : "Додати до\u00A0кошика"}</span>
       {presentInCart && <DoneRounded className={styles.doneIcon} />}
     </button>
   );

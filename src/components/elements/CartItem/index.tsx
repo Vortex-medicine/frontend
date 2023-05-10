@@ -108,7 +108,7 @@ function CartItem({
       </div>
 
       <div className={styles.amountWrapper}>
-        <p className={styles.amountCaption}>Количество</p>
+        <p className={styles.amountCaption}>Кількість</p>
         <div className={styles.amountControlElements}>
           <IconButton
             className={styles.amountMinusBtn}
@@ -136,7 +136,7 @@ function CartItem({
       </div>
 
       <div className={styles.priceWrapper}>
-        <p className={styles.priceCaption}>Сумма</p>
+        <p className={styles.priceCaption}>Сума</p>
         <p className={styles.price}>
           {localQuantity === ""
             ? product.price
@@ -151,7 +151,7 @@ function CartItem({
           className={styles.removeItemInnerWrapper}
         >
           <DeleteOutlineRoundedIcon className={styles.removeItemIcon} />
-          <p className={styles.removeItemText}>Удалить</p>
+          <p className={styles.removeItemText}>Видалити</p>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ function ConfirmOrderBtn({
       })}
       onClick={handleSubmit}
     >
-      <p className={styles.text}>Подтвердить заказ</p>
+      <p className={styles.text}>Підтвердити замовлення</p>
       {loading && <CircularProgress className={styles.spinner} size={25} />}
     </button>
   );

@@ -10,7 +10,7 @@ function KitsPage(): JSX.Element {
     <>
       <Container>
         <h1 className={styles.heading}>
-          Комплекты приборов для вихревой медицины
+          Комплекти приладів для&nbsp;вихрової медицини
         </h1>
         <div className={styles.contentWrapper}>
           <ul className={styles.productList}>

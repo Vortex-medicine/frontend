@@ -56,13 +56,14 @@ function OrderSuccessPage() {
     <Container>
       <section className={styles.receiptSection}>
         <div className={styles.allContentWrapper}>
-          <h1 className={styles.heading}>Спасибо за заказ!</h1>
+          <h1 className={styles.heading}>Дякуємо за замовлення!</h1>
           <p>
-            Мы свяжемся с вами как можно быстрее, чтобы ещё раз подтвердить
-            заказ и уточнить все детали по доставке и оплате.
+            Ми зв&apos;яжемося з&nbsp;вами якнайшвидше, щоб&nbsp;ще&nbsp;раз
+            підтвердити замовлення та&nbsp;уточнити всі&nbsp;деталі щодо
+            доставки та&nbsp;оплати.
           </p>
           <p className={styles.orderSummaryDescr}>
-            Вы заказали товаров на общую сумму{" "}
+            Ви замовили товарів на загальну суму{" "}
             <span className={styles.totalPrice}>{totalPrice} ₴:</span>
           </p>
           <CheckoutProductsList
@@ -71,7 +72,7 @@ function OrderSuccessPage() {
           />
         </div>
         <Link className={styles.mainPageBtn} href="/">
-          На главную
+          На головну
         </Link>
       </section>
     </Container>

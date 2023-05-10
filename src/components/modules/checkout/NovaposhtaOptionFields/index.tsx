@@ -9,7 +9,7 @@ import {
 import SearchSelect from "@/components/elements/SearchSelect";
 import getWarehousesByCityId from "../../../../api/get-novaposhta-warehouses";
 import TextInput from "@/components/elements/TextInput";
-import { Backdrop, CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress, TextField } from "@mui/material";
 import getUkrainianCities from "../../../../api/get-ukrainian-cities";
 import { Controller, useFormContext } from "react-hook-form";
 import FieldErrorMessage from "@/components/elements/FieldErrorMessage";
@@ -189,7 +189,7 @@ function NovaposhtaOptionFields({
           <div className={styles.cityTextInputWrapper}>
             <TextInput
               className={styles.cityTextInput}
-              label={"Город"}
+              label={"Місто"}
               inputProps={{
                 required: true,
                 ...register("novaposhtaCityInputNoApiCities"),
@@ -208,7 +208,7 @@ function NovaposhtaOptionFields({
           <div className={styles.warehouseTextInputWrapper}>
             <TextInput
               className={styles.warehouseTextInput}
-              label={"Номер отделения или почтомата"}
+              label={"Номер відділення або поштомату"}
               inputProps={{
                 required: true,
                 ...register("novaposhtaWarehouseInputNoApiCities"),
@@ -227,37 +227,47 @@ function NovaposhtaOptionFields({
         </>
       ) : (
         <>
-          <Controller
-            control={control}
-            name={"novaposhtaCitySelect"}
-            defaultValue={cities[selectedCity ?? 0]}
-            render={({ field }) => (
-              <SearchSelect
-                label={"Город"}
-                required
-                className={styles.citySearchSelect}
-                openOnFocus
-                autoHighlight
-                disableListWrap
-                disableClearable
-                options={cities}
-                value={field.value}
-                onChange={async (event, newValue) => {
-                  field.onChange(newValue);
-                  await handleCityChange(newValue);
-                }}
-              />
-            )}
-          />
+          <div id={"citySelectWrapper"}>
+            <Controller
+              control={control}
+              name={"novaposhtaCitySelect"}
+              defaultValue={cities[selectedCity ?? 0]}
+              render={({ field: { onChange, ...field } }) => (
+                <SearchSelect
+                  label={"Місто"}
+                  required
+                  className={styles.citySearchSelect}
+                  openOnFocus
+                  autoHighlight
+                  disableListWrap
+                  disableClearable
+                  options={cities}
+                  value={field.value}
+                  onChange={async (event, newValue) => {
+                    onChange(newValue);
+                    await handleCityChange(newValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                      }}
+                    />
+                  )}
+                />
+              )}
+            />
+          </div>
           {warehousesNotFound ? (
             <p className={styles.noWarehousesText}>
               <strong>
-                На данный момент в вашем городе нет ни одного доступного
-                отделения.{" "}
-              </strong>
-              Выберите курьерскую доставку, и мы постараемся найти оптимальный
-              вариант, как вам получить заказ. Вы также можете выбрать другой
-              город, если сможете забрать там посылку.
+                На&nbsp;даний момент у&nbsp;вашому місті немає жодного
+                доступного відділення.
+              </strong>{" "}
+              Виберіть кур&apos;єрську доставку, і&nbsp;ми спробуємо знайти
+              оптимальний варіант, як&nbsp;вам отримати замовлення. Ви також
+              можете вибрати інше місто, якщо&nbsp;зможете забрати там посилку.
             </p>
           ) : (
             <>
@@ -265,7 +275,7 @@ function NovaposhtaOptionFields({
                 <div>
                   <TextInput
                     className={styles.warehouseTextInput}
-                    label={"Номер отделения или почтомата"}
+                    label={"Номер відділення або поштомату"}
                     inputProps={{
                       required: true,
                       ...register("novaposhtaWarehouseInputNoApiWarehouses"),
@@ -293,10 +303,9 @@ function NovaposhtaOptionFields({
                       ? (null as unknown as NovaposhtaWarehouseWithLabel)
                       : warehouses[selectedWarehouse]
                   }
-                  render={({ field }) => (
+                  render={({ field: { onChange, ...field } }) => (
                     <SearchSelect
-                      label={"Отделение или почтомат"}
-                      loading={warehousesLoading}
+                      label={"Відділення або поштомат"}
                       required
                       className={styles.warehouseSearchSelect}
                       openOnFocus
@@ -306,9 +315,30 @@ function NovaposhtaOptionFields({
                       options={warehouses}
                       value={field.value}
                       onChange={(event, newValue) => {
-                        field.onChange(newValue);
+                        onChange(newValue);
                         handleWarehouseChange(newValue);
                       }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                              <React.Fragment>
+                                {warehousesLoading ? (
+                                  <div className={styles.spinner}>
+                                    <CircularProgress
+                                      color="darkGrey"
+                                      size={20}
+                                    />
+                                  </div>
+                                ) : null}
+                                {params.InputProps.endAdornment}
+                              </React.Fragment>
+                            ),
+                          }}
+                        />
+                      )}
                     />
                   )}
                 />

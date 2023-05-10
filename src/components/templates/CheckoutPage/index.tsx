@@ -24,6 +24,7 @@ function CheckoutPage() {
     useState<DeliveryOption>("novaposhta");
   const [cities, setCities] = useState<UkrainianCityWithLabel[]>([]);
   const [warehousesNotAvailable, setWarehousesNotAvailable] = useState(false);
+  const [warehousesNotFound, setWarehousesNotFound] = useState(false);
 
   const router = useRouter();
   const schema = getCombinedSchema(
@@ -50,7 +51,7 @@ function CheckoutPage() {
   return showPage ? (
     <FormProvider {...methods}>
       <Container>
-        <h1 className={styles.heading}>Оформление заказа</h1>
+        <h1 className={styles.heading}>Оформлення замовлення</h1>
         <div className={styles.allContentWrapper}>
           <div className={styles.mainContentWrapper}>
             <ContactInfo />
@@ -61,6 +62,8 @@ function CheckoutPage() {
               setCities={setCities}
               warehousesNotAvailable={warehousesNotAvailable}
               setWarehousesNotAvailable={setWarehousesNotAvailable}
+              warehousesNotFound={warehousesNotFound}
+              setWarehousesNotFound={setWarehousesNotFound}
             />
             <ProductsInCart />
           </div>
@@ -68,6 +71,7 @@ function CheckoutPage() {
             selectedDeliveryOption={selectedDeliveryOption}
             cities={cities}
             warehousesNotAvailable={warehousesNotAvailable}
+            warehousesNotFound={warehousesNotFound}
           />
         </div>
       </Container>

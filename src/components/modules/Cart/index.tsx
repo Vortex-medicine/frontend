@@ -53,7 +53,7 @@ export default function Cart() {
     >
       <div className={styles.modalTitleOuterWrapper}>
         <Container className={styles.modalTitleInnerContainer}>
-          <h2>Корзина</h2>
+          <h2>Кошик</h2>
           <button
             className={styles.closeModalBtn}
             onClick={() => closeCart(cartDispatch)}
@@ -74,8 +74,8 @@ export default function Cart() {
             </ul>
           ) : (
             <div className={styles.emptyCartWrapper}>
-              <h3>В корзине пусто</h3>
-              <p>Но это никогда не поздно исправить :)</p>
+              <h3>Кошик порожній</h3>
+              <p>Але&nbsp;це ніколи не&nbsp;пізно виправити :)</p>
             </div>
           )}
 
@@ -90,14 +90,14 @@ export default function Cart() {
                   href={PAGE_HREFS.CHECKOUT}
                   className={styles.checkoutBtn}
                 >
-                  Оформить заказ
+                  Оформити замовлення
                 </Link>
               </div>
               <button
                 className={styles.continueShoppingBtn}
                 onClick={() => closeCart(cartDispatch)}
               >
-                Продолжить покупки
+                Продовжити покупки
               </button>
             </div>
           )}

@@ -38,7 +38,7 @@ function CheckoutProduct({
       <div className={styles.productPriceQuantityWrapper}>
         <p className={styles.productPriceQuantityItem}>
           <span className={styles.productPriceQuantityLabel}>
-            Цена<span className={styles.colon}>:</span>
+            Ціна<span className={styles.colon}>:</span>
           </span>{" "}
           <span className={styles.productPriceQuantityValue}>
             {product.price} ₴
@@ -46,13 +46,13 @@ function CheckoutProduct({
         </p>
         <p className={styles.productPriceQuantityItem}>
           <span className={styles.productPriceQuantityLabel}>
-            Количество<span className={styles.colon}>:</span>
+            Кількість<span className={styles.colon}>:</span>
           </span>{" "}
           <span className={styles.productPriceQuantityValue}>{quantity}</span>
         </p>
         <p className={styles.productPriceQuantityItem}>
           <span className={styles.productPriceQuantityLabel}>
-            Сумма<span className={styles.colon}>:</span>
+            Сума<span className={styles.colon}>:</span>
           </span>{" "}
           <span className={styles.productPriceQuantityValue}>
             {product.price * quantity} ₴

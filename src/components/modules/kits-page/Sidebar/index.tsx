@@ -13,7 +13,7 @@ function Sidebar() {
           height={487}
           quality={100}
         />
-        <p>Гарантия 1&nbsp;год на все продукты.</p>
+        <p>Гарантія 1&nbsp;рік на&nbsp;всі продукти.</p>
       </div>
       <div className={styles.delivery}>
         <Image
@@ -25,8 +25,8 @@ function Sidebar() {
           className={styles.deliveryImg}
         />
         <p className={styles.deliveryDescr}>
-          Доставка по Украине и миру{" "}
-          <span className={styles.novaposhta}>компанией «Нова пошта».</span>
+          Доставка Україною та світом{" "}
+          <span className={styles.novaposhta}>компанією «Нова пошта».</span>
         </p>
       </div>
     </section>

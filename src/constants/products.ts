@@ -4,7 +4,7 @@ export const ALL_PRODUCTS: ProductData[] = [
   {
     id: "1",
     name: "KGS",
-    descr: "Cредний по\u00A0стоимости вариант.",
+    descr: "Середній за\u00A0вартістю варіант.",
     img: {
       path: "/kgs-kit.jpg",
       width: 3436,
@@ -16,7 +16,7 @@ export const ALL_PRODUCTS: ProductData[] = [
     id: "2",
     name: "KGS-MINI",
     descr:
-      "Бюджетный вариант, простой в\u00A0использовании, с\u00A0минимальной функциональностью.",
+      "Бюджетний варіант, простий у\u00A0використанні, з\u00A0мінімальною функціональністю.",
     img: {
       path: "/kgs-mini-kit.jpg",
       width: 4032,
@@ -27,7 +27,7 @@ export const ALL_PRODUCTS: ProductData[] = [
   {
     id: "3",
     name: "KGS-MAX",
-    descr: "Включает комплект KGS и\u00A0статическую катушку.",
+    descr: "Включає комплект KGS і\u00A0статичну котушку.",
     img: {
       path: "/kgs-mini-kit.jpg",
       width: 2276,

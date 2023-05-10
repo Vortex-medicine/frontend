@@ -1,6 +1,11 @@
 type PageName = string;
 type Href = string;
 
+export interface LanguageOption {
+  value: string;
+  label: string;
+}
+
 export interface PageLinkData {
   name: PageName;
   href: Href;

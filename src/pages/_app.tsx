@@ -10,6 +10,7 @@ import { createTheme } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 import AddToCartSuccessAlert from "@/components/elements/AddToCartSuccessAlert";
 import Cart from "@/components/modules/Cart";
+import { appWithTranslation } from "next-i18next";
 
 const noto = Noto_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -40,7 +41,7 @@ const theme = createTheme({
   },
 });
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <style jsx global>{`
@@ -67,3 +68,5 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     </>
   );
 }
+
+export default appWithTranslation(App);

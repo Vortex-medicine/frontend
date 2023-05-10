@@ -17,12 +17,11 @@ import { BACKEND_URL } from "@/constants/api-urls";
 import { setOrderIsConfirmed } from "../../../../utils/cart-actions";
 import ConfirmOrderBtn from "@/components/elements/ConfirmOrderBtn";
 
-// import { setTimeout } from "timers/promises";
-
 interface ConfirmationSidebarProps {
   selectedDeliveryOption: DeliveryOption;
   cities: UkrainianCityWithLabel[];
   warehousesNotAvailable: boolean;
+  warehousesNotFound: boolean;
 }
 
 // function sleep(duration: number) {
@@ -35,9 +34,13 @@ function ConfirmationSidebar({
   selectedDeliveryOption,
   cities,
   warehousesNotAvailable,
+  warehousesNotFound,
 }: ConfirmationSidebarProps): JSX.Element {
   const { items, orderIsConfirmed } = useCart();
-  const { handleSubmit } = useFormContext<CombinedSchemaType>();
+  const {
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useFormContext<CombinedSchemaType>();
   const cartDispatch = useCartDispatch();
   const router = useRouter();
 
@@ -59,6 +62,8 @@ function ConfirmationSidebar({
       orderItems
     );
     console.log("Form data:", formattedData);
+    console.log("Form errors:", errors);
+    console.log("Form is valid:", isValid);
 
     try {
       setBackendRequestInProgress(true);
@@ -83,25 +88,45 @@ function ConfirmationSidebar({
   return (
     <section className={styles.confirmationSidebarSection}>
       <div className={styles.allContentWrapper}>
-        <h2 className={styles.heading}>Вместе</h2>
+        <h2 className={styles.heading}>Разом</h2>
         <div className={styles.contentWrapper}>
           <div className={styles.orderSummaryItem}>
-            <p className={styles.orderSummaryItemLabel}>Количество товаров:</p>
+            <p className={styles.orderSummaryItemLabel}>Кількість товарів:</p>
             <p className={styles.orderSummaryItemValue}>{itemsTotalQuantity}</p>
           </div>
           <div className={styles.orderSummaryItem}>
-            <p className={styles.orderSummaryItemLabel}>Общая сумма:</p>
+            <p className={styles.orderSummaryItemLabel}>Загальна сума:</p>
             <p className={styles.orderSummaryItemValue}>{itemsTotalPrice} ₴</p>
           </div>
         </div>
         <div className={styles.confirmBtnAndErrorWrapper}>
           <ConfirmOrderBtn
-            handleSubmit={() => handleSubmit(handleConfirmOrder)()}
+            handleSubmit={() => {
+              console.log("selectedDeliveryOption: ", selectedDeliveryOption);
+              console.log("warehousesNotFound: ", warehousesNotFound);
+              if (
+                selectedDeliveryOption === "novaposhta" &&
+                warehousesNotFound
+              ) {
+                const citySelectElem =
+                  document.getElementById("citySelectWrapper");
+                if (citySelectElem) {
+                  const y =
+                    citySelectElem.getBoundingClientRect().top + scrollY - 160; // 50 is the offset
+                  window.scroll({
+                    top: y,
+                    behavior: "smooth",
+                  });
+                }
+              } else {
+                handleSubmit(handleConfirmOrder)();
+              }
+            }}
             loading={backendRequestInProgress}
           />
           {backendRequestError && (
             <p className={styles.backendRequestErrorMessage}>
-              Произошла ошибка, попробуйте ещё раз!
+              Виникла помилка, спробуйте ще раз!
             </p>
           )}
         </div>

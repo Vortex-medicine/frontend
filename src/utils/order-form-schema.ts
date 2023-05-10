@@ -4,22 +4,27 @@ import validatePhoneNumber from "./validate-phone-number";
 import { DeliveryOption, UkrainianCityWithLabel } from "@/types/checkout";
 
 export const contactInfoSchema = yup.object().shape({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  email: yup.string().email().required(),
+  firstName: yup.string().required("це поле обовʼязкове"),
+  lastName: yup.string().required("це поле обовʼязкове"),
+  email: yup
+    .string()
+    .email("некоректний email")
+    .required("це поле обовʼязкове"),
   phoneNumber: yup
     .mixed<{ data: CountryData; formattedValue: string }>()
-    .test("validPhoneNumber", "phone number is too short", (value) => {
+    .test("validPhoneNumber", "номер занадто короткий", (value) => {
       console.log("test value", value);
       return value && validatePhoneNumber(value.data, value.formattedValue);
     })
-    .required(),
+    .required("це поле обовʼязкове"),
 });
 export type ContactInfoSchemaType = yup.InferType<typeof contactInfoSchema>;
 
 export const novaposhtaSchemaNoApiCities = yup.object().shape({
-  novaposhtaCityInputNoApiCities: yup.string().required(),
-  novaposhtaWarehouseInputNoApiCities: yup.string().required(),
+  novaposhtaCityInputNoApiCities: yup.string().required("це поле обовʼязкове"),
+  novaposhtaWarehouseInputNoApiCities: yup
+    .string()
+    .required("це поле обовʼязкове"),
 });
 export type NovaposhtaSchemaNoApiCitiesType = yup.InferType<
   typeof novaposhtaSchemaNoApiCities
@@ -32,7 +37,9 @@ export const novaposhtaSchemaNoApiWarehouses = yup.object().shape({
       name: yup.string().required(),
     })
     .required(),
-  novaposhtaWarehouseInputNoApiWarehouses: yup.string().required(),
+  novaposhtaWarehouseInputNoApiWarehouses: yup
+    .string()
+    .required("це поле обовʼязкове"),
 });
 export type NovaposhtaSchemaNoApiWarehousesType = yup.InferType<
   typeof novaposhtaSchemaNoApiWarehouses
@@ -57,9 +64,9 @@ export type NovaposhtaSchemaWithApiType = yup.InferType<
 >;
 
 export const courierSchema = yup.object().shape({
-  courierCityInput: yup.string().required(),
-  courierAddressInput: yup.string().required(),
-  courierZipInput: yup.string().required(),
+  courierCityInput: yup.string().required("це поле обовʼязкове"),
+  courierAddressInput: yup.string().required("це поле обовʼязкове"),
+  courierZipInput: yup.string().required("це поле обовʼязкове"),
 });
 export type CourierSchemaType = yup.InferType<typeof courierSchema>;
 
@@ -70,9 +77,9 @@ export const worldwideSchema = yup.object().shape({
       label: yup.string().required(),
     })
     .required(),
-  worldwideCityInput: yup.string().required(),
-  worldwideAddressInput: yup.string().required(),
-  worldwideZipInput: yup.string().required(),
+  worldwideCityInput: yup.string().required("це поле обовʼязкове"),
+  worldwideAddressInput: yup.string().required("це поле обовʼязкове"),
+  worldwideZipInput: yup.string().required("це поле обовʼязкове"),
 });
 export type WorldwideSchemaType = yup.InferType<typeof worldwideSchema>;
 
