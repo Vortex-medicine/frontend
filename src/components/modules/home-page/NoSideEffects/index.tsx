@@ -45,7 +45,7 @@ function NoSideEffects() {
             <div className={styles.glassImageWrapper}>
               <Image
                 unoptimized
-                src="/breaking-glass.png"
+                src="/images/breaking-glass.png"
                 alt="breaking glass"
                 fill
               />

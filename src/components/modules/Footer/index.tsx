@@ -45,7 +45,7 @@ function Footer() {
               rel="noreferrer"
             >
               <Image
-                src="/telegram-circle-logo.png"
+                src="/images/telegram-circle-logo.png"
                 alt="telegram logo"
                 width={50}
                 height={50}
@@ -59,7 +59,7 @@ function Footer() {
               rel="noreferrer"
             >
               <Image
-                src="/youtube-circle-logo.png"
+                src="/images/youtube-circle-logo.png"
                 alt="youtube logo"
                 width={50}
                 height={50}
@@ -73,7 +73,7 @@ function Footer() {
               rel="noreferrer"
             >
               <Image
-                src="/facebook-circle-logo.webp"
+                src="/images/facebook-circle-logo.webp"
                 alt="facebook logo"
                 width={50}
                 height={50}

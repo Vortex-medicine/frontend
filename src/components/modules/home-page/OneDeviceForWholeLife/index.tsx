@@ -12,7 +12,7 @@ function OneDeviceForWholeLife() {
           <div className={styles.pillsBlock}>
             <div className={styles.pillsImgWrapper}>
               <Image
-                src="/pills.jpg"
+                src="/images/pills.jpg"
                 alt="pills"
                 width={4424}
                 height={2964}
@@ -29,7 +29,7 @@ function OneDeviceForWholeLife() {
           <div className={styles.deviceBlock}>
             <div className={styles.deviceImgWrapper}>
               <Image
-                src="/device-with-coil.png"
+                src="/images/device-with-coil.png"
                 alt="the Mishin's coil with the sinus generator"
                 width={2299}
                 height={1652}

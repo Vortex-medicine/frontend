@@ -7,7 +7,7 @@ interface LogoProps {
 function Logo({ className = "" }: LogoProps): JSX.Element {
   return (
     <Image
-      src="/logo.png"
+      src="/images/logo.png"
       alt="Vortex-medicine"
       width="100"
       height="26"

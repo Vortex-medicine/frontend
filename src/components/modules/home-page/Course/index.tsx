@@ -63,7 +63,7 @@ function Course() {
             <div className={styles.teslaImgWrapper}>
               <Image
                 className={styles.teslaWithCoilImg}
-                src="/tesla-with-coil.png"
+                src="/images/tesla-with-coil.png"
                 alt="Tesla with a coil"
                 width={1733}
                 height={1859}
@@ -99,7 +99,7 @@ function Course() {
 
               <Image
                 className={styles.freemasonsOrangeImg}
-                src="/freemasons-mobile-with-filter.png"
+                src="/images/freemasons-mobile-with-filter.png"
                 alt="freemasons"
                 width={844}
                 height={148}
@@ -110,7 +110,7 @@ function Course() {
 
               <Image
                 className={styles.freemasonsBlackAndWhiteImg}
-                src="/freemasons-black-and-white.png"
+                src="/images/freemasons-black-and-white.png"
                 alt="freemasons"
                 width={844}
                 height={148}

@@ -183,7 +183,7 @@ function CuresMostDiseases() {
         >
           <Image
             className={styles.coilTeaMobileImg}
-            src="/cup-of-tea-mobile.png"
+            src="/images/cup-of-tea-mobile.png"
             alt="a coil and a cup of tea example"
             width={645}
             height={333}
@@ -194,7 +194,7 @@ function CuresMostDiseases() {
 
           <Image
             className={styles.coilTeaDesktopImg}
-            src="/cup-of-tea-desktop.png"
+            src="/images/cup-of-tea-desktop.png"
             alt="a coil and a cup of tea example"
             width={571}
             height={448}

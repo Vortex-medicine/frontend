@@ -16,14 +16,14 @@ const NavbarLogo = forwardRef<HTMLDivElement, NavbarLogoProps>(
     return (
       <div ref={ref} className={styles.navbarLogoWrapper}>
         <Image
-          src="/logo-white.png"
+          src="/images/logo-white.png"
           alt="Vortex-medicine"
           width="100"
           height="26"
           className={styles.navbarLogo}
         />
         <Image
-          src="/logo.png"
+          src="/images/logo.png"
           alt="Vortex-medicine"
           width="100"
           height="26"

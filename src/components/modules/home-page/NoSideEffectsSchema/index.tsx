@@ -125,7 +125,7 @@ function NoSideEffectsSchema() {
       </div>
       <Image
         className={styles.schemaImage}
-        src="/schema.jpg"
+        src="/images/schema.jpg"
         width={4780}
         height={2852}
         sizes="
@@ -141,7 +141,7 @@ function NoSideEffectsSchema() {
       <div className={styles.speakerWrapper}>
         <Image
           className={styles.speakerImage}
-          src="/speaker.png"
+          src="/images/speaker.png"
           alt="Speaker"
           width={216}
           height={132}

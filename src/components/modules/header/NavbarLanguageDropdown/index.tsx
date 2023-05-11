@@ -27,7 +27,7 @@ function NavbarLanguageDropdown({
   console.log("i18n.language", i18n.language);
 
   const [value, setValue] = useState({
-    value: i18n.language,
+    value: currentLanguage,
     label: LANGUAGES[currentLanguage as keyof typeof LANGUAGES],
   });
 

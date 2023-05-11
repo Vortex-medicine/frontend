@@ -16,7 +16,7 @@ function IntroImage() {
       <div className={styles.imageWrapperMobile}>
         <Image
           className={styles.imageMobile}
-          src="/family-mobile.png"
+          src="/images/family-mobile.png"
           alt="a family with mishin's coil"
           fill
         />
@@ -25,7 +25,7 @@ function IntroImage() {
         <div className={styles.imageWrapperTablet}>
           <Image
             className={styles.imageTablet}
-            src="/family.png"
+            src="/images/family.png"
             alt="a family with mishin's coil"
             fill
           />

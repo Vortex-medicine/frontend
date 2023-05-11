@@ -10,7 +10,7 @@ function CuresAtHome() {
       <Container className={styles.sectionContainer}>
         <Image
           className={styles.mainImg}
-          src="/man-with-laptop.png"
+          src="/images/man-with-laptop.png"
           alt="a man with a laptop and the Mishin's coil"
           sizes="100vw,
                 (min-width: 945px) 885px"

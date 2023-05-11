@@ -14,7 +14,7 @@ function ReviewsFromSkype() {
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-1.png"
+                src="/images/review-1.png"
                 alt="a review from Skype"
                 width={676}
                 height={449}
@@ -29,7 +29,7 @@ function ReviewsFromSkype() {
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-2.png"
+                src="/images/review-2.png"
                 alt="a review from Skype"
                 width={690}
                 height={298}
@@ -39,14 +39,14 @@ function ReviewsFromSkype() {
               />
             </div>
             <p className={styles.imgCaption}>
-              Позбувся &nbsp;гіпертонії та &nbsp;аритмії
+              Позбувся&nbsp;гіпертонії та&nbsp;аритмії
             </p>
           </li>
 
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-3.png"
+                src="/images/review-3.png"
                 alt="a review from Skype"
                 width={733}
                 height={287}
@@ -61,7 +61,7 @@ function ReviewsFromSkype() {
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-4.png"
+                src="/images/review-4.png"
                 alt="a review from Skype"
                 width={729}
                 height={309}
@@ -76,7 +76,7 @@ function ReviewsFromSkype() {
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-5.png"
+                src="/images/review-5.png"
                 alt="a review from Skype"
                 width={734}
                 height={388}
@@ -93,7 +93,7 @@ function ReviewsFromSkype() {
           <li className={styles.review}>
             <div className={styles.imgWrapper}>
               <Image
-                src="/review-6.png"
+                src="/images/review-6.png"
                 alt="a review from Skype"
                 width={763}
                 height={479}

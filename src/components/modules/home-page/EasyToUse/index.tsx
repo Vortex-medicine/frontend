@@ -13,7 +13,7 @@ function EasyToUse() {
         <div className={styles.instructionStepsWrapper}>
           <div className={styles.stepOne}>
             <Image
-              src="/plug-into.jpg"
+              src="/images/plug-into.jpg"
               alt="plug in the sinus generator"
               width={681}
               height={681}
@@ -28,7 +28,7 @@ function EasyToUse() {
           </div>
           <div className={styles.stepTwo}>
             <Image
-              src="/connect-devices.jpg"
+              src="/images/connect-devices.jpg"
               alt="connect the coil to the sinus generator"
               width={672}
               height={672}
@@ -44,7 +44,7 @@ function EasyToUse() {
           <div className={styles.stepThree}>
             <Image
               className={styles.putOnProblemAreaSmallImg}
-              src="/put-on-problem-area-small.jpg"
+              src="/images/put-on-problem-area-small.jpg"
               alt="put the coil on the problem area"
               width={720}
               height={720}
@@ -54,7 +54,7 @@ function EasyToUse() {
             />
             <Image
               className={styles.putOnProblemAreaBigImg}
-              src="/put-on-problem-area-big.jpg"
+              src="/images/put-on-problem-area-big.jpg"
               alt="put the coil on the problem area"
               width={1280}
               height={720}

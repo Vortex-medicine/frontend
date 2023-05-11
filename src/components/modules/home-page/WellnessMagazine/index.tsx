@@ -8,7 +8,7 @@ function WellnessMagazine() {
     <section className={styles.wellnessMagazineSection}>
       <Container>
         <Image
-          src="/magazine.jpg"
+          src="/images/magazine.jpg"
           alt="the Wellness magazine about the Mishin's coils"
           width={4032}
           height={2833}

@@ -55,7 +55,7 @@ function CanBeTakenOnTrip() {
       <Container className={styles.luggageImgContainer}>
         <Image
           className={styles.luggageImg}
-          src="/luggage.png"
+          src="/images/luggage.png"
           alt="a luggage with the Mishin's coil"
           width={5477}
           height={3812}
@@ -77,7 +77,7 @@ function CanBeTakenOnTrip() {
         </div>
         <Image
           className={styles.bagImg}
-          src="/bag.png"
+          src="/images/bag.png"
           alt="a bag with the Mishin's coil"
           width={3349}
           height={2548}

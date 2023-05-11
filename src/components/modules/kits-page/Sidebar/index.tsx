@@ -7,7 +7,7 @@ function Sidebar() {
     <section className={styles.sidebar}>
       <div className={styles.guarantee}>
         <Image
-          src="/guarantee.png"
+          src="/images/guarantee.png"
           alt="guarantee"
           width={310}
           height={487}
@@ -17,7 +17,7 @@ function Sidebar() {
       </div>
       <div className={styles.delivery}>
         <Image
-          src="/novaposhta-logo.png"
+          src="/images/novaposhta-logo.png"
           alt="delivery"
           width={42}
           height={42}

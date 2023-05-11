@@ -80,7 +80,7 @@ function TelegramButton({
         <Image
           ref={imageElement}
           className={styles.icon}
-          src="/tg-icon.png"
+          src="/images/tg-icon.png"
           alt="telegram icon"
           width={27}
           height={22}
