@@ -1,5 +1,12 @@
 {
   "intro": {
-    "heading": "Mishin's coil is your home doctor"
+    "heading": "Mishin's coil is your home doctor",
+    "subheading": "Device for the\u00A0treatment of\u00A0most diseases at\u00A0home",
+    "textBlock1": "Mishin's coil helps to\u00A0get rid of\u00A0hypertension, kidney diseases, arrhythmia, VVD, tonsillitis and\u00A0other illnesses.",
+    "textBlock2": "The technology has 6 main advantages: no side effects; treats most diseases; one device for\u00A0the\u00A0whole life; treats at\u00A0home; compact, so it can be taken on\u00A0a\u00A0trip; easy to\u00A0use.",
+    "textBlock3": {
+      "mainText": "We will tell you about how\u00A0Mishin's coil works without delving deeply into\u00A0the\u00A0physics of\u00A0the\u00A0processes. If you are\u00A0well versed in\u00A0physics, watch",
+      "linkText": "the 7-hour webinar on vortex medicine"
+    }
   }
 }

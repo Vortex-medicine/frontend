@@ -15,31 +15,19 @@ function Intro() {
       <IntroImage />
       <Container>
         <h1 className={styles.heading}>{t("home:intro.heading")}</h1>
-        <p className={styles.subheading}>
-          Прилад для лікування більшості захворювань у&nbsp;домашніх умовах
-        </p>
+        <p className={styles.subheading}>{t("home:intro.subheading")}</p>
         <div className={styles.mainContentWrapper}>
           <div className={styles.textBlock}>
+            <p>{t("home:intro.textBlock1")}</p>
+            <p>{t("home:intro.textBlock2")}</p>
             <p>
-              Котушка Мішина допогає позбутися гіпертонії, хвороб нирок,
-              аритмії, ВСД, ангіни та&nbsp;інших захворювань.
-            </p>
-            <p>
-              Технологія має 6 основних переваг: немає побічних ефектів; лікує
-              більшість захворювань; достатньо одного приладу на все життя;
-              лікує в &nbsp;домашніх умовах; компактний, тому можна взяти
-              в&nbsp;подорож; легко користуватися.
-            </p>
-            <p>
-              Ми розповімо про&nbsp;те, як&nbsp;працює котушка Мішина,
-              не&nbsp;залазячи глибоко у&nbsp;фізику процесів. Якщо добре
-              знаєтеся на&nbsp;фізиці, подивіться{" "}
+              {t("home:intro.textBlock3.mainText")}{" "}
               <a
                 href="https://youtu.be/WYBLpHd0y0Y"
                 target="_blank"
                 rel="noreferrer"
               >
-                7-годинний вебінар з&nbsp;вихрової медицини
+                {t("home:intro.textBlock3.linkText")}
               </a>
               <span style={{ color: colors.blue }}>.</span>
             </p>

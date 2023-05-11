@@ -24,8 +24,6 @@ function NavbarLanguageDropdown({
   const router = useRouter();
   const locales = router.locales ?? [currentLanguage];
 
-  console.log("i18n.language", i18n.language);
-
   const [value, setValue] = useState({
     value: currentLanguage,
     label: LANGUAGES[currentLanguage as keyof typeof LANGUAGES],
@@ -83,8 +81,6 @@ function NavbarLanguageDropdown({
       </div>
       <ul ref={dropdownOptionsElement} className={styles.dropdownOptions}>
         {locales.map((locale) => {
-          console.log("locale", locale);
-          console.log("currentLanguage", value);
           const label = LANGUAGES[locale as keyof typeof LANGUAGES];
           const option = {
             value: locale,
