@@ -16,6 +16,7 @@ import axios from "axios";
 import { BACKEND_URL } from "@/constants/api-urls";
 import { setOrderIsConfirmed } from "../../../../utils/cart-actions";
 import ConfirmOrderBtn from "@/components/elements/ConfirmOrderBtn";
+import { useProducts } from "@/context/products/Context";
 
 interface ConfirmationSidebarProps {
   selectedDeliveryOption: DeliveryOption;
@@ -37,6 +38,7 @@ function ConfirmationSidebar({
   warehousesNotFound,
 }: ConfirmationSidebarProps): JSX.Element {
   const { items, orderIsConfirmed } = useCart();
+  const { products: allProducts } = useProducts();
   const {
     handleSubmit,
     formState: { errors, isValid },
@@ -45,8 +47,8 @@ function ConfirmationSidebar({
   const router = useRouter();
 
   const itemsTotalQuantity = getCartItemsTotalQuantity(items);
-  const itemsTotalPrice = getCartItemsTotalPrice(items);
-  const orderItems = getAllOrderItemsFromCart(items);
+  const itemsTotalPrice = getCartItemsTotalPrice(items, allProducts);
+  const orderItems = getAllOrderItemsFromCart(items, allProducts);
 
   const [backendRequestInProgress, setBackendRequestInProgress] =
     useState(false);

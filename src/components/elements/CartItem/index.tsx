@@ -11,6 +11,9 @@ import { CartItem } from "@/types/cart";
 import { getProductById } from "utils/product";
 import { useCartDispatch } from "@/context/cart/Context";
 import { removeCartItem, updateCartItemQuantity } from "utils/cart-actions";
+import { useTranslation } from "next-i18next";
+import { ProductDescr } from "@/types/product";
+import { useProducts } from "@/context/products/Context";
 
 interface CartItemProps {
   productData: CartItem;
@@ -21,10 +24,14 @@ function CartItem({
   productData: { productId, quantity },
   className = "",
 }: CartItemProps): JSX.Element {
+  const {
+    i18n: { language: currentLanguage },
+  } = useTranslation();
   const [localQuantity, setLocalQuantity] = useState(quantity.toString());
   const cartDispatch = useCartDispatch();
+  const { products: allProducts } = useProducts();
 
-  const product = getProductById(productId);
+  const product = getProductById(productId, allProducts);
 
   if (!product) {
     throw new Error("product not found");
@@ -104,7 +111,9 @@ function CartItem({
 
       <div className={styles.itemInfoWrapper}>
         <h3 className={styles.itemName}>{product.name}</h3>
-        <p className={styles.itemDescr}>{product.descr}</p>
+        <p className={styles.itemDescr}>
+          {product.descr[currentLanguage as keyof ProductDescr]}
+        </p>
       </div>
 
       <div className={styles.amountWrapper}>

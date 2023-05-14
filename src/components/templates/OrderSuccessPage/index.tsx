@@ -9,8 +9,10 @@ import { PAGE_HREFS } from "@/constants/navigation-links";
 import { useRouter } from "next/router";
 import { setCartItems, setOrderIsConfirmed } from "../../../utils/cart-actions";
 import { CartItem } from "@/types/cart";
+import { useProducts } from "@/context/products/Context";
 
 function OrderSuccessPage() {
+  const { products: allProducts } = useProducts();
   const router = useRouter();
   const { items } = useCart();
   const [localItems, setLocalItems] = useState<CartItem[]>([]);
@@ -49,7 +51,8 @@ function OrderSuccessPage() {
 
   const confirmedOrderProducts = items.length > 0 ? items : localItems;
   const totalPrice = getCartItemsTotalPrice(
-    items.length > 0 ? items : localItems
+    items.length > 0 ? items : localItems,
+    allProducts
   );
 
   return showPage ? (

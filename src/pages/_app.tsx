@@ -11,6 +11,7 @@ import { SnackbarProvider } from "notistack";
 import AddToCartSuccessAlert from "@/components/elements/AddToCartSuccessAlert";
 import Cart from "@/components/modules/Cart";
 import { appWithTranslation } from "next-i18next";
+import { ProductsProvider } from "@/context/products/Context";
 
 const noto = Noto_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -49,22 +50,24 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           --noto-font: ${noto.style.fontFamily};
         }
       `}</style>
-      <CartProvider>
-        <ThemeProvider theme={theme}>
-          <SnackbarProvider
-            Components={{
-              addToCartAlert: AddToCartSuccessAlert,
-            }}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-          >
-            <Component {...pageProps} />
-            <Cart />
-          </SnackbarProvider>
-        </ThemeProvider>
-      </CartProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
+            <SnackbarProvider
+              Components={{
+                addToCartAlert: AddToCartSuccessAlert,
+              }}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <Component {...pageProps} />
+              <Cart />
+            </SnackbarProvider>
+          </ThemeProvider>
+        </CartProvider>
+      </ProductsProvider>
     </>
   );
 }

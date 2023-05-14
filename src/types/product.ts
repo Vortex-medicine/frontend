@@ -1,9 +1,23 @@
 export type ProductId = string;
 export type ProductName = string;
-export type ProductDescr = string;
 export type ProductPrice = number;
-export type ProductDiscountInfo = string;
+// export type ProductDiscountInfo = string;
 export type ProductQuantity = number;
+
+export type LocalizedProductDescr = string;
+export type LocalizedProductDiscountInfo = string;
+
+export interface ProductDiscountInfo {
+  uk: LocalizedProductDiscountInfo;
+  en: LocalizedProductDiscountInfo;
+  ru: LocalizedProductDiscountInfo;
+}
+
+export interface ProductDescr {
+  uk: LocalizedProductDescr;
+  en: LocalizedProductDescr;
+  ru: LocalizedProductDescr;
+}
 
 export type ProductImgPath = string;
 export type ProductImgWidth = number;
@@ -25,7 +39,7 @@ export interface ProductData {
 }
 
 export interface OrderItem {
-  id: ProductId;
+  productId: ProductId;
   name: ProductName;
   descr: ProductDescr;
   price: ProductPrice;

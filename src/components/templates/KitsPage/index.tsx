@@ -3,9 +3,13 @@ import styles from "./styles.module.scss";
 import Container from "@/components/elements/Container";
 import ProductCard from "@/components/elements/kits-page/ProductCard";
 import Sidebar from "@/components/modules/kits-page/Sidebar";
-import { ALL_PRODUCTS } from "@/constants/products";
+import { ProductData } from "@/types/product";
 
-function KitsPage(): JSX.Element {
+interface KitsPageProps {
+  products: ProductData[];
+}
+
+function KitsPage({ products }: KitsPageProps): JSX.Element {
   return (
     <>
       <Container>
@@ -14,7 +18,7 @@ function KitsPage(): JSX.Element {
         </h1>
         <div className={styles.contentWrapper}>
           <ul className={styles.productList}>
-            {ALL_PRODUCTS.map((product) => (
+            {products.map((product) => (
               <li className={styles.productItem} key={product.id}>
                 <ProductCard productData={product} />
               </li>

@@ -13,8 +13,10 @@ import { getCartItemsTotalPrice } from "utils/product";
 import Link from "next/link";
 import { PAGE_HREFS } from "@/constants/navigation-links";
 import classnames from "classnames";
+import { useProducts } from "@/context/products/Context";
 
 export default function Cart() {
+  const { products: allProducts } = useProducts();
   const {
     isOpened: cartIsOpened,
     modalElement: cartModalElement,
@@ -83,7 +85,7 @@ export default function Cart() {
             <div className={styles.footerBtnsWrapper}>
               <div className={styles.checkoutWrapper}>
                 <p className={styles.totalPrice}>
-                  {getCartItemsTotalPrice(cartItems)} ₴
+                  {getCartItemsTotalPrice(cartItems, allProducts)} ₴
                 </p>
                 <Link
                   onClick={() => closeCart(cartDispatch)}

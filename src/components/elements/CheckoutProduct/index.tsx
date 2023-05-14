@@ -3,6 +3,9 @@ import { CartItem } from "@/types/cart";
 import styles from "./styles.module.scss";
 import Image from "next/image";
 import { getProductById } from "../../../utils/product";
+import { useTranslation } from "next-i18next";
+import { ProductDescr } from "@/types/product";
+import { useProducts } from "@/context/products/Context";
 
 interface CheckoutProductProps {
   productData: CartItem;
@@ -11,7 +14,14 @@ interface CheckoutProductProps {
 function CheckoutProduct({
   productData: { productId, quantity },
 }: CheckoutProductProps): JSX.Element {
-  const product = getProductById(productId);
+  const { products: allProducts } = useProducts();
+
+  console.log("productId", productId);
+  console.log("allProducts", allProducts);
+  const product = getProductById(productId, allProducts);
+  const {
+    i18n: { language: currentLanguage },
+  } = useTranslation();
 
   if (!product) {
     throw new Error("product not found");
@@ -32,7 +42,9 @@ function CheckoutProduct({
         />
         <div className={styles.productNameDescrWrapper}>
           <h3 className={styles.productName}>{product.name}</h3>
-          <p className={styles.productDescr}>{product.descr}</p>
+          <p className={styles.productDescr}>
+            {product.descr[currentLanguage as keyof ProductDescr]}
+          </p>
         </div>
       </div>
       <div className={styles.productPriceQuantityWrapper}>
